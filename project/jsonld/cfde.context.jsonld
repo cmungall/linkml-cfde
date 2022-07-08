@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T14:54:12\n    Schema: cfde_schema\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/linkml/cfde\n    description: A complete list of schematic specifications for the resources (TSV table files) that will be used to represent C2M2 DCC metadata prior to ingest into the C2M2 database system\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T14:56:48\n    Schema: cfde_schema\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/linkml/cfde\n    description: A complete list of schematic specifications for the resources (TSV table files) that will be used to represent C2M2 DCC metadata prior to ingest into the C2M2 database system\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "cfde_disease_association_type": "https://w3id.org/linkml/cfde/cfde_disease_association_type/",
       "cfde_phenotype_association_type": "https://w3id.org/linkml/cfde/cfde_phenotype_association_type/",

@@ -5893,7 +5893,7 @@
   "source_file": "cfde.yaml",
   "source_file_date": "2022-07-08T14:49:09",
   "source_file_size": 54025,
-  "generation_date": "2022-07-08T14:54:12",
+  "generation_date": "2022-07-08T14:56:48",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cfde.context.jsonld",

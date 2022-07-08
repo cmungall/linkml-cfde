@@ -1,5 +1,5 @@
 # Auto generated from cfde.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-08T14:49:22
+# Generation date: 2022-07-08T14:56:54
 # Schema: cfde_schema
 #
 # id: https://w3id.org/linkml/cfde
