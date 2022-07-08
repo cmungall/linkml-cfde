@@ -11,5 +11,3 @@ This is currently ENTIRELY automated - no additional curation is done on the sch
 3. Deploy using standard LinkML template
 
 
-
-
