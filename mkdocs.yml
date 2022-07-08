@@ -1,6 +1,6 @@
 site_name: "LinkML CFDE"
 theme:
-  name: mkdocs
+  name: material
   analytics:
     gtag: G-2SYBSJVZ23
 #  palette:
@@ -10,16 +10,12 @@ theme:
     - content.tabs.link
 plugins:
   - search
+  - mermaid2
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format  
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.critic

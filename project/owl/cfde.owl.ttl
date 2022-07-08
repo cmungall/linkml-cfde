@@ -14,8 +14,14 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/test/> a owl:Ontology ;
-    rdfs:label "test-schema" ;
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" .
+
+<https://w3id.org/linkml/cfde/> a owl:Ontology ;
+    rdfs:label "linkml-cfde" ;
     IAO:0000700 ex:AnalysisType,
         ex:Anatomy,
         ex:AssayType,
@@ -65,17 +71,11 @@
         ex:SubjectSubstance,
         ex:Substance ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    linkml:generation_date "2022-07-08T12:58:06" ;
+    linkml:generation_date "2022-07-08T13:03:49" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "cfde.yaml" ;
-    linkml:source_file_date "2022-07-08T12:51:10" ;
-    linkml:source_file_size 45751 .
-
-linkml:SubsetDefinition a owl:Class ;
-    rdfs:label "subset_definition" .
-
-linkml:TypeDefinition a owl:Class ;
-    rdfs:label "type_definition" .
+    linkml:source_file_date "2022-07-08T13:02:22" ;
+    linkml:source_file_size 45756 .
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
@@ -102,13 +102,13 @@ ex:Anatomy a owl:Class,
     rdfs:label "anatomy" ;
     dcterms:title "anatomy" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:description ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty ex:synonyms ] ;
@@ -123,12 +123,12 @@ ex:AssayType a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty ex:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ex:synonyms ] ;
     skos:definition "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate C2M2 biosamples or results stored in C2M2 files" .
 
 ex:Biosample a owl:Class,
@@ -136,29 +136,21 @@ ex:Biosample a owl:Class,
     rdfs:label "biosample" ;
     dcterms:title "biosample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:anatomy ],
+            owl:onProperty ex:id_namespace ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:project_local_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:project_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:persistent_id ],
+            owl:onProperty ex:anatomy ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -166,7 +158,15 @@ ex:Biosample a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Datetime ;
-            owl:onProperty ex:creation_time ] ;
+            owl:onProperty ex:creation_time ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:persistent_id ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:project_local_id ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "A tissue sample or other physical specimen" .
 
 ex:BiosampleDisease a owl:Class,
@@ -175,7 +175,7 @@ ex:BiosampleDisease a owl:Class,
     dcterms:title "biosample_disease" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_id_namespace ;
+            owl:onProperty ex:biosample_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass ex:AssociationTypeEnum ;
@@ -187,7 +187,7 @@ ex:BiosampleDisease a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_local_id ;
+            owl:onProperty ex:biosample_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a C2M2 biosample and a disease positively (e.g. cancer tumor tissue sample) OR negatively (e.g. cancer-free tissue sample) identified for that biosample" .
 
@@ -197,19 +197,19 @@ ex:BiosampleFromSubject a owl:Class,
     dcterms:title "biosample_from_subject" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:subject_local_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:biosample_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:subject_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:biosample_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -223,15 +223,15 @@ ex:BiosampleGene a owl:Class,
     dcterms:title "biosample_gene" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
+            owl:onProperty ex:biosample_local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
             owl:onProperty ex:gene ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:biosample_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a C2M2 biosample and an Ensembl gene especially relevant to it" .
 
@@ -241,11 +241,7 @@ ex:BiosampleInCollection a owl:Class,
     dcterms:title "biosample_in_collection" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -253,7 +249,11 @@ ex:BiosampleInCollection a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
+            owl:onProperty ex:collection_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:biosample_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a biosample and a (containing) collection" .
 
@@ -263,15 +263,15 @@ ex:BiosampleSubstance a owl:Class,
     dcterms:title "biosample_substance" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
+            owl:onProperty ex:biosample_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
             owl:onProperty ex:biosample_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:substance ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a C2M2 biosample and a PubChem substance experimentally associated with that biosample" .
 
@@ -281,8 +281,16 @@ ex:Collection a owl:Class,
     dcterms:title "collection" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Datetime ;
+            owl:onProperty ex:creation_time ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty ex:has_time_series_data ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:persistent_id ],
+            owl:onProperty ex:abbreviation ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id_namespace ;
@@ -294,19 +302,11 @@ ex:Collection a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:abbreviation ],
+            owl:onProperty ex:persistent_id ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty ex:has_time_series_data ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Datetime ;
-            owl:onProperty ex:creation_time ] ;
+            owl:onProperty ex:description ] ;
     skos:definition "A grouping of C2M2 files, biosamples and/or subjects" .
 
 ex:CollectionAnatomy a owl:Class,
@@ -315,15 +315,15 @@ ex:CollectionAnatomy a owl:Class,
     dcterms:title "collection_anatomy" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:anatomy ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:collection_local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between an UBERON anatomical term and a C2M2 collection containing experimental resources directly related to the study of the anatomical concept described by that term" .
 
@@ -333,7 +333,7 @@ ex:CollectionCompound a owl:Class,
     dcterms:title "collection_compound" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
+            owl:onProperty ex:compound ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -341,7 +341,7 @@ ex:CollectionCompound a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:compound ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a compound and a C2M2 collection containing experimental resources directly related to the study of that compound" .
 
@@ -351,7 +351,7 @@ ex:CollectionDefinedByProject a owl:Class,
     dcterms:title "collection_defined_by_project" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
+            owl:onProperty ex:project_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -363,7 +363,7 @@ ex:CollectionDefinedByProject a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:project_local_id ;
+            owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "(Shallow) association between a collection and a project that defined it" .
 
@@ -373,7 +373,7 @@ ex:CollectionDisease a owl:Class,
     dcterms:title "collection_disease" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:disease ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -381,7 +381,7 @@ ex:CollectionDisease a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
+            owl:onProperty ex:disease ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a disease and a C2M2 collection containing experimental resources directly related to the study of that disease" .
 
@@ -391,15 +391,15 @@ ex:CollectionGene a owl:Class,
     dcterms:title "collection_gene" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:gene ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:collection_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:gene ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a gene and a C2M2 collection containing experimental resources directly related to the study of that gene" .
 
@@ -413,11 +413,11 @@ ex:CollectionInCollection a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:superset_collection_local_id ;
+            owl:onProperty ex:superset_collection_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:superset_collection_id_namespace ;
+            owl:onProperty ex:superset_collection_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -431,7 +431,7 @@ ex:CollectionPhenotype a owl:Class,
     dcterms:title "collection_phenotype" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:phenotype ;
+            owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -439,7 +439,7 @@ ex:CollectionPhenotype a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
+            owl:onProperty ex:phenotype ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a phenotype and a C2M2 collection containing experimental resources directly related to the study of that phenotype" .
 
@@ -449,15 +449,15 @@ ex:CollectionProtein a owl:Class,
     dcterms:title "collection_protein" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:protein ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a protein and a C2M2 collection containing experimental resources directly related to the study of that protein" .
 
@@ -467,7 +467,7 @@ ex:CollectionSubstance a owl:Class,
     dcterms:title "collection_substance" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:substance ;
+            owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -475,7 +475,7 @@ ex:CollectionSubstance a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
+            owl:onProperty ex:substance ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a substance and a C2M2 collection containing experimental resources directly related to the study of that substance" .
 
@@ -485,15 +485,15 @@ ex:CollectionTaxonomy a owl:Class,
     dcterms:title "collection_taxonomy" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:taxon ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:collection_local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a taxon and a C2M2 collection containing experimental resources directly related to the study of that taxon" .
 
@@ -506,12 +506,12 @@ ex:Compound a owl:Class,
             owl:onProperty ex:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:description ] ;
+            owl:onProperty ex:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ex:synonyms ] ;
     skos:definition "List of (i) GlyTouCan terms or (ii) PubChem 'compound' terms (normalized chemical structures) referenced in this submission; (ii) will include all PubChem 'compound' terms associated with any PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this submission, in addition to any 'compound' terms directly referenced" .
 
 ex:DataType a owl:Class,
@@ -519,16 +519,16 @@ ex:DataType a owl:Class,
     rdfs:label "data_type" ;
     dcterms:title "data_type" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ex:synonyms ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ex:description ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ] ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "List of EDAM CV 'data:' terms used to describe data in C2M2 files" .
 
 ex:Dcc a owl:Class,
@@ -537,11 +537,7 @@ ex:Dcc a owl:Class,
     dcterms:title "DCC" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:dcc_name ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:project_local_id ;
+            owl:onProperty ex:project_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -549,19 +545,19 @@ ex:Dcc a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:dcc_url ;
+            owl:onProperty ex:contact_email ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:contact_name ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:project_id_namespace ;
+            owl:onProperty ex:project_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:contact_name ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -569,7 +565,11 @@ ex:Dcc a owl:Class,
             owl:onProperty ex:dcc_description ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:contact_email ;
+            owl:onProperty ex:dcc_name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:dcc_url ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "The Common Fund program or data coordinating center (DCC, identified by the given project foreign key) that produced this C2M2 instance" .
 
@@ -578,16 +578,16 @@ ex:Disease a owl:Class,
     rdfs:label "disease" ;
     dcterms:title "disease" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:description ] ;
+            owl:onProperty ex:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ex:synonyms ] ;
     skos:definition "List of Disease Ontology terms used to describe diseases recorded in association with C2M2 subjects or biosamples" .
 
 ex:File a owl:Class,
@@ -596,15 +596,55 @@ ex:File a owl:Class,
     dcterms:title "file" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:persistent_id ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:project_local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:filename ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:compression_format ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty ex:uncompressed_size_in_bytes ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:dbgap_study_id ],
+            owl:onProperty ex:data_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:analysis_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:assay_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Datetime ;
+            owl:onProperty ex:creation_time ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ex:size_in_bytes ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:local_id ;
+            owl:onProperty ex:project_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -613,55 +653,7 @@ ex:File a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:compression_format ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:bundle_collection_local_id ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:analysis_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:persistent_id ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:project_local_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:sha256 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:filename ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:project_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:mime_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:data_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ex:size_in_bytes ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Datetime ;
-            owl:onProperty ex:creation_time ],
+            owl:onProperty ex:dbgap_study_id ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -669,11 +661,19 @@ ex:File a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:md5 ],
+            owl:onProperty ex:mime_type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:assay_type ] ;
+            owl:onProperty ex:sha256 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:bundle_collection_local_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:md5 ] ;
     skos:definition "A stable digital asset" .
 
 ex:FileDescribesBiosample a owl:Class,
@@ -682,11 +682,11 @@ ex:FileDescribesBiosample a owl:Class,
     dcterms:title "file_describes_biosample" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:file_local_id ;
+            owl:onProperty ex:biosample_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_id_namespace ;
+            owl:onProperty ex:file_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -694,7 +694,7 @@ ex:FileDescribesBiosample a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:biosample_local_id ;
+            owl:onProperty ex:biosample_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a biosample and a file containing information about that biosample" .
 
@@ -704,7 +704,7 @@ ex:FileDescribesCollection a owl:Class,
     dcterms:title "file_describes_collection" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
+            owl:onProperty ex:file_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -712,11 +712,11 @@ ex:FileDescribesCollection a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
+            owl:onProperty ex:collection_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:file_local_id ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a summary file and an entire collection described by that file" .
 
@@ -725,10 +725,6 @@ ex:FileDescribesSubject a owl:Class,
     rdfs:label "file_describes_subject" ;
     dcterms:title "file_describes_subject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:file_local_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ],
@@ -739,6 +735,10 @@ ex:FileDescribesSubject a owl:Class,
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:file_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:file_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a subject and a file containing information about that subject" .
 
@@ -750,13 +750,13 @@ ex:FileFormat a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty ex:synonyms ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:description ] ;
+            owl:onProperty ex:description ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:id ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "List of EDAM CV 'format:' terms used to describe formats of C2M2 files" .
 
 ex:FileInCollection a owl:Class,
@@ -765,11 +765,7 @@ ex:FileInCollection a owl:Class,
     dcterms:title "file_in_collection" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
+            owl:onProperty ex:file_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -777,7 +773,11 @@ ex:FileInCollection a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:file_local_id ;
+            owl:onProperty ex:collection_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a file and a (containing) collection" .
 
@@ -786,19 +786,19 @@ ex:Gene a owl:Class,
     rdfs:label "gene" ;
     dcterms:title "gene" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:organism ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ex:description ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ex:synonyms ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:organism ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "List of Ensembl genes directly referenced in this C2M2 submission" .
 
@@ -813,11 +813,11 @@ ex:IdNamespace a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:description ],
+            owl:onProperty ex:abbreviation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:abbreviation ] ;
+            owl:onProperty ex:description ] ;
     skos:definition "A table listing identifier namespaces registered by the DCC submitting this C2M2 instance" .
 
 ex:NcbiTaxonomy a owl:Class,
@@ -825,20 +825,20 @@ ex:NcbiTaxonomy a owl:Class,
     rdfs:label "ncbi_taxonomy" ;
     dcterms:title "ncbi_taxonomy" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:clade ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ex:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ] ;
+            owl:onProperty ex:synonyms ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:clade ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "List of NCBI Taxonomy Database IDs identifying taxa used to describe C2M2 subjects" .
 
 ex:Phenotype a owl:Class,
@@ -893,23 +893,23 @@ ex:Project a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:abbreviation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:persistent_id ],
+            owl:onProperty ex:description ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:description ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:local_id ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:persistent_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:abbreviation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Datetime ;
@@ -926,15 +926,15 @@ ex:ProjectInProject a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
+            owl:onProperty ex:parent_project_id_namespace ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
             owl:onProperty ex:child_project_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:child_project_id_namespace ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:parent_project_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a child project and its parent" .
 
@@ -943,16 +943,16 @@ ex:Protein a owl:Class,
     rdfs:label "protein" ;
     dcterms:title "protein" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:description ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty ex:synonyms ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -979,20 +979,8 @@ ex:Subject a owl:Class,
     dcterms:title "subject" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:project_local_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ex:SexEnum ;
-            owl:onProperty ex:sex ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:local_id ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ex:persistent_id ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:project_id_namespace ;
@@ -1003,16 +991,28 @@ ex:Subject a owl:Class,
             owl:onProperty ex:creation_time ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass ex:EthnicityEnum ;
-            owl:onProperty ex:ethnicity ],
-        [ a owl:Restriction ;
-            owl:onClass ex:GranularityEnum ;
-            owl:onProperty ex:granularity ;
-            owl:qualifiedCardinality 1 ],
+            owl:onClass ex:SexEnum ;
+            owl:onProperty ex:sex ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Decimal ;
             owl:onProperty ex:age_at_enrollment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ex:EthnicityEnum ;
+            owl:onProperty ex:ethnicity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:persistent_id ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:project_local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass ex:GranularityEnum ;
+            owl:onProperty ex:granularity ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:id_namespace ;
@@ -1025,7 +1025,7 @@ ex:SubjectDisease a owl:Class,
     dcterms:title "subject_disease" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_local_id ;
+            owl:onProperty ex:subject_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass ex:AssociationTypeEnum ;
@@ -1033,11 +1033,11 @@ ex:SubjectDisease a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_id_namespace ;
+            owl:onProperty ex:disease ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:disease ;
+            owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a C2M2 subject and a disease positively OR negatively clinically identified in that subject" .
 
@@ -1047,11 +1047,11 @@ ex:SubjectInCollection a owl:Class,
     dcterms:title "subject_in_collection" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:collection_local_id ;
+            owl:onProperty ex:subject_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_id_namespace ;
+            owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -1059,7 +1059,7 @@ ex:SubjectInCollection a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_local_id ;
+            owl:onProperty ex:collection_local_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a subject and a (containing) collection" .
 
@@ -1069,11 +1069,11 @@ ex:SubjectPhenotype a owl:Class,
     dcterms:title "subject_phenotype" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_id_namespace ;
+            owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_local_id ;
+            owl:onProperty ex:phenotype ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass ex:AssociationTypeEnum ;
@@ -1081,7 +1081,7 @@ ex:SubjectPhenotype a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:phenotype ;
+            owl:onProperty ex:subject_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Association between a C2M2 subject and a phenotype positively OR negatively clinically identified for that subject" .
 
@@ -1095,11 +1095,11 @@ ex:SubjectRace a owl:Class,
             owl:onProperty ex:race ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_id_namespace ;
+            owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_local_id ;
+            owl:onProperty ex:subject_id_namespace ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Identification of a C2M2 subject with one or more self-selected races" .
 
@@ -1113,15 +1113,15 @@ ex:SubjectRoleTaxonomy a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:taxonomy_id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
             owl:onProperty ex:subject_id_namespace ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ex:subject_local_id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ex:taxonomy_id ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "Trinary association linking IDs representing (1) a subject, (2) a subject_role (a named organism-level constituent component of a subject, like 'host', 'pathogen', 'endosymbiont', 'taxon detected inside a microbiome subject', etc.) and (3) a taxonomic label (which is hereby assigned to this particular subject_role within this particular subject)" .
 
@@ -1131,11 +1131,11 @@ ex:SubjectSubstance a owl:Class,
     dcterms:title "subject_substance" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:substance ;
+            owl:onProperty ex:subject_local_id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:subject_local_id ;
+            owl:onProperty ex:substance ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -1149,18 +1149,18 @@ ex:Substance a owl:Class,
     dcterms:title "substance" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:compound ;
+            owl:onProperty ex:id ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ex:synonyms ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ex:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ex:synonyms ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ex:id ;
+            owl:onProperty ex:compound ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "List of PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this C2M2 submission" .
 

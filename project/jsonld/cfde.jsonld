@@ -1,6 +1,6 @@
 {
-  "name": "test-schema",
-  "id": "http://example.org/test/",
+  "name": "linkml-cfde",
+  "id": "https://w3id.org/linkml/cfde/",
   "imports": [
     "linkml:types"
   ],
@@ -220,7 +220,7 @@
     {
       "name": "GranularityEnum",
       "definition_uri": "https://example.org/test/GranularityEnum",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "permissible_values": [
         {
           "text": "0",
@@ -251,7 +251,7 @@
     {
       "name": "SexEnum",
       "definition_uri": "https://example.org/test/SexEnum",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "permissible_values": [
         {
           "text": "0",
@@ -282,7 +282,7 @@
     {
       "name": "EthnicityEnum",
       "definition_uri": "https://example.org/test/EthnicityEnum",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "permissible_values": [
         {
           "text": "0",
@@ -297,7 +297,7 @@
     {
       "name": "AssociationTypeEnum",
       "definition_uri": "https://example.org/test/AssociationTypeEnum",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "permissible_values": [
         {
           "text": "0",
@@ -312,7 +312,7 @@
     {
       "name": "RaceEnum",
       "definition_uri": "https://example.org/test/RaceEnum",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "permissible_values": [
         {
           "text": "0",
@@ -339,7 +339,7 @@
     {
       "name": "RoleIdEnum",
       "definition_uri": "https://example.org/test/RoleIdEnum",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "permissible_values": [
         {
           "text": "0",
@@ -380,7 +380,7 @@
     {
       "name": "file__id_namespace",
       "description": "A CFDE-cleared identifier representing the top-level data space containing this file [part 1 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id_namespace",
       "alias": "id_namespace",
       "owner": "File",
@@ -394,7 +394,7 @@
     {
       "name": "file__local_id",
       "description": "An identifier representing this file, unique within this id_namespace [part 2 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/local_id",
       "alias": "local_id",
       "owner": "File",
@@ -408,7 +408,7 @@
     {
       "name": "file__project_id_namespace",
       "description": "The id_namespace of the primary project within which this file was created [part 1 of 2-component composite foreign key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_id_namespace",
       "alias": "project_id_namespace",
       "owner": "File",
@@ -422,7 +422,7 @@
     {
       "name": "file__project_local_id",
       "description": "The local_id of the primary project within which this file was created [part 2 of 2-component composite foreign key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_local_id",
       "alias": "project_local_id",
       "owner": "File",
@@ -436,7 +436,7 @@
     {
       "name": "file__persistent_id",
       "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/persistent_id",
       "alias": "persistent_id",
       "owner": "File",
@@ -449,7 +449,7 @@
     {
       "name": "file__creation_time",
       "description": "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this file's creation time: YYYY-MM-DDTHH:MM:SS\u00b1NN:NN",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/creation_time",
       "alias": "creation_time",
       "owner": "File",
@@ -462,7 +462,7 @@
     {
       "name": "file__size_in_bytes",
       "description": "The size of this file in bytes",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/size_in_bytes",
       "alias": "size_in_bytes",
       "owner": "File",
@@ -475,7 +475,7 @@
     {
       "name": "file__uncompressed_size_in_bytes",
       "description": "The total decompressed size in bytes of the contents of this file: null if this file is not compressed",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/uncompressed_size_in_bytes",
       "alias": "uncompressed_size_in_bytes",
       "owner": "File",
@@ -488,7 +488,7 @@
     {
       "name": "file__sha256",
       "description": "(preferred) SHA-256 checksum for this file [sha256, md5 cannot both be null]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/sha256",
       "alias": "sha256",
       "owner": "File",
@@ -501,7 +501,7 @@
     {
       "name": "file__md5",
       "description": "(allowed) MD5 checksum for this file [sha256, md5 cannot both be null]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/md5",
       "alias": "md5",
       "owner": "File",
@@ -514,7 +514,7 @@
     {
       "name": "file__filename",
       "description": "A filename with no prepended PATH information",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/filename",
       "alias": "filename",
       "owner": "File",
@@ -528,7 +528,7 @@
     {
       "name": "file__file_format",
       "description": "An EDAM CV term ID identifying the digital format of this file (e.g. TSV or FASTQ): if this file is compressed, this should be its _uncompressed_ format",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_format",
       "alias": "file_format",
       "owner": "File",
@@ -541,7 +541,7 @@
     {
       "name": "file__compression_format",
       "description": "An EDAM CV term ID identifying the compression format of this file (e.g. gzip or bzip2): null if this file is not compressed",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/compression_format",
       "alias": "compression_format",
       "owner": "File",
@@ -554,7 +554,7 @@
     {
       "name": "file__data_type",
       "description": "An EDAM CV term ID identifying the type of information stored in this file (e.g. RNA sequence reads): null if is_bundle is set to true",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/data_type",
       "alias": "data_type",
       "owner": "File",
@@ -567,7 +567,7 @@
     {
       "name": "file__assay_type",
       "description": "An OBI CV term ID describing the type of experiment that generated the results summarized by this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/assay_type",
       "alias": "assay_type",
       "owner": "File",
@@ -580,7 +580,7 @@
     {
       "name": "file__analysis_type",
       "description": "An OBI CV term ID describing the type of analytic operation that generated this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/analysis_type",
       "alias": "analysis_type",
       "owner": "File",
@@ -593,7 +593,7 @@
     {
       "name": "file__mime_type",
       "description": "A MIME type describing this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/mime_type",
       "alias": "mime_type",
       "owner": "File",
@@ -606,7 +606,7 @@
     {
       "name": "file__bundle_collection_id_namespace",
       "description": "If this file is a bundle encoding more than one sub-file, this field gives the id_namespace of a collection listing the bundle's sub-file contents; null otherwise",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/bundle_collection_id_namespace",
       "alias": "bundle_collection_id_namespace",
       "owner": "File",
@@ -619,7 +619,7 @@
     {
       "name": "file__bundle_collection_local_id",
       "description": "If this file is a bundle encoding more than one sub-file, this field gives the local_id of a collection listing the bundle's sub-file contents; null otherwise",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/bundle_collection_local_id",
       "alias": "bundle_collection_local_id",
       "owner": "File",
@@ -632,7 +632,7 @@
     {
       "name": "file__dbgap_study_id",
       "description": "The name of a dbGaP study ID governing access control for this file, compatible for comparison to RAS user-level access control metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/dbgap_study_id",
       "alias": "dbgap_study_id",
       "owner": "File",
@@ -645,7 +645,7 @@
     {
       "name": "biosample__id_namespace",
       "description": "A CFDE-cleared identifier representing the top-level data space containing this biosample [part 1 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id_namespace",
       "alias": "id_namespace",
       "owner": "Biosample",
@@ -659,7 +659,7 @@
     {
       "name": "biosample__local_id",
       "description": "An identifier representing this biosample, unique within this id_namespace [part 2 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/local_id",
       "alias": "local_id",
       "owner": "Biosample",
@@ -673,7 +673,7 @@
     {
       "name": "biosample__project_id_namespace",
       "description": "The id_namespace of the primary project within which this biosample was created [part 1 of 2-component composite foreign key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_id_namespace",
       "alias": "project_id_namespace",
       "owner": "Biosample",
@@ -687,7 +687,7 @@
     {
       "name": "biosample__project_local_id",
       "description": "The local_id of the primary project within which this biosample was created [part 2 of 2-component composite foreign key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_local_id",
       "alias": "project_local_id",
       "owner": "Biosample",
@@ -701,7 +701,7 @@
     {
       "name": "biosample__persistent_id",
       "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/persistent_id",
       "alias": "persistent_id",
       "owner": "Biosample",
@@ -714,7 +714,7 @@
     {
       "name": "biosample__creation_time",
       "description": "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this biosample's creation time: YYYY-MM-DDTHH:MM:SS\u00b1NN:NN",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/creation_time",
       "alias": "creation_time",
       "owner": "Biosample",
@@ -727,7 +727,7 @@
     {
       "name": "biosample__assay_type",
       "description": "An OBI CV term ID (from the 'planned process' branch of the vocabulary, excluding the 'assay' subtree) describing the preparation method that produced this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/assay_type",
       "alias": "assay_type",
       "owner": "Biosample",
@@ -740,7 +740,7 @@
     {
       "name": "biosample__anatomy",
       "description": "An UBERON CV term ID used to locate the origin of this biosample within the physiology of its source or host organism",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/anatomy",
       "alias": "anatomy",
       "owner": "Biosample",
@@ -753,7 +753,7 @@
     {
       "name": "subject__id_namespace",
       "description": "A CFDE-cleared identifier representing the top-level data space containing this subject [part 1 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id_namespace",
       "alias": "id_namespace",
       "owner": "Subject",
@@ -767,7 +767,7 @@
     {
       "name": "subject__local_id",
       "description": "An identifier representing this subject, unique within this id_namespace [part 2 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/local_id",
       "alias": "local_id",
       "owner": "Subject",
@@ -781,7 +781,7 @@
     {
       "name": "subject__project_id_namespace",
       "description": "The id_namespace of the primary project within which this subject was studied [part 1 of 2-component composite foreign key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_id_namespace",
       "alias": "project_id_namespace",
       "owner": "Subject",
@@ -795,7 +795,7 @@
     {
       "name": "subject__project_local_id",
       "description": "The local_id of the primary project within which this subject was studied [part 2 of 2-component composite foreign key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_local_id",
       "alias": "project_local_id",
       "owner": "Subject",
@@ -809,7 +809,7 @@
     {
       "name": "subject__persistent_id",
       "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/persistent_id",
       "alias": "persistent_id",
       "owner": "Subject",
@@ -822,7 +822,7 @@
     {
       "name": "subject__creation_time",
       "description": "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this subject record's creation time: YYYY-MM-DDTHH:MM:SS\u00b1NN:NN",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/creation_time",
       "alias": "creation_time",
       "owner": "Subject",
@@ -835,7 +835,7 @@
     {
       "name": "subject__granularity",
       "description": "A CFDE CV category characterizing this subject by multiplicity",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/granularity",
       "alias": "granularity",
       "owner": "Subject",
@@ -849,7 +849,7 @@
     {
       "name": "subject__sex",
       "description": "A CFDE CV category characterizing the physiological sex of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/sex",
       "alias": "sex",
       "owner": "Subject",
@@ -862,7 +862,7 @@
     {
       "name": "subject__ethnicity",
       "description": "A CFDE CV category characterizing the self-reported ethnicity of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/ethnicity",
       "alias": "ethnicity",
       "owner": "Subject",
@@ -875,7 +875,7 @@
     {
       "name": "subject__age_at_enrollment",
       "description": "The age in years (with a fixed precision of two digits past the decimal point) of this subject when they were first enrolled in the primary project within which they were studied",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/age_at_enrollment",
       "alias": "age_at_enrollment",
       "owner": "Subject",
@@ -888,7 +888,7 @@
     {
       "name": "dcc__id",
       "description": "The identifier for this DCC, issued by the CFDE-CC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Dcc",
@@ -902,7 +902,7 @@
     {
       "name": "dcc__dcc_name",
       "description": "A short, human-readable, machine-read-friendly label for this DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/dcc_name",
       "alias": "dcc_name",
       "owner": "Dcc",
@@ -916,7 +916,7 @@
     {
       "name": "dcc__dcc_abbreviation",
       "description": "A very short display label for this contact's DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/dcc_abbreviation",
       "alias": "dcc_abbreviation",
       "owner": "Dcc",
@@ -931,7 +931,7 @@
     {
       "name": "dcc__dcc_description",
       "description": "A human-readable description of this DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/dcc_description",
       "alias": "dcc_description",
       "owner": "Dcc",
@@ -944,7 +944,7 @@
     {
       "name": "dcc__contact_email",
       "description": "Email address of this DCC's primary technical contact",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/contact_email",
       "alias": "contact_email",
       "owner": "Dcc",
@@ -958,7 +958,7 @@
     {
       "name": "dcc__contact_name",
       "description": "Name of this DCC's primary technical contact",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/contact_name",
       "alias": "contact_name",
       "owner": "Dcc",
@@ -972,7 +972,7 @@
     {
       "name": "dcc__dcc_url",
       "description": "URL of the front page of the website for this DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/dcc_url",
       "alias": "dcc_url",
       "owner": "Dcc",
@@ -986,7 +986,7 @@
     {
       "name": "dcc__project_id_namespace",
       "description": "ID of the identifier namespace for the project record representing the C2M2 submission produced by this DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_id_namespace",
       "alias": "project_id_namespace",
       "owner": "Dcc",
@@ -1000,7 +1000,7 @@
     {
       "name": "dcc__project_local_id",
       "description": "Foreign key identifying the project record representing the C2M2 submission produced by this DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_local_id",
       "alias": "project_local_id",
       "owner": "Dcc",
@@ -1014,7 +1014,7 @@
     {
       "name": "project__id_namespace",
       "description": "A CFDE-cleared identifier representing the top-level data space containing this project [part 1 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id_namespace",
       "alias": "id_namespace",
       "owner": "Project",
@@ -1028,7 +1028,7 @@
     {
       "name": "project__local_id",
       "description": "An identifier representing this project, unique within this id_namespace [part 2 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/local_id",
       "alias": "local_id",
       "owner": "Project",
@@ -1042,7 +1042,7 @@
     {
       "name": "project__persistent_id",
       "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/persistent_id",
       "alias": "persistent_id",
       "owner": "Project",
@@ -1055,7 +1055,7 @@
     {
       "name": "project__creation_time",
       "description": "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this project's creation time: YYYY-MM-DDTHH:MM:SS\u00b1NN:NN",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/creation_time",
       "alias": "creation_time",
       "owner": "Project",
@@ -1068,7 +1068,7 @@
     {
       "name": "project__abbreviation",
       "description": "A very short display label for this project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/abbreviation",
       "alias": "abbreviation",
       "owner": "Project",
@@ -1082,7 +1082,7 @@
     {
       "name": "project__description",
       "description": "A human-readable description of this project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Project",
@@ -1095,7 +1095,7 @@
     {
       "name": "projectInProject__parent_project_id_namespace",
       "description": "ID of the identifier namespace for the parent in this parent-child project pair",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/parent_project_id_namespace",
       "alias": "parent_project_id_namespace",
       "owner": "ProjectInProject",
@@ -1109,7 +1109,7 @@
     {
       "name": "projectInProject__parent_project_local_id",
       "description": "The ID of the containing (parent) project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/parent_project_local_id",
       "alias": "parent_project_local_id",
       "owner": "ProjectInProject",
@@ -1123,7 +1123,7 @@
     {
       "name": "projectInProject__child_project_id_namespace",
       "description": "ID of the identifier namespace for the child in this parent-child project pair",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/child_project_id_namespace",
       "alias": "child_project_id_namespace",
       "owner": "ProjectInProject",
@@ -1137,7 +1137,7 @@
     {
       "name": "projectInProject__child_project_local_id",
       "description": "The ID of the contained (child) project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/child_project_local_id",
       "alias": "child_project_local_id",
       "owner": "ProjectInProject",
@@ -1151,7 +1151,7 @@
     {
       "name": "collection__id_namespace",
       "description": "A CFDE-cleared identifier representing the top-level data space containing this collection [part 1 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id_namespace",
       "alias": "id_namespace",
       "owner": "Collection",
@@ -1165,7 +1165,7 @@
     {
       "name": "collection__local_id",
       "description": "An identifier representing this collection, unique within this id_namespace [part 2 of 2-component composite primary key]",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/local_id",
       "alias": "local_id",
       "owner": "Collection",
@@ -1179,7 +1179,7 @@
     {
       "name": "collection__persistent_id",
       "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/persistent_id",
       "alias": "persistent_id",
       "owner": "Collection",
@@ -1192,7 +1192,7 @@
     {
       "name": "collection__creation_time",
       "description": "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this collection's creation time: YYYY-MM-DDTHH:MM:SS\u00b1NN:NN",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/creation_time",
       "alias": "creation_time",
       "owner": "Collection",
@@ -1205,7 +1205,7 @@
     {
       "name": "collection__abbreviation",
       "description": "A very short display label for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/abbreviation",
       "alias": "abbreviation",
       "owner": "Collection",
@@ -1219,7 +1219,7 @@
     {
       "name": "collection__description",
       "description": "A human-readable description of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Collection",
@@ -1232,7 +1232,7 @@
     {
       "name": "collection__has_time_series_data",
       "description": "Does this collection contain time-series data? (allowed values: [true|false|null] -- true == yes, contains time-series data; false == no, doesn't contain time-series data; null == no info provided)",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/has_time_series_data",
       "alias": "has_time_series_data",
       "owner": "Collection",
@@ -1245,7 +1245,7 @@
     {
       "name": "collectionInCollection__superset_collection_id_namespace",
       "description": "ID of the identifier namespace corresponding to the C2M2 submission containing the superset collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/superset_collection_id_namespace",
       "alias": "superset_collection_id_namespace",
       "owner": "CollectionInCollection",
@@ -1259,7 +1259,7 @@
     {
       "name": "collectionInCollection__superset_collection_local_id",
       "description": "The ID of the superset collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/superset_collection_local_id",
       "alias": "superset_collection_local_id",
       "owner": "CollectionInCollection",
@@ -1273,7 +1273,7 @@
     {
       "name": "collectionInCollection__subset_collection_id_namespace",
       "description": "ID of the identifier namespace corresponding to the C2M2 submission containing the subset collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subset_collection_id_namespace",
       "alias": "subset_collection_id_namespace",
       "owner": "CollectionInCollection",
@@ -1287,7 +1287,7 @@
     {
       "name": "collectionInCollection__subset_collection_local_id",
       "description": "The ID of the subset collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subset_collection_local_id",
       "alias": "subset_collection_local_id",
       "owner": "CollectionInCollection",
@@ -1301,7 +1301,7 @@
     {
       "name": "fileDescribesCollection__file_id_namespace",
       "description": "Identifier namespace for this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_id_namespace",
       "alias": "file_id_namespace",
       "owner": "FileDescribesCollection",
@@ -1315,7 +1315,7 @@
     {
       "name": "fileDescribesCollection__file_local_id",
       "description": "The ID of this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_local_id",
       "alias": "file_local_id",
       "owner": "FileDescribesCollection",
@@ -1329,7 +1329,7 @@
     {
       "name": "fileDescribesCollection__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "FileDescribesCollection",
@@ -1343,7 +1343,7 @@
     {
       "name": "fileDescribesCollection__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "FileDescribesCollection",
@@ -1357,7 +1357,7 @@
     {
       "name": "collectionDefinedByProject__collection_id_namespace",
       "description": "ID of the identifier namespace corresponding to the C2M2 submission containing this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionDefinedByProject",
@@ -1371,7 +1371,7 @@
     {
       "name": "collectionDefinedByProject__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionDefinedByProject",
@@ -1385,7 +1385,7 @@
     {
       "name": "collectionDefinedByProject__project_id_namespace",
       "description": "ID of the identifier namespace corresponding to the C2M2 submission containing this project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_id_namespace",
       "alias": "project_id_namespace",
       "owner": "CollectionDefinedByProject",
@@ -1399,7 +1399,7 @@
     {
       "name": "collectionDefinedByProject__project_local_id",
       "description": "The ID of this project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/project_local_id",
       "alias": "project_local_id",
       "owner": "CollectionDefinedByProject",
@@ -1413,7 +1413,7 @@
     {
       "name": "fileInCollection__file_id_namespace",
       "description": "Identifier namespace for this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_id_namespace",
       "alias": "file_id_namespace",
       "owner": "FileInCollection",
@@ -1427,7 +1427,7 @@
     {
       "name": "fileInCollection__file_local_id",
       "description": "The ID of this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_local_id",
       "alias": "file_local_id",
       "owner": "FileInCollection",
@@ -1441,7 +1441,7 @@
     {
       "name": "fileInCollection__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "FileInCollection",
@@ -1455,7 +1455,7 @@
     {
       "name": "fileInCollection__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "FileInCollection",
@@ -1469,7 +1469,7 @@
     {
       "name": "biosampleInCollection__biosample_id_namespace",
       "description": "Identifier namespace for this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_id_namespace",
       "alias": "biosample_id_namespace",
       "owner": "BiosampleInCollection",
@@ -1483,7 +1483,7 @@
     {
       "name": "biosampleInCollection__biosample_local_id",
       "description": "The ID of this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_local_id",
       "alias": "biosample_local_id",
       "owner": "BiosampleInCollection",
@@ -1497,7 +1497,7 @@
     {
       "name": "biosampleInCollection__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "BiosampleInCollection",
@@ -1511,7 +1511,7 @@
     {
       "name": "biosampleInCollection__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "BiosampleInCollection",
@@ -1525,7 +1525,7 @@
     {
       "name": "subjectInCollection__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "SubjectInCollection",
@@ -1539,7 +1539,7 @@
     {
       "name": "subjectInCollection__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "SubjectInCollection",
@@ -1553,7 +1553,7 @@
     {
       "name": "subjectInCollection__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "SubjectInCollection",
@@ -1567,7 +1567,7 @@
     {
       "name": "subjectInCollection__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "SubjectInCollection",
@@ -1581,7 +1581,7 @@
     {
       "name": "fileDescribesBiosample__file_id_namespace",
       "description": "Identifier namespace for this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_id_namespace",
       "alias": "file_id_namespace",
       "owner": "FileDescribesBiosample",
@@ -1595,7 +1595,7 @@
     {
       "name": "fileDescribesBiosample__file_local_id",
       "description": "The ID of this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_local_id",
       "alias": "file_local_id",
       "owner": "FileDescribesBiosample",
@@ -1609,7 +1609,7 @@
     {
       "name": "fileDescribesBiosample__biosample_id_namespace",
       "description": "Identifier namespace for this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_id_namespace",
       "alias": "biosample_id_namespace",
       "owner": "FileDescribesBiosample",
@@ -1623,7 +1623,7 @@
     {
       "name": "fileDescribesBiosample__biosample_local_id",
       "description": "The ID of this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_local_id",
       "alias": "biosample_local_id",
       "owner": "FileDescribesBiosample",
@@ -1637,7 +1637,7 @@
     {
       "name": "fileDescribesSubject__file_id_namespace",
       "description": "Identifier namespace for this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_id_namespace",
       "alias": "file_id_namespace",
       "owner": "FileDescribesSubject",
@@ -1651,7 +1651,7 @@
     {
       "name": "fileDescribesSubject__file_local_id",
       "description": "The ID of this file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/file_local_id",
       "alias": "file_local_id",
       "owner": "FileDescribesSubject",
@@ -1665,7 +1665,7 @@
     {
       "name": "fileDescribesSubject__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "FileDescribesSubject",
@@ -1679,7 +1679,7 @@
     {
       "name": "fileDescribesSubject__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "FileDescribesSubject",
@@ -1693,7 +1693,7 @@
     {
       "name": "biosampleFromSubject__biosample_id_namespace",
       "description": "Identifier namespace for this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_id_namespace",
       "alias": "biosample_id_namespace",
       "owner": "BiosampleFromSubject",
@@ -1707,7 +1707,7 @@
     {
       "name": "biosampleFromSubject__biosample_local_id",
       "description": "The ID of this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_local_id",
       "alias": "biosample_local_id",
       "owner": "BiosampleFromSubject",
@@ -1721,7 +1721,7 @@
     {
       "name": "biosampleFromSubject__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "BiosampleFromSubject",
@@ -1735,7 +1735,7 @@
     {
       "name": "biosampleFromSubject__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "BiosampleFromSubject",
@@ -1749,7 +1749,7 @@
     {
       "name": "biosampleFromSubject__age_at_sampling",
       "description": "The age in years (with a fixed precision of two digits past the decimal point) of this subject when this biosample was taken",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/age_at_sampling",
       "alias": "age_at_sampling",
       "owner": "BiosampleFromSubject",
@@ -1762,7 +1762,7 @@
     {
       "name": "biosampleDisease__biosample_id_namespace",
       "description": "Identifier namespace for this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_id_namespace",
       "alias": "biosample_id_namespace",
       "owner": "BiosampleDisease",
@@ -1776,7 +1776,7 @@
     {
       "name": "biosampleDisease__biosample_local_id",
       "description": "The ID of this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_local_id",
       "alias": "biosample_local_id",
       "owner": "BiosampleDisease",
@@ -1790,7 +1790,7 @@
     {
       "name": "biosampleDisease__association_type",
       "description": "The relationship between this biosample and this disease (e.g. 'observed' or '(tested for, but) not observed')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/association_type",
       "alias": "association_type",
       "owner": "BiosampleDisease",
@@ -1804,7 +1804,7 @@
     {
       "name": "biosampleDisease__disease",
       "description": "A Disease Ontology CV term ID describing this disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/disease",
       "alias": "disease",
       "owner": "BiosampleDisease",
@@ -1818,7 +1818,7 @@
     {
       "name": "subjectDisease__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "SubjectDisease",
@@ -1832,7 +1832,7 @@
     {
       "name": "subjectDisease__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "SubjectDisease",
@@ -1846,7 +1846,7 @@
     {
       "name": "subjectDisease__association_type",
       "description": "The relationship between this subject and this disease (e.g. 'observed' or '(tested for, but) not observed')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/association_type",
       "alias": "association_type",
       "owner": "SubjectDisease",
@@ -1860,7 +1860,7 @@
     {
       "name": "subjectDisease__disease",
       "description": "A Disease Ontology CV term ID describing this disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/disease",
       "alias": "disease",
       "owner": "SubjectDisease",
@@ -1874,7 +1874,7 @@
     {
       "name": "collectionDisease__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionDisease",
@@ -1888,7 +1888,7 @@
     {
       "name": "collectionDisease__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionDisease",
@@ -1902,7 +1902,7 @@
     {
       "name": "collectionDisease__disease",
       "description": "A Disease Ontology CV term ID describing this disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/disease",
       "alias": "disease",
       "owner": "CollectionDisease",
@@ -1916,7 +1916,7 @@
     {
       "name": "collectionPhenotype__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionPhenotype",
@@ -1930,7 +1930,7 @@
     {
       "name": "collectionPhenotype__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionPhenotype",
@@ -1944,7 +1944,7 @@
     {
       "name": "collectionPhenotype__phenotype",
       "description": "A Human Phenotype Ontology CV term ID describing this phenotype",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/phenotype",
       "alias": "phenotype",
       "owner": "CollectionPhenotype",
@@ -1958,7 +1958,7 @@
     {
       "name": "collectionGene__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionGene",
@@ -1972,7 +1972,7 @@
     {
       "name": "collectionGene__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionGene",
@@ -1986,7 +1986,7 @@
     {
       "name": "collectionGene__gene",
       "description": "An Ensembl term ID describing this gene",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/gene",
       "alias": "gene",
       "owner": "CollectionGene",
@@ -2000,7 +2000,7 @@
     {
       "name": "collectionCompound__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionCompound",
@@ -2014,7 +2014,7 @@
     {
       "name": "collectionCompound__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionCompound",
@@ -2028,7 +2028,7 @@
     {
       "name": "collectionCompound__compound",
       "description": "A PubChem or GlyTouCan term ID describing this compound",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/compound",
       "alias": "compound",
       "owner": "CollectionCompound",
@@ -2042,7 +2042,7 @@
     {
       "name": "collectionSubstance__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionSubstance",
@@ -2056,7 +2056,7 @@
     {
       "name": "collectionSubstance__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionSubstance",
@@ -2070,7 +2070,7 @@
     {
       "name": "collectionSubstance__substance",
       "description": "A PubChem term ID describing this substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/substance",
       "alias": "substance",
       "owner": "CollectionSubstance",
@@ -2084,7 +2084,7 @@
     {
       "name": "collectionTaxonomy__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionTaxonomy",
@@ -2098,7 +2098,7 @@
     {
       "name": "collectionTaxonomy__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionTaxonomy",
@@ -2112,7 +2112,7 @@
     {
       "name": "collectionTaxonomy__taxon",
       "description": "An NCBI Taxonomy Database ID identifying this taxon",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/taxon",
       "alias": "taxon",
       "owner": "CollectionTaxonomy",
@@ -2126,7 +2126,7 @@
     {
       "name": "collectionAnatomy__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionAnatomy",
@@ -2140,7 +2140,7 @@
     {
       "name": "collectionAnatomy__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionAnatomy",
@@ -2154,7 +2154,7 @@
     {
       "name": "collectionAnatomy__anatomy",
       "description": "An UBERON term ID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/anatomy",
       "alias": "anatomy",
       "owner": "CollectionAnatomy",
@@ -2168,7 +2168,7 @@
     {
       "name": "collectionProtein__collection_id_namespace",
       "description": "Identifier namespace for this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_id_namespace",
       "alias": "collection_id_namespace",
       "owner": "CollectionProtein",
@@ -2182,7 +2182,7 @@
     {
       "name": "collectionProtein__collection_local_id",
       "description": "The ID of this collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/collection_local_id",
       "alias": "collection_local_id",
       "owner": "CollectionProtein",
@@ -2196,7 +2196,7 @@
     {
       "name": "collectionProtein__protein",
       "description": "A UniProtKB term ID describing this protein",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/protein",
       "alias": "protein",
       "owner": "CollectionProtein",
@@ -2210,7 +2210,7 @@
     {
       "name": "subjectPhenotype__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "SubjectPhenotype",
@@ -2224,7 +2224,7 @@
     {
       "name": "subjectPhenotype__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "SubjectPhenotype",
@@ -2238,7 +2238,7 @@
     {
       "name": "subjectPhenotype__association_type",
       "description": "The relationship between this subject and this phenotype (e.g. 'observed' or '(tested for, but) not observed')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/association_type",
       "alias": "association_type",
       "owner": "SubjectPhenotype",
@@ -2252,7 +2252,7 @@
     {
       "name": "subjectPhenotype__phenotype",
       "description": "A Human Phenotype Ontology CV term ID describing this phenotype",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/phenotype",
       "alias": "phenotype",
       "owner": "SubjectPhenotype",
@@ -2266,7 +2266,7 @@
     {
       "name": "biosampleSubstance__biosample_id_namespace",
       "description": "Identifier namespace for this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_id_namespace",
       "alias": "biosample_id_namespace",
       "owner": "BiosampleSubstance",
@@ -2280,7 +2280,7 @@
     {
       "name": "biosampleSubstance__biosample_local_id",
       "description": "The ID of this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_local_id",
       "alias": "biosample_local_id",
       "owner": "BiosampleSubstance",
@@ -2294,7 +2294,7 @@
     {
       "name": "biosampleSubstance__substance",
       "description": "A PubChem substance ID (SID) describing this substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/substance",
       "alias": "substance",
       "owner": "BiosampleSubstance",
@@ -2308,7 +2308,7 @@
     {
       "name": "subjectSubstance__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "SubjectSubstance",
@@ -2322,7 +2322,7 @@
     {
       "name": "subjectSubstance__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "SubjectSubstance",
@@ -2336,7 +2336,7 @@
     {
       "name": "subjectSubstance__substance",
       "description": "A PubChem substance ID (SID) describing this substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/substance",
       "alias": "substance",
       "owner": "SubjectSubstance",
@@ -2350,7 +2350,7 @@
     {
       "name": "biosampleGene__biosample_id_namespace",
       "description": "Identifier namespace for this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_id_namespace",
       "alias": "biosample_id_namespace",
       "owner": "BiosampleGene",
@@ -2364,7 +2364,7 @@
     {
       "name": "biosampleGene__biosample_local_id",
       "description": "The ID of this biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/biosample_local_id",
       "alias": "biosample_local_id",
       "owner": "BiosampleGene",
@@ -2378,7 +2378,7 @@
     {
       "name": "biosampleGene__gene",
       "description": "An Ensembl gene ID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/gene",
       "alias": "gene",
       "owner": "BiosampleGene",
@@ -2392,7 +2392,7 @@
     {
       "name": "phenotypeGene__phenotype",
       "description": "A Human Phenotype Ontology CV term ID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/phenotype",
       "alias": "phenotype",
       "owner": "PhenotypeGene",
@@ -2406,7 +2406,7 @@
     {
       "name": "phenotypeGene__gene",
       "description": "An Ensembl gene ID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/gene",
       "alias": "gene",
       "owner": "PhenotypeGene",
@@ -2420,7 +2420,7 @@
     {
       "name": "phenotypeDisease__phenotype",
       "description": "A Human Phenotype Ontology CV term ID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/phenotype",
       "alias": "phenotype",
       "owner": "PhenotypeDisease",
@@ -2434,7 +2434,7 @@
     {
       "name": "phenotypeDisease__disease",
       "description": "A Disease Ontology CV term ID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/disease",
       "alias": "disease",
       "owner": "PhenotypeDisease",
@@ -2448,7 +2448,7 @@
     {
       "name": "subjectRace__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "SubjectRace",
@@ -2462,7 +2462,7 @@
     {
       "name": "subjectRace__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "SubjectRace",
@@ -2476,7 +2476,7 @@
     {
       "name": "subjectRace__race",
       "description": "A race self-identified by this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/race",
       "alias": "race",
       "owner": "SubjectRace",
@@ -2489,7 +2489,7 @@
     {
       "name": "subjectRoleTaxonomy__subject_id_namespace",
       "description": "Identifier namespace for this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_id_namespace",
       "alias": "subject_id_namespace",
       "owner": "SubjectRoleTaxonomy",
@@ -2503,7 +2503,7 @@
     {
       "name": "subjectRoleTaxonomy__subject_local_id",
       "description": "The ID of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/subject_local_id",
       "alias": "subject_local_id",
       "owner": "SubjectRoleTaxonomy",
@@ -2517,7 +2517,7 @@
     {
       "name": "subjectRoleTaxonomy__role_id",
       "description": "The ID of the role assigned to this organism-level constituent component of this subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/role_id",
       "alias": "role_id",
       "owner": "SubjectRoleTaxonomy",
@@ -2531,7 +2531,7 @@
     {
       "name": "subjectRoleTaxonomy__taxonomy_id",
       "description": "An NCBI Taxonomy Database ID identifying this taxon",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/taxonomy_id",
       "alias": "taxonomy_id",
       "owner": "SubjectRoleTaxonomy",
@@ -2545,7 +2545,7 @@
     {
       "name": "assayType__id",
       "description": "An OBI CV term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "AssayType",
@@ -2559,7 +2559,7 @@
     {
       "name": "assayType__description",
       "description": "A human-readable description of this OBI term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "AssayType",
@@ -2572,7 +2572,7 @@
     {
       "name": "assayType__synonyms",
       "description": "A list of synonyms for this term as identified by the OBI metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2586,7 +2586,7 @@
     {
       "name": "analysisType__id",
       "description": "An OBI CV term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "AnalysisType",
@@ -2600,7 +2600,7 @@
     {
       "name": "analysisType__description",
       "description": "A human-readable description of this OBI term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "AnalysisType",
@@ -2613,7 +2613,7 @@
     {
       "name": "analysisType__synonyms",
       "description": "A list of synonyms for this term as identified by the OBI metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2627,7 +2627,7 @@
     {
       "name": "ncbiTaxonomy__id",
       "description": "An NCBI Taxonomy Database ID identifying a particular taxon",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "NcbiTaxonomy",
@@ -2642,7 +2642,7 @@
     {
       "name": "ncbiTaxonomy__clade",
       "description": "The phylogenetic level (e.g. species, genus) assigned to this taxon",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/clade",
       "alias": "clade",
       "owner": "NcbiTaxonomy",
@@ -2656,7 +2656,7 @@
     {
       "name": "ncbiTaxonomy__description",
       "description": "A human-readable description of this taxon",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "NcbiTaxonomy",
@@ -2669,7 +2669,7 @@
     {
       "name": "ncbiTaxonomy__synonyms",
       "description": "A list of synonyms for this taxon as identified by the NCBI Taxonomy DB",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2683,7 +2683,7 @@
     {
       "name": "anatomy__id",
       "description": "An UBERON CV term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Anatomy",
@@ -2697,7 +2697,7 @@
     {
       "name": "anatomy__description",
       "description": "A human-readable description of this UBERON term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Anatomy",
@@ -2710,7 +2710,7 @@
     {
       "name": "anatomy__synonyms",
       "description": "A list of synonyms for this term as identified by the UBERON metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2724,7 +2724,7 @@
     {
       "name": "fileFormat__id",
       "description": "An EDAM CV format term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "FileFormat",
@@ -2738,7 +2738,7 @@
     {
       "name": "fileFormat__description",
       "description": "A human-readable description of this EDAM format term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "FileFormat",
@@ -2751,7 +2751,7 @@
     {
       "name": "fileFormat__synonyms",
       "description": "A list of synonyms for this term as identified by the EDAM metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2765,7 +2765,7 @@
     {
       "name": "dataType__id",
       "description": "An EDAM CV data term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "DataType",
@@ -2779,7 +2779,7 @@
     {
       "name": "dataType__description",
       "description": "A human-readable description of this EDAM data term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "DataType",
@@ -2792,7 +2792,7 @@
     {
       "name": "dataType__synonyms",
       "description": "A list of synonyms for this term as identified by the EDAM metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2806,7 +2806,7 @@
     {
       "name": "disease__id",
       "description": "A Disease Ontology term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Disease",
@@ -2820,7 +2820,7 @@
     {
       "name": "disease__description",
       "description": "A human-readable description of this Disease Ontology term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Disease",
@@ -2833,7 +2833,7 @@
     {
       "name": "disease__synonyms",
       "description": "A list of synonyms for this term as identified by the Disease Ontology metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2847,7 +2847,7 @@
     {
       "name": "phenotype__id",
       "description": "A Human Phenotype Ontology term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Phenotype",
@@ -2861,7 +2861,7 @@
     {
       "name": "phenotype__description",
       "description": "A human-readable description of this Human Phenotype Ontology term",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Phenotype",
@@ -2874,7 +2874,7 @@
     {
       "name": "phenotype__synonyms",
       "description": "A list of synonyms for this term as identified by the Human Phenotype Ontology metadata",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2888,7 +2888,7 @@
     {
       "name": "compound__id",
       "description": "A GlyTouCan ID or a PubChem compound ID (CID)",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Compound",
@@ -2902,7 +2902,7 @@
     {
       "name": "compound__description",
       "description": "A human-readable description of this compound",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Compound",
@@ -2915,7 +2915,7 @@
     {
       "name": "compound__synonyms",
       "description": "A list of synonyms for this compound",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2929,7 +2929,7 @@
     {
       "name": "substance__id",
       "description": "A PubChem substance ID (SID)",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Substance",
@@ -2943,7 +2943,7 @@
     {
       "name": "substance__description",
       "description": "A human-readable description of this PubChem SID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Substance",
@@ -2956,7 +2956,7 @@
     {
       "name": "substance__synonyms",
       "description": "A list of synonyms for this PubChem SID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -2970,7 +2970,7 @@
     {
       "name": "substance__compound",
       "description": "The (unique) PubChem compound ID (CID) associated with this PubChem SID",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/compound",
       "alias": "compound",
       "owner": "Substance",
@@ -2984,7 +2984,7 @@
     {
       "name": "gene__id",
       "description": "An Ensembl gene ID (e.g. 'ENSG00000012048')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Gene",
@@ -2998,7 +2998,7 @@
     {
       "name": "gene__description",
       "description": "The Ensembl 'Description' of this gene (e.g. 'BRCA1 DNA repair associated')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Gene",
@@ -3011,7 +3011,7 @@
     {
       "name": "gene__synonyms",
       "description": "A list of Ensembl 'Gene synonyms' for this gene (e.g. ['BRCC1', 'FANCS', 'PPP1R53', 'RNF53'])",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -3025,7 +3025,7 @@
     {
       "name": "gene__organism",
       "description": "An NCBI Taxonomy Database ID identifying this gene's source organism (e.g. 'NCBI:txid9606')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/organism",
       "alias": "organism",
       "owner": "Gene",
@@ -3040,7 +3040,7 @@
     {
       "name": "protein__id",
       "description": "A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "Protein",
@@ -3054,7 +3054,7 @@
     {
       "name": "protein__description",
       "description": "A description of this protein",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "Protein",
@@ -3067,7 +3067,7 @@
     {
       "name": "protein__synonyms",
       "description": "A list of alternate names for this protein",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/synonyms",
       "multivalued": true,
       "alias": "synonyms",
@@ -3081,7 +3081,7 @@
     {
       "name": "protein__organism",
       "description": "OPTIONAL: An NCBI Taxonomy Database ID identifying this protein's source organism (e.g. 'NCBI:txid9606')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/organism",
       "alias": "organism",
       "owner": "Protein",
@@ -3095,7 +3095,7 @@
     {
       "name": "proteinGene__protein",
       "description": "A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/protein",
       "alias": "protein",
       "owner": "ProteinGene",
@@ -3109,7 +3109,7 @@
     {
       "name": "proteinGene__gene",
       "description": "An Ensembl gene ID (e.g. 'ENSG00000012048')",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/gene",
       "alias": "gene",
       "owner": "ProteinGene",
@@ -3123,7 +3123,7 @@
     {
       "name": "idNamespace__id",
       "description": "ID of this identifier namespace",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/id",
       "alias": "id",
       "owner": "IdNamespace",
@@ -3137,7 +3137,7 @@
     {
       "name": "idNamespace__abbreviation",
       "description": "A very short display label for this identifier namespace",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/abbreviation",
       "alias": "abbreviation",
       "owner": "IdNamespace",
@@ -3151,7 +3151,7 @@
     {
       "name": "idNamespace__description",
       "description": "A human-readable description of this identifier namespace",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slot_uri": "https://example.org/test/description",
       "alias": "description",
       "owner": "IdNamespace",
@@ -3168,7 +3168,7 @@
       "definition_uri": "https://example.org/test/File",
       "description": "A stable digital asset",
       "title": "file",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "file__id_namespace",
         "file__local_id",
@@ -3327,7 +3327,7 @@
       "definition_uri": "https://example.org/test/Biosample",
       "description": "A tissue sample or other physical specimen",
       "title": "biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "biosample__id_namespace",
         "biosample__local_id",
@@ -3401,7 +3401,7 @@
       "definition_uri": "https://example.org/test/Subject",
       "description": "A biological entity from which a C2M2 biosample can in principle be generated",
       "title": "subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subject__id_namespace",
         "subject__local_id",
@@ -3490,7 +3490,7 @@
       "definition_uri": "https://example.org/test/Dcc",
       "description": "The Common Fund program or data coordinating center (DCC, identified by the given project foreign key) that produced this C2M2 instance",
       "title": "DCC",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "dcc__id",
         "dcc__dcc_name",
@@ -3592,7 +3592,7 @@
       "definition_uri": "https://example.org/test/Project",
       "description": "A node in the C2M2 project hierarchy subdividing all resources described by this DCC's C2M2 metadata",
       "title": "project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "project__id_namespace",
         "project__local_id",
@@ -3660,7 +3660,7 @@
       "definition_uri": "https://example.org/test/ProjectInProject",
       "description": "Association between a child project and its parent",
       "title": "project_in_project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "projectInProject__parent_project_id_namespace",
         "projectInProject__parent_project_local_id",
@@ -3706,7 +3706,7 @@
       "definition_uri": "https://example.org/test/Collection",
       "description": "A grouping of C2M2 files, biosamples and/or subjects",
       "title": "collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collection__id_namespace",
         "collection__local_id",
@@ -3781,7 +3781,7 @@
       "definition_uri": "https://example.org/test/CollectionInCollection",
       "description": "Association between a containing collection (superset) and a contained collection (subset)",
       "title": "collection_in_collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionInCollection__superset_collection_id_namespace",
         "collectionInCollection__superset_collection_local_id",
@@ -3827,7 +3827,7 @@
       "definition_uri": "https://example.org/test/FileDescribesCollection",
       "description": "Association between a summary file and an entire collection described by that file",
       "title": "file_describes_collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "fileDescribesCollection__file_id_namespace",
         "fileDescribesCollection__file_local_id",
@@ -3873,7 +3873,7 @@
       "definition_uri": "https://example.org/test/CollectionDefinedByProject",
       "description": "(Shallow) association between a collection and a project that defined it",
       "title": "collection_defined_by_project",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionDefinedByProject__collection_id_namespace",
         "collectionDefinedByProject__collection_local_id",
@@ -3919,7 +3919,7 @@
       "definition_uri": "https://example.org/test/FileInCollection",
       "description": "Association between a file and a (containing) collection",
       "title": "file_in_collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "fileInCollection__file_id_namespace",
         "fileInCollection__file_local_id",
@@ -3965,7 +3965,7 @@
       "definition_uri": "https://example.org/test/BiosampleInCollection",
       "description": "Association between a biosample and a (containing) collection",
       "title": "biosample_in_collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "biosampleInCollection__biosample_id_namespace",
         "biosampleInCollection__biosample_local_id",
@@ -4011,7 +4011,7 @@
       "definition_uri": "https://example.org/test/SubjectInCollection",
       "description": "Association between a subject and a (containing) collection",
       "title": "subject_in_collection",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subjectInCollection__subject_id_namespace",
         "subjectInCollection__subject_local_id",
@@ -4057,7 +4057,7 @@
       "definition_uri": "https://example.org/test/FileDescribesBiosample",
       "description": "Association between a biosample and a file containing information about that biosample",
       "title": "file_describes_biosample",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "fileDescribesBiosample__file_id_namespace",
         "fileDescribesBiosample__file_local_id",
@@ -4103,7 +4103,7 @@
       "definition_uri": "https://example.org/test/FileDescribesSubject",
       "description": "Association between a subject and a file containing information about that subject",
       "title": "file_describes_subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "fileDescribesSubject__file_id_namespace",
         "fileDescribesSubject__file_local_id",
@@ -4149,7 +4149,7 @@
       "definition_uri": "https://example.org/test/BiosampleFromSubject",
       "description": "Association between a biosample and its source subject",
       "title": "biosample_from_subject",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "biosampleFromSubject__biosample_id_namespace",
         "biosampleFromSubject__biosample_local_id",
@@ -4202,7 +4202,7 @@
       "definition_uri": "https://example.org/test/BiosampleDisease",
       "description": "Association between a C2M2 biosample and a disease positively (e.g. cancer tumor tissue sample) OR negatively (e.g. cancer-free tissue sample) identified for that biosample",
       "title": "biosample_disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "biosampleDisease__biosample_id_namespace",
         "biosampleDisease__biosample_local_id",
@@ -4248,7 +4248,7 @@
       "definition_uri": "https://example.org/test/SubjectDisease",
       "description": "Association between a C2M2 subject and a disease positively OR negatively clinically identified in that subject",
       "title": "subject_disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subjectDisease__subject_id_namespace",
         "subjectDisease__subject_local_id",
@@ -4294,7 +4294,7 @@
       "definition_uri": "https://example.org/test/CollectionDisease",
       "description": "Association between a disease and a C2M2 collection containing experimental resources directly related to the study of that disease",
       "title": "collection_disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionDisease__collection_id_namespace",
         "collectionDisease__collection_local_id",
@@ -4332,7 +4332,7 @@
       "definition_uri": "https://example.org/test/CollectionPhenotype",
       "description": "Association between a phenotype and a C2M2 collection containing experimental resources directly related to the study of that phenotype",
       "title": "collection_phenotype",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionPhenotype__collection_id_namespace",
         "collectionPhenotype__collection_local_id",
@@ -4370,7 +4370,7 @@
       "definition_uri": "https://example.org/test/CollectionGene",
       "description": "Association between a gene and a C2M2 collection containing experimental resources directly related to the study of that gene",
       "title": "collection_gene",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionGene__collection_id_namespace",
         "collectionGene__collection_local_id",
@@ -4408,7 +4408,7 @@
       "definition_uri": "https://example.org/test/CollectionCompound",
       "description": "Association between a compound and a C2M2 collection containing experimental resources directly related to the study of that compound",
       "title": "collection_compound",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionCompound__collection_id_namespace",
         "collectionCompound__collection_local_id",
@@ -4446,7 +4446,7 @@
       "definition_uri": "https://example.org/test/CollectionSubstance",
       "description": "Association between a substance and a C2M2 collection containing experimental resources directly related to the study of that substance",
       "title": "collection_substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionSubstance__collection_id_namespace",
         "collectionSubstance__collection_local_id",
@@ -4484,7 +4484,7 @@
       "definition_uri": "https://example.org/test/CollectionTaxonomy",
       "description": "Association between a taxon and a C2M2 collection containing experimental resources directly related to the study of that taxon",
       "title": "collection_taxonomy",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionTaxonomy__collection_id_namespace",
         "collectionTaxonomy__collection_local_id",
@@ -4522,7 +4522,7 @@
       "definition_uri": "https://example.org/test/CollectionAnatomy",
       "description": "Association between an UBERON anatomical term and a C2M2 collection containing experimental resources directly related to the study of the anatomical concept described by that term",
       "title": "collection_anatomy",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionAnatomy__collection_id_namespace",
         "collectionAnatomy__collection_local_id",
@@ -4560,7 +4560,7 @@
       "definition_uri": "https://example.org/test/CollectionProtein",
       "description": "Association between a protein and a C2M2 collection containing experimental resources directly related to the study of that protein",
       "title": "collection_protein",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "collectionProtein__collection_id_namespace",
         "collectionProtein__collection_local_id",
@@ -4598,7 +4598,7 @@
       "definition_uri": "https://example.org/test/SubjectPhenotype",
       "description": "Association between a C2M2 subject and a phenotype positively OR negatively clinically identified for that subject",
       "title": "subject_phenotype",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subjectPhenotype__subject_id_namespace",
         "subjectPhenotype__subject_local_id",
@@ -4644,7 +4644,7 @@
       "definition_uri": "https://example.org/test/BiosampleSubstance",
       "description": "Association between a C2M2 biosample and a PubChem substance experimentally associated with that biosample",
       "title": "biosample_substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "biosampleSubstance__biosample_id_namespace",
         "biosampleSubstance__biosample_local_id",
@@ -4682,7 +4682,7 @@
       "definition_uri": "https://example.org/test/SubjectSubstance",
       "description": "Association between a C2M2 subject and a PubChem substance experimentally associated with that subject",
       "title": "subject_substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subjectSubstance__subject_id_namespace",
         "subjectSubstance__subject_local_id",
@@ -4720,7 +4720,7 @@
       "definition_uri": "https://example.org/test/BiosampleGene",
       "description": "Association between a C2M2 biosample and an Ensembl gene especially relevant to it",
       "title": "biosample_gene",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "biosampleGene__biosample_id_namespace",
         "biosampleGene__biosample_local_id",
@@ -4758,7 +4758,7 @@
       "definition_uri": "https://example.org/test/PhenotypeGene",
       "description": "Association between a Human Phenotype Ontology term and an Ensembl gene especially relevant to it",
       "title": "phenotype_gene",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "phenotypeGene__phenotype",
         "phenotypeGene__gene"
@@ -4788,7 +4788,7 @@
       "definition_uri": "https://example.org/test/PhenotypeDisease",
       "description": "Association between a Human Phenotype Ontology term and a Disease Ontology term identifying a disease especially relevant to it",
       "title": "phenotype_disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "phenotypeDisease__phenotype",
         "phenotypeDisease__disease"
@@ -4818,7 +4818,7 @@
       "definition_uri": "https://example.org/test/SubjectRace",
       "description": "Identification of a C2M2 subject with one or more self-selected races",
       "title": "subject_race",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subjectRace__subject_id_namespace",
         "subjectRace__subject_local_id",
@@ -4855,7 +4855,7 @@
       "definition_uri": "https://example.org/test/SubjectRoleTaxonomy",
       "description": "Trinary association linking IDs representing (1) a subject, (2) a subject_role (a named organism-level constituent component of a subject, like 'host', 'pathogen', 'endosymbiont', 'taxon detected inside a microbiome subject', etc.) and (3) a taxonomic label (which is hereby assigned to this particular subject_role within this particular subject)",
       "title": "subject_role_taxonomy",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "subjectRoleTaxonomy__subject_id_namespace",
         "subjectRoleTaxonomy__subject_local_id",
@@ -4901,7 +4901,7 @@
       "definition_uri": "https://example.org/test/AssayType",
       "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate C2M2 biosamples or results stored in C2M2 files",
       "title": "assay_type",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "assayType__id",
         "assayType__description",
@@ -4946,7 +4946,7 @@
       "definition_uri": "https://example.org/test/AnalysisType",
       "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe analytic methods that generate C2M2 files",
       "title": "analysis_type",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "analysisType__id",
         "analysisType__description",
@@ -4991,7 +4991,7 @@
       "definition_uri": "https://example.org/test/NcbiTaxonomy",
       "description": "List of NCBI Taxonomy Database IDs identifying taxa used to describe C2M2 subjects",
       "title": "ncbi_taxonomy",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "ncbiTaxonomy__id",
         "ncbiTaxonomy__clade",
@@ -5045,7 +5045,7 @@
       "definition_uri": "https://example.org/test/Anatomy",
       "description": "List of Uber-anatomy ontology (UBERON) CV terms used to locate the origin of a C2M2 biosample within the physiology of its source or host organism",
       "title": "anatomy",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "anatomy__id",
         "anatomy__description",
@@ -5090,7 +5090,7 @@
       "definition_uri": "https://example.org/test/FileFormat",
       "description": "List of EDAM CV 'format:' terms used to describe formats of C2M2 files",
       "title": "file_format",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "fileFormat__id",
         "fileFormat__description",
@@ -5135,7 +5135,7 @@
       "definition_uri": "https://example.org/test/DataType",
       "description": "List of EDAM CV 'data:' terms used to describe data in C2M2 files",
       "title": "data_type",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "dataType__id",
         "dataType__description",
@@ -5180,7 +5180,7 @@
       "definition_uri": "https://example.org/test/Disease",
       "description": "List of Disease Ontology terms used to describe diseases recorded in association with C2M2 subjects or biosamples",
       "title": "disease",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "disease__id",
         "disease__description",
@@ -5225,7 +5225,7 @@
       "definition_uri": "https://example.org/test/Phenotype",
       "description": "List of Human Phenotype Ontology terms used to describe phenotypes recorded in association with C2M2 subjects",
       "title": "phenotype",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "phenotype__id",
         "phenotype__description",
@@ -5270,7 +5270,7 @@
       "definition_uri": "https://example.org/test/Compound",
       "description": "List of (i) GlyTouCan terms or (ii) PubChem 'compound' terms (normalized chemical structures) referenced in this submission; (ii) will include all PubChem 'compound' terms associated with any PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this submission, in addition to any 'compound' terms directly referenced",
       "title": "compound",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "compound__id",
         "compound__description",
@@ -5315,7 +5315,7 @@
       "definition_uri": "https://example.org/test/Substance",
       "description": "List of PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this C2M2 submission",
       "title": "substance",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "substance__id",
         "substance__description",
@@ -5368,7 +5368,7 @@
       "definition_uri": "https://example.org/test/Gene",
       "description": "List of Ensembl genes directly referenced in this C2M2 submission",
       "title": "gene",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "gene__id",
         "gene__description",
@@ -5422,7 +5422,7 @@
       "definition_uri": "https://example.org/test/Protein",
       "description": "List of UniProtKB proteins directly referenced in this C2M2 submission",
       "title": "protein",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "protein__id",
         "protein__description",
@@ -5475,7 +5475,7 @@
       "definition_uri": "https://example.org/test/ProteinGene",
       "description": "Association between a UniProtKB protein term and an Ensembl term identifying a gene encoding that protein",
       "title": "protein_gene",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "proteinGene__protein",
         "proteinGene__gene"
@@ -5505,7 +5505,7 @@
       "definition_uri": "https://example.org/test/IdNamespace",
       "description": "A table listing identifier namespaces registered by the DCC submitting this C2M2 instance",
       "title": "id_namespace",
-      "from_schema": "http://example.org/test/",
+      "from_schema": "https://w3id.org/linkml/cfde/",
       "slots": [
         "idNamespace__id",
         "idNamespace__abbreviation",
@@ -5556,9 +5556,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "cfde.yaml",
-  "source_file_date": "2022-07-08T12:51:10",
-  "source_file_size": 45751,
-  "generation_date": "2022-07-08T12:58:04",
+  "source_file_date": "2022-07-08T13:02:22",
+  "source_file_size": 45756,
+  "generation_date": "2022-07-08T13:03:47",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cfde.context.jsonld",

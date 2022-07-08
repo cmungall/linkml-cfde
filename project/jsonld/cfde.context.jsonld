@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T12:58:03\n    Schema: test-schema\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: http://example.org/test/\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T13:03:46\n    Schema: linkml-cfde\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/linkml/cfde/\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "cfde_disease_association_type": "http://example.org/test//cfde_disease_association_type/",
       "cfde_phenotype_association_type": "http://example.org/test//cfde_phenotype_association_type/",

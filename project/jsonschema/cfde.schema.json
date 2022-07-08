@@ -1547,13 +1547,13 @@
          "type": "object"
       }
    },
-   "$id": "http://example.org/test/",
+   "$id": "https://w3id.org/linkml/cfde/",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": true,
    "metamodel_version": "1.7.0",
    "properties": {},
    "required": [],
-   "title": "test-schema",
+   "title": "linkml-cfde",
    "type": "object",
    "version": null
 }

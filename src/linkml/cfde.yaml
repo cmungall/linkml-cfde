@@ -1,5 +1,5 @@
-name: test-schema
-id: http://example.org/test/
+name: linkml-cfde
+id: https://w3id.org/linkml/cfde/
 imports:
 - linkml:types
 prefixes:

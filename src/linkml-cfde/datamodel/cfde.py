@@ -1,8 +1,8 @@
 # Auto generated from cfde.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-08T12:51:22
-# Schema: test-schema
+# Generation date: 2022-07-08T13:03:52
+# Schema: linkml-cfde
 #
-# id: http://example.org/test/
+# id: https://w3id.org/linkml/cfde/
 # description:
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
