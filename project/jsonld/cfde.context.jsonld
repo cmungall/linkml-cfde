@@ -1,19 +1,30 @@
 {
-   "_comments": "Auto generated from cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T13:03:46\n    Schema: linkml-cfde\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/linkml/cfde/\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T14:54:12\n    Schema: cfde_schema\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/linkml/cfde\n    description: A complete list of schematic specifications for the resources (TSV table files) that will be used to represent C2M2 DCC metadata prior to ingest into the C2M2 database system\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
-      "cfde_disease_association_type": "http://example.org/test//cfde_disease_association_type/",
-      "cfde_phenotype_association_type": "http://example.org/test//cfde_phenotype_association_type/",
-      "cfde_subject_ethnicity": "http://example.org/test//cfde_subject_ethnicity/",
-      "cfde_subject_granularity": "http://example.org/test//cfde_subject_granularity/",
-      "cfde_subject_race": "http://example.org/test//cfde_subject_race/",
-      "cfde_subject_role": "http://example.org/test//cfde_subject_role/",
-      "cfde_subject_sex": "http://example.org/test//cfde_subject_sex/",
+      "cfde_disease_association_type": "https://w3id.org/linkml/cfde/cfde_disease_association_type/",
+      "cfde_phenotype_association_type": "https://w3id.org/linkml/cfde/cfde_phenotype_association_type/",
+      "cfde_schema": "https://w3id.org/linkml/cfde/",
+      "cfde_subject_ethnicity": "https://w3id.org/linkml/cfde/cfde_subject_ethnicity/",
+      "cfde_subject_granularity": "https://w3id.org/linkml/cfde/cfde_subject_granularity/",
+      "cfde_subject_race": "https://w3id.org/linkml/cfde/cfde_subject_race/",
+      "cfde_subject_role": "https://w3id.org/linkml/cfde/cfde_subject_role/",
+      "cfde_subject_sex": "https://w3id.org/linkml/cfde/cfde_subject_sex/",
       "ex": "https://example.org/test/",
       "linkml": "https://w3id.org/linkml/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
-      "@vocab": "https://example.org/test/",
+      "@vocab": "https://w3id.org/linkml/cfde/",
+      "id": "@id",
+      "anatomy": {
+         "@type": "@id"
+      },
+      "assay_type": {
+         "@type": "@id"
+      },
       "creation_time": {
          "@type": "xsd:dateTime"
+      },
+      "id_namespace": {
+         "@type": "@id"
       },
       "association_type": {
          "@context": {
@@ -23,17 +34,53 @@
             "meaning": "@id"
          }
       },
+      "disease": {
+         "@type": "@id"
+      },
       "age_at_sampling": {
          "@type": "xsd:decimal"
       },
+      "gene": {
+         "@type": "@id"
+      },
+      "substance": {
+         "@type": "@id"
+      },
       "has_time_series_data": {
          "@type": "xsd:boolean"
+      },
+      "compound": {
+         "@type": "@id"
+      },
+      "phenotype": {
+         "@type": "@id"
+      },
+      "protein": {
+         "@type": "@id"
+      },
+      "taxon": {
+         "@type": "@id"
+      },
+      "analysis_type": {
+         "@type": "@id"
+      },
+      "compression_format": {
+         "@type": "@id"
+      },
+      "data_type": {
+         "@type": "@id"
+      },
+      "file_format": {
+         "@type": "@id"
       },
       "size_in_bytes": {
          "@type": "xsd:integer"
       },
       "uncompressed_size_in_bytes": {
          "@type": "xsd:integer"
+      },
+      "organism": {
+         "@type": "@id"
       },
       "age_at_enrollment": {
          "@type": "xsd:decimal"
@@ -77,6 +124,9 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          }
+      },
+      "taxonomy_id": {
+         "@type": "@id"
       }
    }
 }

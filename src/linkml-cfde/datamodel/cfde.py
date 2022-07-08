@@ -1,9 +1,10 @@
 # Auto generated from cfde.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-07-08T13:03:52
-# Schema: linkml-cfde
+# Generation date: 2022-07-08T14:49:22
+# Schema: cfde_schema
 #
-# id: https://w3id.org/linkml/cfde/
-# description:
+# id: https://w3id.org/linkml/cfde
+# description: A complete list of schematic specifications for the resources (TSV table files) that will be used
+#              to represent C2M2 DCC metadata prior to ingest into the C2M2 database system
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -32,22 +33,76 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-CFDE_DISEASE_ASSOCIATION_TYPE = CurieNamespace('cfde_disease_association_type', 'http://example.org/test//cfde_disease_association_type/')
-CFDE_PHENOTYPE_ASSOCIATION_TYPE = CurieNamespace('cfde_phenotype_association_type', 'http://example.org/test//cfde_phenotype_association_type/')
-CFDE_SUBJECT_ETHNICITY = CurieNamespace('cfde_subject_ethnicity', 'http://example.org/test//cfde_subject_ethnicity/')
-CFDE_SUBJECT_GRANULARITY = CurieNamespace('cfde_subject_granularity', 'http://example.org/test//cfde_subject_granularity/')
-CFDE_SUBJECT_RACE = CurieNamespace('cfde_subject_race', 'http://example.org/test//cfde_subject_race/')
-CFDE_SUBJECT_ROLE = CurieNamespace('cfde_subject_role', 'http://example.org/test//cfde_subject_role/')
-CFDE_SUBJECT_SEX = CurieNamespace('cfde_subject_sex', 'http://example.org/test//cfde_subject_sex/')
+CFDE_DISEASE_ASSOCIATION_TYPE = CurieNamespace('cfde_disease_association_type', 'https://w3id.org/linkml/cfde/cfde_disease_association_type/')
+CFDE_PHENOTYPE_ASSOCIATION_TYPE = CurieNamespace('cfde_phenotype_association_type', 'https://w3id.org/linkml/cfde/cfde_phenotype_association_type/')
+CFDE_SCHEMA = CurieNamespace('cfde_schema', 'https://w3id.org/linkml/cfde/')
+CFDE_SUBJECT_ETHNICITY = CurieNamespace('cfde_subject_ethnicity', 'https://w3id.org/linkml/cfde/cfde_subject_ethnicity/')
+CFDE_SUBJECT_GRANULARITY = CurieNamespace('cfde_subject_granularity', 'https://w3id.org/linkml/cfde/cfde_subject_granularity/')
+CFDE_SUBJECT_RACE = CurieNamespace('cfde_subject_race', 'https://w3id.org/linkml/cfde/cfde_subject_race/')
+CFDE_SUBJECT_ROLE = CurieNamespace('cfde_subject_role', 'https://w3id.org/linkml/cfde/cfde_subject_role/')
+CFDE_SUBJECT_SEX = CurieNamespace('cfde_subject_sex', 'https://w3id.org/linkml/cfde/cfde_subject_sex/')
 EX = CurieNamespace('ex', 'https://example.org/test/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-DEFAULT_ = EX
+DEFAULT_ = CFDE_SCHEMA
 
 
 # Types
 
 # Class references
+class DccId(extended_str):
+    pass
 
+
+class AssayTypeId(extended_str):
+    pass
+
+
+class AnalysisTypeId(extended_str):
+    pass
+
+
+class NcbiTaxonomyId(extended_str):
+    pass
+
+
+class AnatomyId(extended_str):
+    pass
+
+
+class FileFormatId(extended_str):
+    pass
+
+
+class DataTypeId(extended_str):
+    pass
+
+
+class DiseaseId(extended_str):
+    pass
+
+
+class PhenotypeId(extended_str):
+    pass
+
+
+class CompoundId(extended_str):
+    pass
+
+
+class SubstanceId(extended_str):
+    pass
+
+
+class GeneId(extended_str):
+    pass
+
+
+class ProteinId(extended_str):
+    pass
+
+
+class IdNamespaceId(extended_str):
+    pass
 
 
 @dataclass
@@ -57,12 +112,12 @@ class File(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.File
-    class_class_curie: ClassVar[str] = "ex:File"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.File
+    class_class_curie: ClassVar[str] = "cfde_schema:File"
     class_name: ClassVar[str] = "file"
-    class_model_uri: ClassVar[URIRef] = EX.File
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.File
 
-    id_namespace: str = None
+    id_namespace: Union[str, IdNamespaceId] = None
     local_id: str = None
     project_id_namespace: str = None
     project_local_id: str = None
@@ -73,11 +128,11 @@ class File(YAMLRoot):
     sha256: Optional[str] = None
     md5: Optional[str] = None
     filename: Optional[str] = None
-    file_format: Optional[str] = None
-    compression_format: Optional[str] = None
-    data_type: Optional[str] = None
-    assay_type: Optional[str] = None
-    analysis_type: Optional[str] = None
+    file_format: Optional[Union[str, FileFormatId]] = None
+    compression_format: Optional[Union[str, FileFormatId]] = None
+    data_type: Optional[Union[str, DataTypeId]] = None
+    assay_type: Optional[Union[str, AssayTypeId]] = None
+    analysis_type: Optional[Union[str, AnalysisTypeId]] = None
     mime_type: Optional[str] = None
     bundle_collection_id_namespace: Optional[str] = None
     bundle_collection_local_id: Optional[str] = None
@@ -86,8 +141,8 @@ class File(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id_namespace):
             self.MissingRequiredField("id_namespace")
-        if not isinstance(self.id_namespace, str):
-            self.id_namespace = str(self.id_namespace)
+        if not isinstance(self.id_namespace, IdNamespaceId):
+            self.id_namespace = IdNamespaceId(self.id_namespace)
 
         if self._is_empty(self.local_id):
             self.MissingRequiredField("local_id")
@@ -125,20 +180,20 @@ class File(YAMLRoot):
         if self.filename is not None and not isinstance(self.filename, str):
             self.filename = str(self.filename)
 
-        if self.file_format is not None and not isinstance(self.file_format, str):
-            self.file_format = str(self.file_format)
+        if self.file_format is not None and not isinstance(self.file_format, FileFormatId):
+            self.file_format = FileFormatId(self.file_format)
 
-        if self.compression_format is not None and not isinstance(self.compression_format, str):
-            self.compression_format = str(self.compression_format)
+        if self.compression_format is not None and not isinstance(self.compression_format, FileFormatId):
+            self.compression_format = FileFormatId(self.compression_format)
 
-        if self.data_type is not None and not isinstance(self.data_type, str):
-            self.data_type = str(self.data_type)
+        if self.data_type is not None and not isinstance(self.data_type, DataTypeId):
+            self.data_type = DataTypeId(self.data_type)
 
-        if self.assay_type is not None and not isinstance(self.assay_type, str):
-            self.assay_type = str(self.assay_type)
+        if self.assay_type is not None and not isinstance(self.assay_type, AssayTypeId):
+            self.assay_type = AssayTypeId(self.assay_type)
 
-        if self.analysis_type is not None and not isinstance(self.analysis_type, str):
-            self.analysis_type = str(self.analysis_type)
+        if self.analysis_type is not None and not isinstance(self.analysis_type, AnalysisTypeId):
+            self.analysis_type = AnalysisTypeId(self.analysis_type)
 
         if self.mime_type is not None and not isinstance(self.mime_type, str):
             self.mime_type = str(self.mime_type)
@@ -162,25 +217,25 @@ class Biosample(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Biosample
-    class_class_curie: ClassVar[str] = "ex:Biosample"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Biosample
+    class_class_curie: ClassVar[str] = "cfde_schema:Biosample"
     class_name: ClassVar[str] = "biosample"
-    class_model_uri: ClassVar[URIRef] = EX.Biosample
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Biosample
 
-    id_namespace: str = None
+    id_namespace: Union[str, IdNamespaceId] = None
     local_id: str = None
     project_id_namespace: str = None
     project_local_id: str = None
     persistent_id: Optional[str] = None
     creation_time: Optional[Union[str, XSDDateTime]] = None
-    assay_type: Optional[str] = None
-    anatomy: Optional[str] = None
+    assay_type: Optional[Union[str, AssayTypeId]] = None
+    anatomy: Optional[Union[str, AnatomyId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id_namespace):
             self.MissingRequiredField("id_namespace")
-        if not isinstance(self.id_namespace, str):
-            self.id_namespace = str(self.id_namespace)
+        if not isinstance(self.id_namespace, IdNamespaceId):
+            self.id_namespace = IdNamespaceId(self.id_namespace)
 
         if self._is_empty(self.local_id):
             self.MissingRequiredField("local_id")
@@ -203,11 +258,11 @@ class Biosample(YAMLRoot):
         if self.creation_time is not None and not isinstance(self.creation_time, XSDDateTime):
             self.creation_time = XSDDateTime(self.creation_time)
 
-        if self.assay_type is not None and not isinstance(self.assay_type, str):
-            self.assay_type = str(self.assay_type)
+        if self.assay_type is not None and not isinstance(self.assay_type, AssayTypeId):
+            self.assay_type = AssayTypeId(self.assay_type)
 
-        if self.anatomy is not None and not isinstance(self.anatomy, str):
-            self.anatomy = str(self.anatomy)
+        if self.anatomy is not None and not isinstance(self.anatomy, AnatomyId):
+            self.anatomy = AnatomyId(self.anatomy)
 
         super().__post_init__(**kwargs)
 
@@ -219,12 +274,12 @@ class Subject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Subject
-    class_class_curie: ClassVar[str] = "ex:Subject"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Subject
+    class_class_curie: ClassVar[str] = "cfde_schema:Subject"
     class_name: ClassVar[str] = "subject"
-    class_model_uri: ClassVar[URIRef] = EX.Subject
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Subject
 
-    id_namespace: str = None
+    id_namespace: Union[str, IdNamespaceId] = None
     local_id: str = None
     project_id_namespace: str = None
     project_local_id: str = None
@@ -238,8 +293,8 @@ class Subject(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id_namespace):
             self.MissingRequiredField("id_namespace")
-        if not isinstance(self.id_namespace, str):
-            self.id_namespace = str(self.id_namespace)
+        if not isinstance(self.id_namespace, IdNamespaceId):
+            self.id_namespace = IdNamespaceId(self.id_namespace)
 
         if self._is_empty(self.local_id):
             self.MissingRequiredField("local_id")
@@ -287,12 +342,12 @@ class Dcc(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Dcc
-    class_class_curie: ClassVar[str] = "ex:Dcc"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Dcc
+    class_class_curie: ClassVar[str] = "cfde_schema:Dcc"
     class_name: ClassVar[str] = "dcc"
-    class_model_uri: ClassVar[URIRef] = EX.Dcc
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Dcc
 
-    id: str = None
+    id: Union[str, DccId] = None
     dcc_name: str = None
     dcc_abbreviation: str = None
     contact_email: str = None
@@ -305,8 +360,8 @@ class Dcc(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, DccId):
+            self.id = DccId(self.id)
 
         if self._is_empty(self.dcc_name):
             self.MissingRequiredField("dcc_name")
@@ -356,12 +411,12 @@ class Project(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Project
-    class_class_curie: ClassVar[str] = "ex:Project"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Project
+    class_class_curie: ClassVar[str] = "cfde_schema:Project"
     class_name: ClassVar[str] = "project"
-    class_model_uri: ClassVar[URIRef] = EX.Project
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Project
 
-    id_namespace: str = None
+    id_namespace: Union[str, IdNamespaceId] = None
     local_id: str = None
     persistent_id: Optional[str] = None
     creation_time: Optional[Union[str, XSDDateTime]] = None
@@ -371,8 +426,8 @@ class Project(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id_namespace):
             self.MissingRequiredField("id_namespace")
-        if not isinstance(self.id_namespace, str):
-            self.id_namespace = str(self.id_namespace)
+        if not isinstance(self.id_namespace, IdNamespaceId):
+            self.id_namespace = IdNamespaceId(self.id_namespace)
 
         if self._is_empty(self.local_id):
             self.MissingRequiredField("local_id")
@@ -401,10 +456,10 @@ class ProjectInProject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.ProjectInProject
-    class_class_curie: ClassVar[str] = "ex:ProjectInProject"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.ProjectInProject
+    class_class_curie: ClassVar[str] = "cfde_schema:ProjectInProject"
     class_name: ClassVar[str] = "project_in_project"
-    class_model_uri: ClassVar[URIRef] = EX.ProjectInProject
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.ProjectInProject
 
     parent_project_id_namespace: str = None
     parent_project_local_id: str = None
@@ -442,12 +497,12 @@ class Collection(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Collection
-    class_class_curie: ClassVar[str] = "ex:Collection"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Collection
+    class_class_curie: ClassVar[str] = "cfde_schema:Collection"
     class_name: ClassVar[str] = "collection"
-    class_model_uri: ClassVar[URIRef] = EX.Collection
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Collection
 
-    id_namespace: str = None
+    id_namespace: Union[str, IdNamespaceId] = None
     local_id: str = None
     persistent_id: Optional[str] = None
     creation_time: Optional[Union[str, XSDDateTime]] = None
@@ -458,8 +513,8 @@ class Collection(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id_namespace):
             self.MissingRequiredField("id_namespace")
-        if not isinstance(self.id_namespace, str):
-            self.id_namespace = str(self.id_namespace)
+        if not isinstance(self.id_namespace, IdNamespaceId):
+            self.id_namespace = IdNamespaceId(self.id_namespace)
 
         if self._is_empty(self.local_id):
             self.MissingRequiredField("local_id")
@@ -491,10 +546,10 @@ class CollectionInCollection(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionInCollection
-    class_class_curie: ClassVar[str] = "ex:CollectionInCollection"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionInCollection
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionInCollection"
     class_name: ClassVar[str] = "collection_in_collection"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionInCollection
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionInCollection
 
     superset_collection_id_namespace: str = None
     superset_collection_local_id: str = None
@@ -532,10 +587,10 @@ class FileDescribesCollection(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.FileDescribesCollection
-    class_class_curie: ClassVar[str] = "ex:FileDescribesCollection"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileDescribesCollection
+    class_class_curie: ClassVar[str] = "cfde_schema:FileDescribesCollection"
     class_name: ClassVar[str] = "file_describes_collection"
-    class_model_uri: ClassVar[URIRef] = EX.FileDescribesCollection
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileDescribesCollection
 
     file_id_namespace: str = None
     file_local_id: str = None
@@ -573,10 +628,10 @@ class CollectionDefinedByProject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionDefinedByProject
-    class_class_curie: ClassVar[str] = "ex:CollectionDefinedByProject"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionDefinedByProject
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionDefinedByProject"
     class_name: ClassVar[str] = "collection_defined_by_project"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionDefinedByProject
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionDefinedByProject
 
     collection_id_namespace: str = None
     collection_local_id: str = None
@@ -614,10 +669,10 @@ class FileInCollection(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.FileInCollection
-    class_class_curie: ClassVar[str] = "ex:FileInCollection"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileInCollection
+    class_class_curie: ClassVar[str] = "cfde_schema:FileInCollection"
     class_name: ClassVar[str] = "file_in_collection"
-    class_model_uri: ClassVar[URIRef] = EX.FileInCollection
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileInCollection
 
     file_id_namespace: str = None
     file_local_id: str = None
@@ -655,10 +710,10 @@ class BiosampleInCollection(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.BiosampleInCollection
-    class_class_curie: ClassVar[str] = "ex:BiosampleInCollection"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleInCollection
+    class_class_curie: ClassVar[str] = "cfde_schema:BiosampleInCollection"
     class_name: ClassVar[str] = "biosample_in_collection"
-    class_model_uri: ClassVar[URIRef] = EX.BiosampleInCollection
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleInCollection
 
     biosample_id_namespace: str = None
     biosample_local_id: str = None
@@ -696,10 +751,10 @@ class SubjectInCollection(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.SubjectInCollection
-    class_class_curie: ClassVar[str] = "ex:SubjectInCollection"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectInCollection
+    class_class_curie: ClassVar[str] = "cfde_schema:SubjectInCollection"
     class_name: ClassVar[str] = "subject_in_collection"
-    class_model_uri: ClassVar[URIRef] = EX.SubjectInCollection
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectInCollection
 
     subject_id_namespace: str = None
     subject_local_id: str = None
@@ -737,10 +792,10 @@ class FileDescribesBiosample(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.FileDescribesBiosample
-    class_class_curie: ClassVar[str] = "ex:FileDescribesBiosample"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileDescribesBiosample
+    class_class_curie: ClassVar[str] = "cfde_schema:FileDescribesBiosample"
     class_name: ClassVar[str] = "file_describes_biosample"
-    class_model_uri: ClassVar[URIRef] = EX.FileDescribesBiosample
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileDescribesBiosample
 
     file_id_namespace: str = None
     file_local_id: str = None
@@ -778,10 +833,10 @@ class FileDescribesSubject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.FileDescribesSubject
-    class_class_curie: ClassVar[str] = "ex:FileDescribesSubject"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileDescribesSubject
+    class_class_curie: ClassVar[str] = "cfde_schema:FileDescribesSubject"
     class_name: ClassVar[str] = "file_describes_subject"
-    class_model_uri: ClassVar[URIRef] = EX.FileDescribesSubject
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileDescribesSubject
 
     file_id_namespace: str = None
     file_local_id: str = None
@@ -819,10 +874,10 @@ class BiosampleFromSubject(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.BiosampleFromSubject
-    class_class_curie: ClassVar[str] = "ex:BiosampleFromSubject"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleFromSubject
+    class_class_curie: ClassVar[str] = "cfde_schema:BiosampleFromSubject"
     class_name: ClassVar[str] = "biosample_from_subject"
-    class_model_uri: ClassVar[URIRef] = EX.BiosampleFromSubject
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleFromSubject
 
     biosample_id_namespace: str = None
     biosample_local_id: str = None
@@ -865,15 +920,15 @@ class BiosampleDisease(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.BiosampleDisease
-    class_class_curie: ClassVar[str] = "ex:BiosampleDisease"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleDisease
+    class_class_curie: ClassVar[str] = "cfde_schema:BiosampleDisease"
     class_name: ClassVar[str] = "biosample_disease"
-    class_model_uri: ClassVar[URIRef] = EX.BiosampleDisease
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleDisease
 
     biosample_id_namespace: str = None
     biosample_local_id: str = None
     association_type: Union[str, "AssociationTypeEnum"] = None
-    disease: str = None
+    disease: Union[str, DiseaseId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.biosample_id_namespace):
@@ -893,8 +948,8 @@ class BiosampleDisease(YAMLRoot):
 
         if self._is_empty(self.disease):
             self.MissingRequiredField("disease")
-        if not isinstance(self.disease, str):
-            self.disease = str(self.disease)
+        if not isinstance(self.disease, DiseaseId):
+            self.disease = DiseaseId(self.disease)
 
         super().__post_init__(**kwargs)
 
@@ -906,15 +961,15 @@ class SubjectDisease(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.SubjectDisease
-    class_class_curie: ClassVar[str] = "ex:SubjectDisease"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectDisease
+    class_class_curie: ClassVar[str] = "cfde_schema:SubjectDisease"
     class_name: ClassVar[str] = "subject_disease"
-    class_model_uri: ClassVar[URIRef] = EX.SubjectDisease
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectDisease
 
     subject_id_namespace: str = None
     subject_local_id: str = None
     association_type: Union[str, "AssociationTypeEnum"] = None
-    disease: str = None
+    disease: Union[str, DiseaseId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject_id_namespace):
@@ -934,8 +989,8 @@ class SubjectDisease(YAMLRoot):
 
         if self._is_empty(self.disease):
             self.MissingRequiredField("disease")
-        if not isinstance(self.disease, str):
-            self.disease = str(self.disease)
+        if not isinstance(self.disease, DiseaseId):
+            self.disease = DiseaseId(self.disease)
 
         super().__post_init__(**kwargs)
 
@@ -948,14 +1003,14 @@ class CollectionDisease(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionDisease
-    class_class_curie: ClassVar[str] = "ex:CollectionDisease"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionDisease
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionDisease"
     class_name: ClassVar[str] = "collection_disease"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionDisease
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionDisease
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    disease: str = None
+    disease: Union[str, DiseaseId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -970,8 +1025,8 @@ class CollectionDisease(YAMLRoot):
 
         if self._is_empty(self.disease):
             self.MissingRequiredField("disease")
-        if not isinstance(self.disease, str):
-            self.disease = str(self.disease)
+        if not isinstance(self.disease, DiseaseId):
+            self.disease = DiseaseId(self.disease)
 
         super().__post_init__(**kwargs)
 
@@ -984,14 +1039,14 @@ class CollectionPhenotype(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionPhenotype
-    class_class_curie: ClassVar[str] = "ex:CollectionPhenotype"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionPhenotype
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionPhenotype"
     class_name: ClassVar[str] = "collection_phenotype"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionPhenotype
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionPhenotype
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    phenotype: str = None
+    phenotype: Union[str, PhenotypeId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1006,8 +1061,8 @@ class CollectionPhenotype(YAMLRoot):
 
         if self._is_empty(self.phenotype):
             self.MissingRequiredField("phenotype")
-        if not isinstance(self.phenotype, str):
-            self.phenotype = str(self.phenotype)
+        if not isinstance(self.phenotype, PhenotypeId):
+            self.phenotype = PhenotypeId(self.phenotype)
 
         super().__post_init__(**kwargs)
 
@@ -1020,14 +1075,14 @@ class CollectionGene(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionGene
-    class_class_curie: ClassVar[str] = "ex:CollectionGene"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionGene
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionGene"
     class_name: ClassVar[str] = "collection_gene"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionGene
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionGene
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    gene: str = None
+    gene: Union[str, GeneId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1042,8 +1097,8 @@ class CollectionGene(YAMLRoot):
 
         if self._is_empty(self.gene):
             self.MissingRequiredField("gene")
-        if not isinstance(self.gene, str):
-            self.gene = str(self.gene)
+        if not isinstance(self.gene, GeneId):
+            self.gene = GeneId(self.gene)
 
         super().__post_init__(**kwargs)
 
@@ -1056,14 +1111,14 @@ class CollectionCompound(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionCompound
-    class_class_curie: ClassVar[str] = "ex:CollectionCompound"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionCompound
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionCompound"
     class_name: ClassVar[str] = "collection_compound"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionCompound
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionCompound
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    compound: str = None
+    compound: Union[str, CompoundId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1078,8 +1133,8 @@ class CollectionCompound(YAMLRoot):
 
         if self._is_empty(self.compound):
             self.MissingRequiredField("compound")
-        if not isinstance(self.compound, str):
-            self.compound = str(self.compound)
+        if not isinstance(self.compound, CompoundId):
+            self.compound = CompoundId(self.compound)
 
         super().__post_init__(**kwargs)
 
@@ -1092,14 +1147,14 @@ class CollectionSubstance(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionSubstance
-    class_class_curie: ClassVar[str] = "ex:CollectionSubstance"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionSubstance
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionSubstance"
     class_name: ClassVar[str] = "collection_substance"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionSubstance
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionSubstance
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    substance: str = None
+    substance: Union[str, SubstanceId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1114,8 +1169,8 @@ class CollectionSubstance(YAMLRoot):
 
         if self._is_empty(self.substance):
             self.MissingRequiredField("substance")
-        if not isinstance(self.substance, str):
-            self.substance = str(self.substance)
+        if not isinstance(self.substance, SubstanceId):
+            self.substance = SubstanceId(self.substance)
 
         super().__post_init__(**kwargs)
 
@@ -1128,14 +1183,14 @@ class CollectionTaxonomy(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionTaxonomy
-    class_class_curie: ClassVar[str] = "ex:CollectionTaxonomy"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionTaxonomy
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionTaxonomy"
     class_name: ClassVar[str] = "collection_taxonomy"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionTaxonomy
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionTaxonomy
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    taxon: str = None
+    taxon: Union[str, NcbiTaxonomyId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1150,8 +1205,8 @@ class CollectionTaxonomy(YAMLRoot):
 
         if self._is_empty(self.taxon):
             self.MissingRequiredField("taxon")
-        if not isinstance(self.taxon, str):
-            self.taxon = str(self.taxon)
+        if not isinstance(self.taxon, NcbiTaxonomyId):
+            self.taxon = NcbiTaxonomyId(self.taxon)
 
         super().__post_init__(**kwargs)
 
@@ -1164,14 +1219,14 @@ class CollectionAnatomy(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionAnatomy
-    class_class_curie: ClassVar[str] = "ex:CollectionAnatomy"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionAnatomy
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionAnatomy"
     class_name: ClassVar[str] = "collection_anatomy"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionAnatomy
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionAnatomy
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    anatomy: str = None
+    anatomy: Union[str, AnatomyId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1186,8 +1241,8 @@ class CollectionAnatomy(YAMLRoot):
 
         if self._is_empty(self.anatomy):
             self.MissingRequiredField("anatomy")
-        if not isinstance(self.anatomy, str):
-            self.anatomy = str(self.anatomy)
+        if not isinstance(self.anatomy, AnatomyId):
+            self.anatomy = AnatomyId(self.anatomy)
 
         super().__post_init__(**kwargs)
 
@@ -1200,14 +1255,14 @@ class CollectionProtein(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.CollectionProtein
-    class_class_curie: ClassVar[str] = "ex:CollectionProtein"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionProtein
+    class_class_curie: ClassVar[str] = "cfde_schema:CollectionProtein"
     class_name: ClassVar[str] = "collection_protein"
-    class_model_uri: ClassVar[URIRef] = EX.CollectionProtein
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.CollectionProtein
 
     collection_id_namespace: str = None
     collection_local_id: str = None
-    protein: str = None
+    protein: Union[str, ProteinId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.collection_id_namespace):
@@ -1222,8 +1277,8 @@ class CollectionProtein(YAMLRoot):
 
         if self._is_empty(self.protein):
             self.MissingRequiredField("protein")
-        if not isinstance(self.protein, str):
-            self.protein = str(self.protein)
+        if not isinstance(self.protein, ProteinId):
+            self.protein = ProteinId(self.protein)
 
         super().__post_init__(**kwargs)
 
@@ -1235,15 +1290,15 @@ class SubjectPhenotype(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.SubjectPhenotype
-    class_class_curie: ClassVar[str] = "ex:SubjectPhenotype"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectPhenotype
+    class_class_curie: ClassVar[str] = "cfde_schema:SubjectPhenotype"
     class_name: ClassVar[str] = "subject_phenotype"
-    class_model_uri: ClassVar[URIRef] = EX.SubjectPhenotype
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectPhenotype
 
     subject_id_namespace: str = None
     subject_local_id: str = None
     association_type: Union[str, "AssociationTypeEnum"] = None
-    phenotype: str = None
+    phenotype: Union[str, PhenotypeId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject_id_namespace):
@@ -1263,8 +1318,8 @@ class SubjectPhenotype(YAMLRoot):
 
         if self._is_empty(self.phenotype):
             self.MissingRequiredField("phenotype")
-        if not isinstance(self.phenotype, str):
-            self.phenotype = str(self.phenotype)
+        if not isinstance(self.phenotype, PhenotypeId):
+            self.phenotype = PhenotypeId(self.phenotype)
 
         super().__post_init__(**kwargs)
 
@@ -1276,14 +1331,14 @@ class BiosampleSubstance(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.BiosampleSubstance
-    class_class_curie: ClassVar[str] = "ex:BiosampleSubstance"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleSubstance
+    class_class_curie: ClassVar[str] = "cfde_schema:BiosampleSubstance"
     class_name: ClassVar[str] = "biosample_substance"
-    class_model_uri: ClassVar[URIRef] = EX.BiosampleSubstance
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleSubstance
 
     biosample_id_namespace: str = None
     biosample_local_id: str = None
-    substance: str = None
+    substance: Union[str, SubstanceId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.biosample_id_namespace):
@@ -1298,8 +1353,8 @@ class BiosampleSubstance(YAMLRoot):
 
         if self._is_empty(self.substance):
             self.MissingRequiredField("substance")
-        if not isinstance(self.substance, str):
-            self.substance = str(self.substance)
+        if not isinstance(self.substance, SubstanceId):
+            self.substance = SubstanceId(self.substance)
 
         super().__post_init__(**kwargs)
 
@@ -1311,14 +1366,14 @@ class SubjectSubstance(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.SubjectSubstance
-    class_class_curie: ClassVar[str] = "ex:SubjectSubstance"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectSubstance
+    class_class_curie: ClassVar[str] = "cfde_schema:SubjectSubstance"
     class_name: ClassVar[str] = "subject_substance"
-    class_model_uri: ClassVar[URIRef] = EX.SubjectSubstance
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectSubstance
 
     subject_id_namespace: str = None
     subject_local_id: str = None
-    substance: str = None
+    substance: Union[str, SubstanceId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject_id_namespace):
@@ -1333,8 +1388,8 @@ class SubjectSubstance(YAMLRoot):
 
         if self._is_empty(self.substance):
             self.MissingRequiredField("substance")
-        if not isinstance(self.substance, str):
-            self.substance = str(self.substance)
+        if not isinstance(self.substance, SubstanceId):
+            self.substance = SubstanceId(self.substance)
 
         super().__post_init__(**kwargs)
 
@@ -1346,14 +1401,14 @@ class BiosampleGene(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.BiosampleGene
-    class_class_curie: ClassVar[str] = "ex:BiosampleGene"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleGene
+    class_class_curie: ClassVar[str] = "cfde_schema:BiosampleGene"
     class_name: ClassVar[str] = "biosample_gene"
-    class_model_uri: ClassVar[URIRef] = EX.BiosampleGene
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.BiosampleGene
 
     biosample_id_namespace: str = None
     biosample_local_id: str = None
-    gene: str = None
+    gene: Union[str, GeneId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.biosample_id_namespace):
@@ -1368,8 +1423,8 @@ class BiosampleGene(YAMLRoot):
 
         if self._is_empty(self.gene):
             self.MissingRequiredField("gene")
-        if not isinstance(self.gene, str):
-            self.gene = str(self.gene)
+        if not isinstance(self.gene, GeneId):
+            self.gene = GeneId(self.gene)
 
         super().__post_init__(**kwargs)
 
@@ -1381,24 +1436,24 @@ class PhenotypeGene(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.PhenotypeGene
-    class_class_curie: ClassVar[str] = "ex:PhenotypeGene"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.PhenotypeGene
+    class_class_curie: ClassVar[str] = "cfde_schema:PhenotypeGene"
     class_name: ClassVar[str] = "phenotype_gene"
-    class_model_uri: ClassVar[URIRef] = EX.PhenotypeGene
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.PhenotypeGene
 
-    phenotype: str = None
-    gene: str = None
+    phenotype: Union[str, PhenotypeId] = None
+    gene: Union[str, GeneId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.phenotype):
             self.MissingRequiredField("phenotype")
-        if not isinstance(self.phenotype, str):
-            self.phenotype = str(self.phenotype)
+        if not isinstance(self.phenotype, PhenotypeId):
+            self.phenotype = PhenotypeId(self.phenotype)
 
         if self._is_empty(self.gene):
             self.MissingRequiredField("gene")
-        if not isinstance(self.gene, str):
-            self.gene = str(self.gene)
+        if not isinstance(self.gene, GeneId):
+            self.gene = GeneId(self.gene)
 
         super().__post_init__(**kwargs)
 
@@ -1411,24 +1466,24 @@ class PhenotypeDisease(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.PhenotypeDisease
-    class_class_curie: ClassVar[str] = "ex:PhenotypeDisease"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.PhenotypeDisease
+    class_class_curie: ClassVar[str] = "cfde_schema:PhenotypeDisease"
     class_name: ClassVar[str] = "phenotype_disease"
-    class_model_uri: ClassVar[URIRef] = EX.PhenotypeDisease
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.PhenotypeDisease
 
-    phenotype: str = None
-    disease: str = None
+    phenotype: Union[str, PhenotypeId] = None
+    disease: Union[str, DiseaseId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.phenotype):
             self.MissingRequiredField("phenotype")
-        if not isinstance(self.phenotype, str):
-            self.phenotype = str(self.phenotype)
+        if not isinstance(self.phenotype, PhenotypeId):
+            self.phenotype = PhenotypeId(self.phenotype)
 
         if self._is_empty(self.disease):
             self.MissingRequiredField("disease")
-        if not isinstance(self.disease, str):
-            self.disease = str(self.disease)
+        if not isinstance(self.disease, DiseaseId):
+            self.disease = DiseaseId(self.disease)
 
         super().__post_init__(**kwargs)
 
@@ -1440,10 +1495,10 @@ class SubjectRace(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.SubjectRace
-    class_class_curie: ClassVar[str] = "ex:SubjectRace"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectRace
+    class_class_curie: ClassVar[str] = "cfde_schema:SubjectRace"
     class_name: ClassVar[str] = "subject_race"
-    class_model_uri: ClassVar[URIRef] = EX.SubjectRace
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectRace
 
     subject_id_namespace: str = None
     subject_local_id: str = None
@@ -1476,15 +1531,15 @@ class SubjectRoleTaxonomy(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.SubjectRoleTaxonomy
-    class_class_curie: ClassVar[str] = "ex:SubjectRoleTaxonomy"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectRoleTaxonomy
+    class_class_curie: ClassVar[str] = "cfde_schema:SubjectRoleTaxonomy"
     class_name: ClassVar[str] = "subject_role_taxonomy"
-    class_model_uri: ClassVar[URIRef] = EX.SubjectRoleTaxonomy
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.SubjectRoleTaxonomy
 
     subject_id_namespace: str = None
     subject_local_id: str = None
     role_id: Union[str, "RoleIdEnum"] = None
-    taxonomy_id: str = None
+    taxonomy_id: Union[str, NcbiTaxonomyId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.subject_id_namespace):
@@ -1504,8 +1559,8 @@ class SubjectRoleTaxonomy(YAMLRoot):
 
         if self._is_empty(self.taxonomy_id):
             self.MissingRequiredField("taxonomy_id")
-        if not isinstance(self.taxonomy_id, str):
-            self.taxonomy_id = str(self.taxonomy_id)
+        if not isinstance(self.taxonomy_id, NcbiTaxonomyId):
+            self.taxonomy_id = NcbiTaxonomyId(self.taxonomy_id)
 
         super().__post_init__(**kwargs)
 
@@ -1518,20 +1573,20 @@ class AssayType(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.AssayType
-    class_class_curie: ClassVar[str] = "ex:AssayType"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.AssayType
+    class_class_curie: ClassVar[str] = "cfde_schema:AssayType"
     class_name: ClassVar[str] = "assay_type"
-    class_model_uri: ClassVar[URIRef] = EX.AssayType
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.AssayType
 
-    id: str = None
+    id: Union[str, AssayTypeId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, AssayTypeId):
+            self.id = AssayTypeId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1551,20 +1606,20 @@ class AnalysisType(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.AnalysisType
-    class_class_curie: ClassVar[str] = "ex:AnalysisType"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.AnalysisType
+    class_class_curie: ClassVar[str] = "cfde_schema:AnalysisType"
     class_name: ClassVar[str] = "analysis_type"
-    class_model_uri: ClassVar[URIRef] = EX.AnalysisType
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.AnalysisType
 
-    id: str = None
+    id: Union[str, AnalysisTypeId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, AnalysisTypeId):
+            self.id = AnalysisTypeId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1583,12 +1638,12 @@ class NcbiTaxonomy(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.NcbiTaxonomy
-    class_class_curie: ClassVar[str] = "ex:NcbiTaxonomy"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.NcbiTaxonomy
+    class_class_curie: ClassVar[str] = "cfde_schema:NcbiTaxonomy"
     class_name: ClassVar[str] = "ncbi_taxonomy"
-    class_model_uri: ClassVar[URIRef] = EX.NcbiTaxonomy
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.NcbiTaxonomy
 
-    id: str = None
+    id: Union[str, NcbiTaxonomyId] = None
     clade: str = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
@@ -1596,8 +1651,8 @@ class NcbiTaxonomy(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, NcbiTaxonomyId):
+            self.id = NcbiTaxonomyId(self.id)
 
         if self._is_empty(self.clade):
             self.MissingRequiredField("clade")
@@ -1622,20 +1677,20 @@ class Anatomy(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Anatomy
-    class_class_curie: ClassVar[str] = "ex:Anatomy"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Anatomy
+    class_class_curie: ClassVar[str] = "cfde_schema:Anatomy"
     class_name: ClassVar[str] = "anatomy"
-    class_model_uri: ClassVar[URIRef] = EX.Anatomy
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Anatomy
 
-    id: str = None
+    id: Union[str, AnatomyId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, AnatomyId):
+            self.id = AnatomyId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1654,20 +1709,20 @@ class FileFormat(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.FileFormat
-    class_class_curie: ClassVar[str] = "ex:FileFormat"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileFormat
+    class_class_curie: ClassVar[str] = "cfde_schema:FileFormat"
     class_name: ClassVar[str] = "file_format"
-    class_model_uri: ClassVar[URIRef] = EX.FileFormat
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.FileFormat
 
-    id: str = None
+    id: Union[str, FileFormatId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, FileFormatId):
+            self.id = FileFormatId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1686,20 +1741,20 @@ class DataType(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.DataType
-    class_class_curie: ClassVar[str] = "ex:DataType"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.DataType
+    class_class_curie: ClassVar[str] = "cfde_schema:DataType"
     class_name: ClassVar[str] = "data_type"
-    class_model_uri: ClassVar[URIRef] = EX.DataType
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.DataType
 
-    id: str = None
+    id: Union[str, DataTypeId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, DataTypeId):
+            self.id = DataTypeId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1718,20 +1773,20 @@ class Disease(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Disease
-    class_class_curie: ClassVar[str] = "ex:Disease"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Disease
+    class_class_curie: ClassVar[str] = "cfde_schema:Disease"
     class_name: ClassVar[str] = "disease"
-    class_model_uri: ClassVar[URIRef] = EX.Disease
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Disease
 
-    id: str = None
+    id: Union[str, DiseaseId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, DiseaseId):
+            self.id = DiseaseId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1750,20 +1805,20 @@ class Phenotype(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Phenotype
-    class_class_curie: ClassVar[str] = "ex:Phenotype"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Phenotype
+    class_class_curie: ClassVar[str] = "cfde_schema:Phenotype"
     class_name: ClassVar[str] = "phenotype"
-    class_model_uri: ClassVar[URIRef] = EX.Phenotype
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Phenotype
 
-    id: str = None
+    id: Union[str, PhenotypeId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, PhenotypeId):
+            self.id = PhenotypeId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1785,20 +1840,20 @@ class Compound(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Compound
-    class_class_curie: ClassVar[str] = "ex:Compound"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Compound
+    class_class_curie: ClassVar[str] = "cfde_schema:Compound"
     class_name: ClassVar[str] = "compound"
-    class_model_uri: ClassVar[URIRef] = EX.Compound
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Compound
 
-    id: str = None
+    id: Union[str, CompoundId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, CompoundId):
+            self.id = CompoundId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1818,26 +1873,26 @@ class Substance(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Substance
-    class_class_curie: ClassVar[str] = "ex:Substance"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Substance
+    class_class_curie: ClassVar[str] = "cfde_schema:Substance"
     class_name: ClassVar[str] = "substance"
-    class_model_uri: ClassVar[URIRef] = EX.Substance
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Substance
 
-    id: str = None
-    compound: str = None
+    id: Union[str, SubstanceId] = None
+    compound: Union[str, CompoundId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, SubstanceId):
+            self.id = SubstanceId(self.id)
 
         if self._is_empty(self.compound):
             self.MissingRequiredField("compound")
-        if not isinstance(self.compound, str):
-            self.compound = str(self.compound)
+        if not isinstance(self.compound, CompoundId):
+            self.compound = CompoundId(self.compound)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1856,26 +1911,26 @@ class Gene(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Gene
-    class_class_curie: ClassVar[str] = "ex:Gene"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Gene
+    class_class_curie: ClassVar[str] = "cfde_schema:Gene"
     class_name: ClassVar[str] = "gene"
-    class_model_uri: ClassVar[URIRef] = EX.Gene
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Gene
 
-    id: str = None
-    organism: str = None
+    id: Union[str, GeneId] = None
+    organism: Union[str, NcbiTaxonomyId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, GeneId):
+            self.id = GeneId(self.id)
 
         if self._is_empty(self.organism):
             self.MissingRequiredField("organism")
-        if not isinstance(self.organism, str):
-            self.organism = str(self.organism)
+        if not isinstance(self.organism, NcbiTaxonomyId):
+            self.organism = NcbiTaxonomyId(self.organism)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1894,21 +1949,21 @@ class Protein(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.Protein
-    class_class_curie: ClassVar[str] = "ex:Protein"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.Protein
+    class_class_curie: ClassVar[str] = "cfde_schema:Protein"
     class_name: ClassVar[str] = "protein"
-    class_model_uri: ClassVar[URIRef] = EX.Protein
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.Protein
 
-    id: str = None
+    id: Union[str, ProteinId] = None
     description: Optional[str] = None
     synonyms: Optional[Union[str, List[str]]] = empty_list()
-    organism: Optional[str] = None
+    organism: Optional[Union[str, NcbiTaxonomyId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, ProteinId):
+            self.id = ProteinId(self.id)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -1917,8 +1972,8 @@ class Protein(YAMLRoot):
             self.synonyms = [self.synonyms] if self.synonyms is not None else []
         self.synonyms = [v if isinstance(v, str) else str(v) for v in self.synonyms]
 
-        if self.organism is not None and not isinstance(self.organism, str):
-            self.organism = str(self.organism)
+        if self.organism is not None and not isinstance(self.organism, NcbiTaxonomyId):
+            self.organism = NcbiTaxonomyId(self.organism)
 
         super().__post_init__(**kwargs)
 
@@ -1930,24 +1985,24 @@ class ProteinGene(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.ProteinGene
-    class_class_curie: ClassVar[str] = "ex:ProteinGene"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.ProteinGene
+    class_class_curie: ClassVar[str] = "cfde_schema:ProteinGene"
     class_name: ClassVar[str] = "protein_gene"
-    class_model_uri: ClassVar[URIRef] = EX.ProteinGene
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.ProteinGene
 
-    protein: str = None
-    gene: str = None
+    protein: Union[str, ProteinId] = None
+    gene: Union[str, GeneId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.protein):
             self.MissingRequiredField("protein")
-        if not isinstance(self.protein, str):
-            self.protein = str(self.protein)
+        if not isinstance(self.protein, ProteinId):
+            self.protein = ProteinId(self.protein)
 
         if self._is_empty(self.gene):
             self.MissingRequiredField("gene")
-        if not isinstance(self.gene, str):
-            self.gene = str(self.gene)
+        if not isinstance(self.gene, GeneId):
+            self.gene = GeneId(self.gene)
 
         super().__post_init__(**kwargs)
 
@@ -1959,20 +2014,20 @@ class IdNamespace(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EX.IdNamespace
-    class_class_curie: ClassVar[str] = "ex:IdNamespace"
+    class_class_uri: ClassVar[URIRef] = CFDE_SCHEMA.IdNamespace
+    class_class_curie: ClassVar[str] = "cfde_schema:IdNamespace"
     class_name: ClassVar[str] = "id_namespace"
-    class_model_uri: ClassVar[URIRef] = EX.IdNamespace
+    class_model_uri: ClassVar[URIRef] = CFDE_SCHEMA.IdNamespace
 
-    id: str = None
+    id: Union[str, IdNamespaceId] = None
     abbreviation: Optional[str] = None
     description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, str):
-            self.id = str(self.id)
+        if not isinstance(self.id, IdNamespaceId):
+            self.id = IdNamespaceId(self.id)
 
         if self.abbreviation is not None and not isinstance(self.abbreviation, str):
             self.abbreviation = str(self.abbreviation)
@@ -2129,616 +2184,616 @@ class RoleIdEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.file__id_namespace = Slot(uri=EX.id_namespace, name="file__id_namespace", curie=EX.curie('id_namespace'),
-                   model_uri=EX.file__id_namespace, domain=None, range=str)
+slots.file__id_namespace = Slot(uri=CFDE_SCHEMA.id_namespace, name="file__id_namespace", curie=CFDE_SCHEMA.curie('id_namespace'),
+                   model_uri=CFDE_SCHEMA.file__id_namespace, domain=None, range=Union[str, IdNamespaceId])
 
-slots.file__local_id = Slot(uri=EX.local_id, name="file__local_id", curie=EX.curie('local_id'),
-                   model_uri=EX.file__local_id, domain=None, range=str)
+slots.file__local_id = Slot(uri=CFDE_SCHEMA.local_id, name="file__local_id", curie=CFDE_SCHEMA.curie('local_id'),
+                   model_uri=CFDE_SCHEMA.file__local_id, domain=None, range=str)
 
-slots.file__project_id_namespace = Slot(uri=EX.project_id_namespace, name="file__project_id_namespace", curie=EX.curie('project_id_namespace'),
-                   model_uri=EX.file__project_id_namespace, domain=None, range=str)
+slots.file__project_id_namespace = Slot(uri=CFDE_SCHEMA.project_id_namespace, name="file__project_id_namespace", curie=CFDE_SCHEMA.curie('project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.file__project_id_namespace, domain=None, range=str)
 
-slots.file__project_local_id = Slot(uri=EX.project_local_id, name="file__project_local_id", curie=EX.curie('project_local_id'),
-                   model_uri=EX.file__project_local_id, domain=None, range=str)
+slots.file__project_local_id = Slot(uri=CFDE_SCHEMA.project_local_id, name="file__project_local_id", curie=CFDE_SCHEMA.curie('project_local_id'),
+                   model_uri=CFDE_SCHEMA.file__project_local_id, domain=None, range=str)
 
-slots.file__persistent_id = Slot(uri=EX.persistent_id, name="file__persistent_id", curie=EX.curie('persistent_id'),
-                   model_uri=EX.file__persistent_id, domain=None, range=Optional[str])
+slots.file__persistent_id = Slot(uri=CFDE_SCHEMA.persistent_id, name="file__persistent_id", curie=CFDE_SCHEMA.curie('persistent_id'),
+                   model_uri=CFDE_SCHEMA.file__persistent_id, domain=None, range=Optional[str])
 
-slots.file__creation_time = Slot(uri=EX.creation_time, name="file__creation_time", curie=EX.curie('creation_time'),
-                   model_uri=EX.file__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.file__creation_time = Slot(uri=CFDE_SCHEMA.creation_time, name="file__creation_time", curie=CFDE_SCHEMA.curie('creation_time'),
+                   model_uri=CFDE_SCHEMA.file__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.file__size_in_bytes = Slot(uri=EX.size_in_bytes, name="file__size_in_bytes", curie=EX.curie('size_in_bytes'),
-                   model_uri=EX.file__size_in_bytes, domain=None, range=Optional[int])
+slots.file__size_in_bytes = Slot(uri=CFDE_SCHEMA.size_in_bytes, name="file__size_in_bytes", curie=CFDE_SCHEMA.curie('size_in_bytes'),
+                   model_uri=CFDE_SCHEMA.file__size_in_bytes, domain=None, range=Optional[int])
 
-slots.file__uncompressed_size_in_bytes = Slot(uri=EX.uncompressed_size_in_bytes, name="file__uncompressed_size_in_bytes", curie=EX.curie('uncompressed_size_in_bytes'),
-                   model_uri=EX.file__uncompressed_size_in_bytes, domain=None, range=Optional[int])
+slots.file__uncompressed_size_in_bytes = Slot(uri=CFDE_SCHEMA.uncompressed_size_in_bytes, name="file__uncompressed_size_in_bytes", curie=CFDE_SCHEMA.curie('uncompressed_size_in_bytes'),
+                   model_uri=CFDE_SCHEMA.file__uncompressed_size_in_bytes, domain=None, range=Optional[int])
 
-slots.file__sha256 = Slot(uri=EX.sha256, name="file__sha256", curie=EX.curie('sha256'),
-                   model_uri=EX.file__sha256, domain=None, range=Optional[str])
+slots.file__sha256 = Slot(uri=CFDE_SCHEMA.sha256, name="file__sha256", curie=CFDE_SCHEMA.curie('sha256'),
+                   model_uri=CFDE_SCHEMA.file__sha256, domain=None, range=Optional[str])
 
-slots.file__md5 = Slot(uri=EX.md5, name="file__md5", curie=EX.curie('md5'),
-                   model_uri=EX.file__md5, domain=None, range=Optional[str])
+slots.file__md5 = Slot(uri=CFDE_SCHEMA.md5, name="file__md5", curie=CFDE_SCHEMA.curie('md5'),
+                   model_uri=CFDE_SCHEMA.file__md5, domain=None, range=Optional[str])
 
-slots.file__filename = Slot(uri=EX.filename, name="file__filename", curie=EX.curie('filename'),
-                   model_uri=EX.file__filename, domain=None, range=Optional[str],
+slots.file__filename = Slot(uri=CFDE_SCHEMA.filename, name="file__filename", curie=CFDE_SCHEMA.curie('filename'),
+                   model_uri=CFDE_SCHEMA.file__filename, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[^/\:]+$'))
 
-slots.file__file_format = Slot(uri=EX.file_format, name="file__file_format", curie=EX.curie('file_format'),
-                   model_uri=EX.file__file_format, domain=None, range=Optional[str])
+slots.file__file_format = Slot(uri=CFDE_SCHEMA.file_format, name="file__file_format", curie=CFDE_SCHEMA.curie('file_format'),
+                   model_uri=CFDE_SCHEMA.file__file_format, domain=None, range=Optional[Union[str, FileFormatId]])
 
-slots.file__compression_format = Slot(uri=EX.compression_format, name="file__compression_format", curie=EX.curie('compression_format'),
-                   model_uri=EX.file__compression_format, domain=None, range=Optional[str])
+slots.file__compression_format = Slot(uri=CFDE_SCHEMA.compression_format, name="file__compression_format", curie=CFDE_SCHEMA.curie('compression_format'),
+                   model_uri=CFDE_SCHEMA.file__compression_format, domain=None, range=Optional[Union[str, FileFormatId]])
 
-slots.file__data_type = Slot(uri=EX.data_type, name="file__data_type", curie=EX.curie('data_type'),
-                   model_uri=EX.file__data_type, domain=None, range=Optional[str])
+slots.file__data_type = Slot(uri=CFDE_SCHEMA.data_type, name="file__data_type", curie=CFDE_SCHEMA.curie('data_type'),
+                   model_uri=CFDE_SCHEMA.file__data_type, domain=None, range=Optional[Union[str, DataTypeId]])
 
-slots.file__assay_type = Slot(uri=EX.assay_type, name="file__assay_type", curie=EX.curie('assay_type'),
-                   model_uri=EX.file__assay_type, domain=None, range=Optional[str])
+slots.file__assay_type = Slot(uri=CFDE_SCHEMA.assay_type, name="file__assay_type", curie=CFDE_SCHEMA.curie('assay_type'),
+                   model_uri=CFDE_SCHEMA.file__assay_type, domain=None, range=Optional[Union[str, AssayTypeId]])
 
-slots.file__analysis_type = Slot(uri=EX.analysis_type, name="file__analysis_type", curie=EX.curie('analysis_type'),
-                   model_uri=EX.file__analysis_type, domain=None, range=Optional[str])
+slots.file__analysis_type = Slot(uri=CFDE_SCHEMA.analysis_type, name="file__analysis_type", curie=CFDE_SCHEMA.curie('analysis_type'),
+                   model_uri=CFDE_SCHEMA.file__analysis_type, domain=None, range=Optional[Union[str, AnalysisTypeId]])
 
-slots.file__mime_type = Slot(uri=EX.mime_type, name="file__mime_type", curie=EX.curie('mime_type'),
-                   model_uri=EX.file__mime_type, domain=None, range=Optional[str])
+slots.file__mime_type = Slot(uri=CFDE_SCHEMA.mime_type, name="file__mime_type", curie=CFDE_SCHEMA.curie('mime_type'),
+                   model_uri=CFDE_SCHEMA.file__mime_type, domain=None, range=Optional[str])
 
-slots.file__bundle_collection_id_namespace = Slot(uri=EX.bundle_collection_id_namespace, name="file__bundle_collection_id_namespace", curie=EX.curie('bundle_collection_id_namespace'),
-                   model_uri=EX.file__bundle_collection_id_namespace, domain=None, range=Optional[str])
+slots.file__bundle_collection_id_namespace = Slot(uri=CFDE_SCHEMA.bundle_collection_id_namespace, name="file__bundle_collection_id_namespace", curie=CFDE_SCHEMA.curie('bundle_collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.file__bundle_collection_id_namespace, domain=None, range=Optional[str])
 
-slots.file__bundle_collection_local_id = Slot(uri=EX.bundle_collection_local_id, name="file__bundle_collection_local_id", curie=EX.curie('bundle_collection_local_id'),
-                   model_uri=EX.file__bundle_collection_local_id, domain=None, range=Optional[str])
+slots.file__bundle_collection_local_id = Slot(uri=CFDE_SCHEMA.bundle_collection_local_id, name="file__bundle_collection_local_id", curie=CFDE_SCHEMA.curie('bundle_collection_local_id'),
+                   model_uri=CFDE_SCHEMA.file__bundle_collection_local_id, domain=None, range=Optional[str])
 
-slots.file__dbgap_study_id = Slot(uri=EX.dbgap_study_id, name="file__dbgap_study_id", curie=EX.curie('dbgap_study_id'),
-                   model_uri=EX.file__dbgap_study_id, domain=None, range=Optional[str])
+slots.file__dbgap_study_id = Slot(uri=CFDE_SCHEMA.dbgap_study_id, name="file__dbgap_study_id", curie=CFDE_SCHEMA.curie('dbgap_study_id'),
+                   model_uri=CFDE_SCHEMA.file__dbgap_study_id, domain=None, range=Optional[str])
 
-slots.biosample__id_namespace = Slot(uri=EX.id_namespace, name="biosample__id_namespace", curie=EX.curie('id_namespace'),
-                   model_uri=EX.biosample__id_namespace, domain=None, range=str)
+slots.biosample__id_namespace = Slot(uri=CFDE_SCHEMA.id_namespace, name="biosample__id_namespace", curie=CFDE_SCHEMA.curie('id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosample__id_namespace, domain=None, range=Union[str, IdNamespaceId])
 
-slots.biosample__local_id = Slot(uri=EX.local_id, name="biosample__local_id", curie=EX.curie('local_id'),
-                   model_uri=EX.biosample__local_id, domain=None, range=str)
+slots.biosample__local_id = Slot(uri=CFDE_SCHEMA.local_id, name="biosample__local_id", curie=CFDE_SCHEMA.curie('local_id'),
+                   model_uri=CFDE_SCHEMA.biosample__local_id, domain=None, range=str)
 
-slots.biosample__project_id_namespace = Slot(uri=EX.project_id_namespace, name="biosample__project_id_namespace", curie=EX.curie('project_id_namespace'),
-                   model_uri=EX.biosample__project_id_namespace, domain=None, range=str)
+slots.biosample__project_id_namespace = Slot(uri=CFDE_SCHEMA.project_id_namespace, name="biosample__project_id_namespace", curie=CFDE_SCHEMA.curie('project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosample__project_id_namespace, domain=None, range=str)
 
-slots.biosample__project_local_id = Slot(uri=EX.project_local_id, name="biosample__project_local_id", curie=EX.curie('project_local_id'),
-                   model_uri=EX.biosample__project_local_id, domain=None, range=str)
+slots.biosample__project_local_id = Slot(uri=CFDE_SCHEMA.project_local_id, name="biosample__project_local_id", curie=CFDE_SCHEMA.curie('project_local_id'),
+                   model_uri=CFDE_SCHEMA.biosample__project_local_id, domain=None, range=str)
 
-slots.biosample__persistent_id = Slot(uri=EX.persistent_id, name="biosample__persistent_id", curie=EX.curie('persistent_id'),
-                   model_uri=EX.biosample__persistent_id, domain=None, range=Optional[str])
+slots.biosample__persistent_id = Slot(uri=CFDE_SCHEMA.persistent_id, name="biosample__persistent_id", curie=CFDE_SCHEMA.curie('persistent_id'),
+                   model_uri=CFDE_SCHEMA.biosample__persistent_id, domain=None, range=Optional[str])
 
-slots.biosample__creation_time = Slot(uri=EX.creation_time, name="biosample__creation_time", curie=EX.curie('creation_time'),
-                   model_uri=EX.biosample__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.biosample__creation_time = Slot(uri=CFDE_SCHEMA.creation_time, name="biosample__creation_time", curie=CFDE_SCHEMA.curie('creation_time'),
+                   model_uri=CFDE_SCHEMA.biosample__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.biosample__assay_type = Slot(uri=EX.assay_type, name="biosample__assay_type", curie=EX.curie('assay_type'),
-                   model_uri=EX.biosample__assay_type, domain=None, range=Optional[str])
+slots.biosample__assay_type = Slot(uri=CFDE_SCHEMA.assay_type, name="biosample__assay_type", curie=CFDE_SCHEMA.curie('assay_type'),
+                   model_uri=CFDE_SCHEMA.biosample__assay_type, domain=None, range=Optional[Union[str, AssayTypeId]])
 
-slots.biosample__anatomy = Slot(uri=EX.anatomy, name="biosample__anatomy", curie=EX.curie('anatomy'),
-                   model_uri=EX.biosample__anatomy, domain=None, range=Optional[str])
+slots.biosample__anatomy = Slot(uri=CFDE_SCHEMA.anatomy, name="biosample__anatomy", curie=CFDE_SCHEMA.curie('anatomy'),
+                   model_uri=CFDE_SCHEMA.biosample__anatomy, domain=None, range=Optional[Union[str, AnatomyId]])
 
-slots.subject__id_namespace = Slot(uri=EX.id_namespace, name="subject__id_namespace", curie=EX.curie('id_namespace'),
-                   model_uri=EX.subject__id_namespace, domain=None, range=str)
+slots.subject__id_namespace = Slot(uri=CFDE_SCHEMA.id_namespace, name="subject__id_namespace", curie=CFDE_SCHEMA.curie('id_namespace'),
+                   model_uri=CFDE_SCHEMA.subject__id_namespace, domain=None, range=Union[str, IdNamespaceId])
 
-slots.subject__local_id = Slot(uri=EX.local_id, name="subject__local_id", curie=EX.curie('local_id'),
-                   model_uri=EX.subject__local_id, domain=None, range=str)
+slots.subject__local_id = Slot(uri=CFDE_SCHEMA.local_id, name="subject__local_id", curie=CFDE_SCHEMA.curie('local_id'),
+                   model_uri=CFDE_SCHEMA.subject__local_id, domain=None, range=str)
 
-slots.subject__project_id_namespace = Slot(uri=EX.project_id_namespace, name="subject__project_id_namespace", curie=EX.curie('project_id_namespace'),
-                   model_uri=EX.subject__project_id_namespace, domain=None, range=str)
+slots.subject__project_id_namespace = Slot(uri=CFDE_SCHEMA.project_id_namespace, name="subject__project_id_namespace", curie=CFDE_SCHEMA.curie('project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subject__project_id_namespace, domain=None, range=str)
 
-slots.subject__project_local_id = Slot(uri=EX.project_local_id, name="subject__project_local_id", curie=EX.curie('project_local_id'),
-                   model_uri=EX.subject__project_local_id, domain=None, range=str)
+slots.subject__project_local_id = Slot(uri=CFDE_SCHEMA.project_local_id, name="subject__project_local_id", curie=CFDE_SCHEMA.curie('project_local_id'),
+                   model_uri=CFDE_SCHEMA.subject__project_local_id, domain=None, range=str)
 
-slots.subject__persistent_id = Slot(uri=EX.persistent_id, name="subject__persistent_id", curie=EX.curie('persistent_id'),
-                   model_uri=EX.subject__persistent_id, domain=None, range=Optional[str])
+slots.subject__persistent_id = Slot(uri=CFDE_SCHEMA.persistent_id, name="subject__persistent_id", curie=CFDE_SCHEMA.curie('persistent_id'),
+                   model_uri=CFDE_SCHEMA.subject__persistent_id, domain=None, range=Optional[str])
 
-slots.subject__creation_time = Slot(uri=EX.creation_time, name="subject__creation_time", curie=EX.curie('creation_time'),
-                   model_uri=EX.subject__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.subject__creation_time = Slot(uri=CFDE_SCHEMA.creation_time, name="subject__creation_time", curie=CFDE_SCHEMA.curie('creation_time'),
+                   model_uri=CFDE_SCHEMA.subject__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.subject__granularity = Slot(uri=EX.granularity, name="subject__granularity", curie=EX.curie('granularity'),
-                   model_uri=EX.subject__granularity, domain=None, range=Union[str, "GranularityEnum"])
+slots.subject__granularity = Slot(uri=CFDE_SCHEMA.granularity, name="subject__granularity", curie=CFDE_SCHEMA.curie('granularity'),
+                   model_uri=CFDE_SCHEMA.subject__granularity, domain=None, range=Union[str, "GranularityEnum"])
 
-slots.subject__sex = Slot(uri=EX.sex, name="subject__sex", curie=EX.curie('sex'),
-                   model_uri=EX.subject__sex, domain=None, range=Optional[Union[str, "SexEnum"]])
+slots.subject__sex = Slot(uri=CFDE_SCHEMA.sex, name="subject__sex", curie=CFDE_SCHEMA.curie('sex'),
+                   model_uri=CFDE_SCHEMA.subject__sex, domain=None, range=Optional[Union[str, "SexEnum"]])
 
-slots.subject__ethnicity = Slot(uri=EX.ethnicity, name="subject__ethnicity", curie=EX.curie('ethnicity'),
-                   model_uri=EX.subject__ethnicity, domain=None, range=Optional[Union[str, "EthnicityEnum"]])
+slots.subject__ethnicity = Slot(uri=CFDE_SCHEMA.ethnicity, name="subject__ethnicity", curie=CFDE_SCHEMA.curie('ethnicity'),
+                   model_uri=CFDE_SCHEMA.subject__ethnicity, domain=None, range=Optional[Union[str, "EthnicityEnum"]])
 
-slots.subject__age_at_enrollment = Slot(uri=EX.age_at_enrollment, name="subject__age_at_enrollment", curie=EX.curie('age_at_enrollment'),
-                   model_uri=EX.subject__age_at_enrollment, domain=None, range=Optional[Decimal])
+slots.subject__age_at_enrollment = Slot(uri=CFDE_SCHEMA.age_at_enrollment, name="subject__age_at_enrollment", curie=CFDE_SCHEMA.curie('age_at_enrollment'),
+                   model_uri=CFDE_SCHEMA.subject__age_at_enrollment, domain=None, range=Optional[Decimal])
 
-slots.dcc__id = Slot(uri=EX.id, name="dcc__id", curie=EX.curie('id'),
-                   model_uri=EX.dcc__id, domain=None, range=str)
+slots.dcc__id = Slot(uri=CFDE_SCHEMA.id, name="dcc__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.dcc__id, domain=None, range=URIRef)
 
-slots.dcc__dcc_name = Slot(uri=EX.dcc_name, name="dcc__dcc_name", curie=EX.curie('dcc_name'),
-                   model_uri=EX.dcc__dcc_name, domain=None, range=str)
+slots.dcc__dcc_name = Slot(uri=CFDE_SCHEMA.dcc_name, name="dcc__dcc_name", curie=CFDE_SCHEMA.curie('dcc_name'),
+                   model_uri=CFDE_SCHEMA.dcc__dcc_name, domain=None, range=str)
 
-slots.dcc__dcc_abbreviation = Slot(uri=EX.dcc_abbreviation, name="dcc__dcc_abbreviation", curie=EX.curie('dcc_abbreviation'),
-                   model_uri=EX.dcc__dcc_abbreviation, domain=None, range=str,
+slots.dcc__dcc_abbreviation = Slot(uri=CFDE_SCHEMA.dcc_abbreviation, name="dcc__dcc_abbreviation", curie=CFDE_SCHEMA.curie('dcc_abbreviation'),
+                   model_uri=CFDE_SCHEMA.dcc__dcc_abbreviation, domain=None, range=str,
                    pattern=re.compile(r'^[a-zA-Z0-9_]+$'))
 
-slots.dcc__dcc_description = Slot(uri=EX.dcc_description, name="dcc__dcc_description", curie=EX.curie('dcc_description'),
-                   model_uri=EX.dcc__dcc_description, domain=None, range=Optional[str])
+slots.dcc__dcc_description = Slot(uri=CFDE_SCHEMA.dcc_description, name="dcc__dcc_description", curie=CFDE_SCHEMA.curie('dcc_description'),
+                   model_uri=CFDE_SCHEMA.dcc__dcc_description, domain=None, range=Optional[str])
 
-slots.dcc__contact_email = Slot(uri=EX.contact_email, name="dcc__contact_email", curie=EX.curie('contact_email'),
-                   model_uri=EX.dcc__contact_email, domain=None, range=str)
+slots.dcc__contact_email = Slot(uri=CFDE_SCHEMA.contact_email, name="dcc__contact_email", curie=CFDE_SCHEMA.curie('contact_email'),
+                   model_uri=CFDE_SCHEMA.dcc__contact_email, domain=None, range=str)
 
-slots.dcc__contact_name = Slot(uri=EX.contact_name, name="dcc__contact_name", curie=EX.curie('contact_name'),
-                   model_uri=EX.dcc__contact_name, domain=None, range=str)
+slots.dcc__contact_name = Slot(uri=CFDE_SCHEMA.contact_name, name="dcc__contact_name", curie=CFDE_SCHEMA.curie('contact_name'),
+                   model_uri=CFDE_SCHEMA.dcc__contact_name, domain=None, range=str)
 
-slots.dcc__dcc_url = Slot(uri=EX.dcc_url, name="dcc__dcc_url", curie=EX.curie('dcc_url'),
-                   model_uri=EX.dcc__dcc_url, domain=None, range=str)
+slots.dcc__dcc_url = Slot(uri=CFDE_SCHEMA.dcc_url, name="dcc__dcc_url", curie=CFDE_SCHEMA.curie('dcc_url'),
+                   model_uri=CFDE_SCHEMA.dcc__dcc_url, domain=None, range=str)
 
-slots.dcc__project_id_namespace = Slot(uri=EX.project_id_namespace, name="dcc__project_id_namespace", curie=EX.curie('project_id_namespace'),
-                   model_uri=EX.dcc__project_id_namespace, domain=None, range=str)
+slots.dcc__project_id_namespace = Slot(uri=CFDE_SCHEMA.project_id_namespace, name="dcc__project_id_namespace", curie=CFDE_SCHEMA.curie('project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.dcc__project_id_namespace, domain=None, range=str)
 
-slots.dcc__project_local_id = Slot(uri=EX.project_local_id, name="dcc__project_local_id", curie=EX.curie('project_local_id'),
-                   model_uri=EX.dcc__project_local_id, domain=None, range=str)
+slots.dcc__project_local_id = Slot(uri=CFDE_SCHEMA.project_local_id, name="dcc__project_local_id", curie=CFDE_SCHEMA.curie('project_local_id'),
+                   model_uri=CFDE_SCHEMA.dcc__project_local_id, domain=None, range=str)
 
-slots.project__id_namespace = Slot(uri=EX.id_namespace, name="project__id_namespace", curie=EX.curie('id_namespace'),
-                   model_uri=EX.project__id_namespace, domain=None, range=str)
+slots.project__id_namespace = Slot(uri=CFDE_SCHEMA.id_namespace, name="project__id_namespace", curie=CFDE_SCHEMA.curie('id_namespace'),
+                   model_uri=CFDE_SCHEMA.project__id_namespace, domain=None, range=Union[str, IdNamespaceId])
 
-slots.project__local_id = Slot(uri=EX.local_id, name="project__local_id", curie=EX.curie('local_id'),
-                   model_uri=EX.project__local_id, domain=None, range=str)
+slots.project__local_id = Slot(uri=CFDE_SCHEMA.local_id, name="project__local_id", curie=CFDE_SCHEMA.curie('local_id'),
+                   model_uri=CFDE_SCHEMA.project__local_id, domain=None, range=str)
 
-slots.project__persistent_id = Slot(uri=EX.persistent_id, name="project__persistent_id", curie=EX.curie('persistent_id'),
-                   model_uri=EX.project__persistent_id, domain=None, range=Optional[str])
+slots.project__persistent_id = Slot(uri=CFDE_SCHEMA.persistent_id, name="project__persistent_id", curie=CFDE_SCHEMA.curie('persistent_id'),
+                   model_uri=CFDE_SCHEMA.project__persistent_id, domain=None, range=Optional[str])
 
-slots.project__creation_time = Slot(uri=EX.creation_time, name="project__creation_time", curie=EX.curie('creation_time'),
-                   model_uri=EX.project__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.project__creation_time = Slot(uri=CFDE_SCHEMA.creation_time, name="project__creation_time", curie=CFDE_SCHEMA.curie('creation_time'),
+                   model_uri=CFDE_SCHEMA.project__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.project__abbreviation = Slot(uri=EX.abbreviation, name="project__abbreviation", curie=EX.curie('abbreviation'),
-                   model_uri=EX.project__abbreviation, domain=None, range=Optional[str],
+slots.project__abbreviation = Slot(uri=CFDE_SCHEMA.abbreviation, name="project__abbreviation", curie=CFDE_SCHEMA.curie('abbreviation'),
+                   model_uri=CFDE_SCHEMA.project__abbreviation, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[a-zA-Z0-9_]+$'))
 
-slots.project__description = Slot(uri=EX.description, name="project__description", curie=EX.curie('description'),
-                   model_uri=EX.project__description, domain=None, range=Optional[str])
+slots.project__description = Slot(uri=CFDE_SCHEMA.description, name="project__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.project__description, domain=None, range=Optional[str])
 
-slots.projectInProject__parent_project_id_namespace = Slot(uri=EX.parent_project_id_namespace, name="projectInProject__parent_project_id_namespace", curie=EX.curie('parent_project_id_namespace'),
-                   model_uri=EX.projectInProject__parent_project_id_namespace, domain=None, range=str)
+slots.projectInProject__parent_project_id_namespace = Slot(uri=CFDE_SCHEMA.parent_project_id_namespace, name="projectInProject__parent_project_id_namespace", curie=CFDE_SCHEMA.curie('parent_project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.projectInProject__parent_project_id_namespace, domain=None, range=str)
 
-slots.projectInProject__parent_project_local_id = Slot(uri=EX.parent_project_local_id, name="projectInProject__parent_project_local_id", curie=EX.curie('parent_project_local_id'),
-                   model_uri=EX.projectInProject__parent_project_local_id, domain=None, range=str)
+slots.projectInProject__parent_project_local_id = Slot(uri=CFDE_SCHEMA.parent_project_local_id, name="projectInProject__parent_project_local_id", curie=CFDE_SCHEMA.curie('parent_project_local_id'),
+                   model_uri=CFDE_SCHEMA.projectInProject__parent_project_local_id, domain=None, range=str)
 
-slots.projectInProject__child_project_id_namespace = Slot(uri=EX.child_project_id_namespace, name="projectInProject__child_project_id_namespace", curie=EX.curie('child_project_id_namespace'),
-                   model_uri=EX.projectInProject__child_project_id_namespace, domain=None, range=str)
+slots.projectInProject__child_project_id_namespace = Slot(uri=CFDE_SCHEMA.child_project_id_namespace, name="projectInProject__child_project_id_namespace", curie=CFDE_SCHEMA.curie('child_project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.projectInProject__child_project_id_namespace, domain=None, range=str)
 
-slots.projectInProject__child_project_local_id = Slot(uri=EX.child_project_local_id, name="projectInProject__child_project_local_id", curie=EX.curie('child_project_local_id'),
-                   model_uri=EX.projectInProject__child_project_local_id, domain=None, range=str)
+slots.projectInProject__child_project_local_id = Slot(uri=CFDE_SCHEMA.child_project_local_id, name="projectInProject__child_project_local_id", curie=CFDE_SCHEMA.curie('child_project_local_id'),
+                   model_uri=CFDE_SCHEMA.projectInProject__child_project_local_id, domain=None, range=str)
 
-slots.collection__id_namespace = Slot(uri=EX.id_namespace, name="collection__id_namespace", curie=EX.curie('id_namespace'),
-                   model_uri=EX.collection__id_namespace, domain=None, range=str)
+slots.collection__id_namespace = Slot(uri=CFDE_SCHEMA.id_namespace, name="collection__id_namespace", curie=CFDE_SCHEMA.curie('id_namespace'),
+                   model_uri=CFDE_SCHEMA.collection__id_namespace, domain=None, range=Union[str, IdNamespaceId])
 
-slots.collection__local_id = Slot(uri=EX.local_id, name="collection__local_id", curie=EX.curie('local_id'),
-                   model_uri=EX.collection__local_id, domain=None, range=str)
+slots.collection__local_id = Slot(uri=CFDE_SCHEMA.local_id, name="collection__local_id", curie=CFDE_SCHEMA.curie('local_id'),
+                   model_uri=CFDE_SCHEMA.collection__local_id, domain=None, range=str)
 
-slots.collection__persistent_id = Slot(uri=EX.persistent_id, name="collection__persistent_id", curie=EX.curie('persistent_id'),
-                   model_uri=EX.collection__persistent_id, domain=None, range=Optional[str])
+slots.collection__persistent_id = Slot(uri=CFDE_SCHEMA.persistent_id, name="collection__persistent_id", curie=CFDE_SCHEMA.curie('persistent_id'),
+                   model_uri=CFDE_SCHEMA.collection__persistent_id, domain=None, range=Optional[str])
 
-slots.collection__creation_time = Slot(uri=EX.creation_time, name="collection__creation_time", curie=EX.curie('creation_time'),
-                   model_uri=EX.collection__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.collection__creation_time = Slot(uri=CFDE_SCHEMA.creation_time, name="collection__creation_time", curie=CFDE_SCHEMA.curie('creation_time'),
+                   model_uri=CFDE_SCHEMA.collection__creation_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
-slots.collection__abbreviation = Slot(uri=EX.abbreviation, name="collection__abbreviation", curie=EX.curie('abbreviation'),
-                   model_uri=EX.collection__abbreviation, domain=None, range=Optional[str],
+slots.collection__abbreviation = Slot(uri=CFDE_SCHEMA.abbreviation, name="collection__abbreviation", curie=CFDE_SCHEMA.curie('abbreviation'),
+                   model_uri=CFDE_SCHEMA.collection__abbreviation, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[a-zA-Z0-9_]+$'))
 
-slots.collection__description = Slot(uri=EX.description, name="collection__description", curie=EX.curie('description'),
-                   model_uri=EX.collection__description, domain=None, range=Optional[str])
+slots.collection__description = Slot(uri=CFDE_SCHEMA.description, name="collection__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.collection__description, domain=None, range=Optional[str])
 
-slots.collection__has_time_series_data = Slot(uri=EX.has_time_series_data, name="collection__has_time_series_data", curie=EX.curie('has_time_series_data'),
-                   model_uri=EX.collection__has_time_series_data, domain=None, range=Optional[Union[bool, Bool]])
+slots.collection__has_time_series_data = Slot(uri=CFDE_SCHEMA.has_time_series_data, name="collection__has_time_series_data", curie=CFDE_SCHEMA.curie('has_time_series_data'),
+                   model_uri=CFDE_SCHEMA.collection__has_time_series_data, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.collectionInCollection__superset_collection_id_namespace = Slot(uri=EX.superset_collection_id_namespace, name="collectionInCollection__superset_collection_id_namespace", curie=EX.curie('superset_collection_id_namespace'),
-                   model_uri=EX.collectionInCollection__superset_collection_id_namespace, domain=None, range=str)
+slots.collectionInCollection__superset_collection_id_namespace = Slot(uri=CFDE_SCHEMA.superset_collection_id_namespace, name="collectionInCollection__superset_collection_id_namespace", curie=CFDE_SCHEMA.curie('superset_collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionInCollection__superset_collection_id_namespace, domain=None, range=str)
 
-slots.collectionInCollection__superset_collection_local_id = Slot(uri=EX.superset_collection_local_id, name="collectionInCollection__superset_collection_local_id", curie=EX.curie('superset_collection_local_id'),
-                   model_uri=EX.collectionInCollection__superset_collection_local_id, domain=None, range=str)
+slots.collectionInCollection__superset_collection_local_id = Slot(uri=CFDE_SCHEMA.superset_collection_local_id, name="collectionInCollection__superset_collection_local_id", curie=CFDE_SCHEMA.curie('superset_collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionInCollection__superset_collection_local_id, domain=None, range=str)
 
-slots.collectionInCollection__subset_collection_id_namespace = Slot(uri=EX.subset_collection_id_namespace, name="collectionInCollection__subset_collection_id_namespace", curie=EX.curie('subset_collection_id_namespace'),
-                   model_uri=EX.collectionInCollection__subset_collection_id_namespace, domain=None, range=str)
+slots.collectionInCollection__subset_collection_id_namespace = Slot(uri=CFDE_SCHEMA.subset_collection_id_namespace, name="collectionInCollection__subset_collection_id_namespace", curie=CFDE_SCHEMA.curie('subset_collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionInCollection__subset_collection_id_namespace, domain=None, range=str)
 
-slots.collectionInCollection__subset_collection_local_id = Slot(uri=EX.subset_collection_local_id, name="collectionInCollection__subset_collection_local_id", curie=EX.curie('subset_collection_local_id'),
-                   model_uri=EX.collectionInCollection__subset_collection_local_id, domain=None, range=str)
+slots.collectionInCollection__subset_collection_local_id = Slot(uri=CFDE_SCHEMA.subset_collection_local_id, name="collectionInCollection__subset_collection_local_id", curie=CFDE_SCHEMA.curie('subset_collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionInCollection__subset_collection_local_id, domain=None, range=str)
 
-slots.fileDescribesCollection__file_id_namespace = Slot(uri=EX.file_id_namespace, name="fileDescribesCollection__file_id_namespace", curie=EX.curie('file_id_namespace'),
-                   model_uri=EX.fileDescribesCollection__file_id_namespace, domain=None, range=str)
+slots.fileDescribesCollection__file_id_namespace = Slot(uri=CFDE_SCHEMA.file_id_namespace, name="fileDescribesCollection__file_id_namespace", curie=CFDE_SCHEMA.curie('file_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileDescribesCollection__file_id_namespace, domain=None, range=str)
 
-slots.fileDescribesCollection__file_local_id = Slot(uri=EX.file_local_id, name="fileDescribesCollection__file_local_id", curie=EX.curie('file_local_id'),
-                   model_uri=EX.fileDescribesCollection__file_local_id, domain=None, range=str)
+slots.fileDescribesCollection__file_local_id = Slot(uri=CFDE_SCHEMA.file_local_id, name="fileDescribesCollection__file_local_id", curie=CFDE_SCHEMA.curie('file_local_id'),
+                   model_uri=CFDE_SCHEMA.fileDescribesCollection__file_local_id, domain=None, range=str)
 
-slots.fileDescribesCollection__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="fileDescribesCollection__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.fileDescribesCollection__collection_id_namespace, domain=None, range=str)
+slots.fileDescribesCollection__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="fileDescribesCollection__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileDescribesCollection__collection_id_namespace, domain=None, range=str)
 
-slots.fileDescribesCollection__collection_local_id = Slot(uri=EX.collection_local_id, name="fileDescribesCollection__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.fileDescribesCollection__collection_local_id, domain=None, range=str)
+slots.fileDescribesCollection__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="fileDescribesCollection__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.fileDescribesCollection__collection_local_id, domain=None, range=str)
 
-slots.collectionDefinedByProject__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionDefinedByProject__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionDefinedByProject__collection_id_namespace, domain=None, range=str)
+slots.collectionDefinedByProject__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionDefinedByProject__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionDefinedByProject__collection_id_namespace, domain=None, range=str)
 
-slots.collectionDefinedByProject__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionDefinedByProject__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionDefinedByProject__collection_local_id, domain=None, range=str)
+slots.collectionDefinedByProject__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionDefinedByProject__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionDefinedByProject__collection_local_id, domain=None, range=str)
 
-slots.collectionDefinedByProject__project_id_namespace = Slot(uri=EX.project_id_namespace, name="collectionDefinedByProject__project_id_namespace", curie=EX.curie('project_id_namespace'),
-                   model_uri=EX.collectionDefinedByProject__project_id_namespace, domain=None, range=str)
+slots.collectionDefinedByProject__project_id_namespace = Slot(uri=CFDE_SCHEMA.project_id_namespace, name="collectionDefinedByProject__project_id_namespace", curie=CFDE_SCHEMA.curie('project_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionDefinedByProject__project_id_namespace, domain=None, range=str)
 
-slots.collectionDefinedByProject__project_local_id = Slot(uri=EX.project_local_id, name="collectionDefinedByProject__project_local_id", curie=EX.curie('project_local_id'),
-                   model_uri=EX.collectionDefinedByProject__project_local_id, domain=None, range=str)
+slots.collectionDefinedByProject__project_local_id = Slot(uri=CFDE_SCHEMA.project_local_id, name="collectionDefinedByProject__project_local_id", curie=CFDE_SCHEMA.curie('project_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionDefinedByProject__project_local_id, domain=None, range=str)
 
-slots.fileInCollection__file_id_namespace = Slot(uri=EX.file_id_namespace, name="fileInCollection__file_id_namespace", curie=EX.curie('file_id_namespace'),
-                   model_uri=EX.fileInCollection__file_id_namespace, domain=None, range=str)
+slots.fileInCollection__file_id_namespace = Slot(uri=CFDE_SCHEMA.file_id_namespace, name="fileInCollection__file_id_namespace", curie=CFDE_SCHEMA.curie('file_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileInCollection__file_id_namespace, domain=None, range=str)
 
-slots.fileInCollection__file_local_id = Slot(uri=EX.file_local_id, name="fileInCollection__file_local_id", curie=EX.curie('file_local_id'),
-                   model_uri=EX.fileInCollection__file_local_id, domain=None, range=str)
+slots.fileInCollection__file_local_id = Slot(uri=CFDE_SCHEMA.file_local_id, name="fileInCollection__file_local_id", curie=CFDE_SCHEMA.curie('file_local_id'),
+                   model_uri=CFDE_SCHEMA.fileInCollection__file_local_id, domain=None, range=str)
 
-slots.fileInCollection__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="fileInCollection__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.fileInCollection__collection_id_namespace, domain=None, range=str)
+slots.fileInCollection__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="fileInCollection__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileInCollection__collection_id_namespace, domain=None, range=str)
 
-slots.fileInCollection__collection_local_id = Slot(uri=EX.collection_local_id, name="fileInCollection__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.fileInCollection__collection_local_id, domain=None, range=str)
+slots.fileInCollection__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="fileInCollection__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.fileInCollection__collection_local_id, domain=None, range=str)
 
-slots.biosampleInCollection__biosample_id_namespace = Slot(uri=EX.biosample_id_namespace, name="biosampleInCollection__biosample_id_namespace", curie=EX.curie('biosample_id_namespace'),
-                   model_uri=EX.biosampleInCollection__biosample_id_namespace, domain=None, range=str)
+slots.biosampleInCollection__biosample_id_namespace = Slot(uri=CFDE_SCHEMA.biosample_id_namespace, name="biosampleInCollection__biosample_id_namespace", curie=CFDE_SCHEMA.curie('biosample_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleInCollection__biosample_id_namespace, domain=None, range=str)
 
-slots.biosampleInCollection__biosample_local_id = Slot(uri=EX.biosample_local_id, name="biosampleInCollection__biosample_local_id", curie=EX.curie('biosample_local_id'),
-                   model_uri=EX.biosampleInCollection__biosample_local_id, domain=None, range=str)
+slots.biosampleInCollection__biosample_local_id = Slot(uri=CFDE_SCHEMA.biosample_local_id, name="biosampleInCollection__biosample_local_id", curie=CFDE_SCHEMA.curie('biosample_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleInCollection__biosample_local_id, domain=None, range=str)
 
-slots.biosampleInCollection__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="biosampleInCollection__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.biosampleInCollection__collection_id_namespace, domain=None, range=str)
+slots.biosampleInCollection__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="biosampleInCollection__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleInCollection__collection_id_namespace, domain=None, range=str)
 
-slots.biosampleInCollection__collection_local_id = Slot(uri=EX.collection_local_id, name="biosampleInCollection__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.biosampleInCollection__collection_local_id, domain=None, range=str)
+slots.biosampleInCollection__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="biosampleInCollection__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleInCollection__collection_local_id, domain=None, range=str)
 
-slots.subjectInCollection__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="subjectInCollection__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.subjectInCollection__subject_id_namespace, domain=None, range=str)
+slots.subjectInCollection__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="subjectInCollection__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectInCollection__subject_id_namespace, domain=None, range=str)
 
-slots.subjectInCollection__subject_local_id = Slot(uri=EX.subject_local_id, name="subjectInCollection__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.subjectInCollection__subject_local_id, domain=None, range=str)
+slots.subjectInCollection__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="subjectInCollection__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectInCollection__subject_local_id, domain=None, range=str)
 
-slots.subjectInCollection__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="subjectInCollection__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.subjectInCollection__collection_id_namespace, domain=None, range=str)
+slots.subjectInCollection__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="subjectInCollection__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectInCollection__collection_id_namespace, domain=None, range=str)
 
-slots.subjectInCollection__collection_local_id = Slot(uri=EX.collection_local_id, name="subjectInCollection__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.subjectInCollection__collection_local_id, domain=None, range=str)
+slots.subjectInCollection__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="subjectInCollection__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectInCollection__collection_local_id, domain=None, range=str)
 
-slots.fileDescribesBiosample__file_id_namespace = Slot(uri=EX.file_id_namespace, name="fileDescribesBiosample__file_id_namespace", curie=EX.curie('file_id_namespace'),
-                   model_uri=EX.fileDescribesBiosample__file_id_namespace, domain=None, range=str)
+slots.fileDescribesBiosample__file_id_namespace = Slot(uri=CFDE_SCHEMA.file_id_namespace, name="fileDescribesBiosample__file_id_namespace", curie=CFDE_SCHEMA.curie('file_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileDescribesBiosample__file_id_namespace, domain=None, range=str)
 
-slots.fileDescribesBiosample__file_local_id = Slot(uri=EX.file_local_id, name="fileDescribesBiosample__file_local_id", curie=EX.curie('file_local_id'),
-                   model_uri=EX.fileDescribesBiosample__file_local_id, domain=None, range=str)
+slots.fileDescribesBiosample__file_local_id = Slot(uri=CFDE_SCHEMA.file_local_id, name="fileDescribesBiosample__file_local_id", curie=CFDE_SCHEMA.curie('file_local_id'),
+                   model_uri=CFDE_SCHEMA.fileDescribesBiosample__file_local_id, domain=None, range=str)
 
-slots.fileDescribesBiosample__biosample_id_namespace = Slot(uri=EX.biosample_id_namespace, name="fileDescribesBiosample__biosample_id_namespace", curie=EX.curie('biosample_id_namespace'),
-                   model_uri=EX.fileDescribesBiosample__biosample_id_namespace, domain=None, range=str)
+slots.fileDescribesBiosample__biosample_id_namespace = Slot(uri=CFDE_SCHEMA.biosample_id_namespace, name="fileDescribesBiosample__biosample_id_namespace", curie=CFDE_SCHEMA.curie('biosample_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileDescribesBiosample__biosample_id_namespace, domain=None, range=str)
 
-slots.fileDescribesBiosample__biosample_local_id = Slot(uri=EX.biosample_local_id, name="fileDescribesBiosample__biosample_local_id", curie=EX.curie('biosample_local_id'),
-                   model_uri=EX.fileDescribesBiosample__biosample_local_id, domain=None, range=str)
+slots.fileDescribesBiosample__biosample_local_id = Slot(uri=CFDE_SCHEMA.biosample_local_id, name="fileDescribesBiosample__biosample_local_id", curie=CFDE_SCHEMA.curie('biosample_local_id'),
+                   model_uri=CFDE_SCHEMA.fileDescribesBiosample__biosample_local_id, domain=None, range=str)
 
-slots.fileDescribesSubject__file_id_namespace = Slot(uri=EX.file_id_namespace, name="fileDescribesSubject__file_id_namespace", curie=EX.curie('file_id_namespace'),
-                   model_uri=EX.fileDescribesSubject__file_id_namespace, domain=None, range=str)
+slots.fileDescribesSubject__file_id_namespace = Slot(uri=CFDE_SCHEMA.file_id_namespace, name="fileDescribesSubject__file_id_namespace", curie=CFDE_SCHEMA.curie('file_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileDescribesSubject__file_id_namespace, domain=None, range=str)
 
-slots.fileDescribesSubject__file_local_id = Slot(uri=EX.file_local_id, name="fileDescribesSubject__file_local_id", curie=EX.curie('file_local_id'),
-                   model_uri=EX.fileDescribesSubject__file_local_id, domain=None, range=str)
+slots.fileDescribesSubject__file_local_id = Slot(uri=CFDE_SCHEMA.file_local_id, name="fileDescribesSubject__file_local_id", curie=CFDE_SCHEMA.curie('file_local_id'),
+                   model_uri=CFDE_SCHEMA.fileDescribesSubject__file_local_id, domain=None, range=str)
 
-slots.fileDescribesSubject__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="fileDescribesSubject__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.fileDescribesSubject__subject_id_namespace, domain=None, range=str)
+slots.fileDescribesSubject__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="fileDescribesSubject__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.fileDescribesSubject__subject_id_namespace, domain=None, range=str)
 
-slots.fileDescribesSubject__subject_local_id = Slot(uri=EX.subject_local_id, name="fileDescribesSubject__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.fileDescribesSubject__subject_local_id, domain=None, range=str)
+slots.fileDescribesSubject__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="fileDescribesSubject__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.fileDescribesSubject__subject_local_id, domain=None, range=str)
 
-slots.biosampleFromSubject__biosample_id_namespace = Slot(uri=EX.biosample_id_namespace, name="biosampleFromSubject__biosample_id_namespace", curie=EX.curie('biosample_id_namespace'),
-                   model_uri=EX.biosampleFromSubject__biosample_id_namespace, domain=None, range=str)
+slots.biosampleFromSubject__biosample_id_namespace = Slot(uri=CFDE_SCHEMA.biosample_id_namespace, name="biosampleFromSubject__biosample_id_namespace", curie=CFDE_SCHEMA.curie('biosample_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleFromSubject__biosample_id_namespace, domain=None, range=str)
 
-slots.biosampleFromSubject__biosample_local_id = Slot(uri=EX.biosample_local_id, name="biosampleFromSubject__biosample_local_id", curie=EX.curie('biosample_local_id'),
-                   model_uri=EX.biosampleFromSubject__biosample_local_id, domain=None, range=str)
+slots.biosampleFromSubject__biosample_local_id = Slot(uri=CFDE_SCHEMA.biosample_local_id, name="biosampleFromSubject__biosample_local_id", curie=CFDE_SCHEMA.curie('biosample_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleFromSubject__biosample_local_id, domain=None, range=str)
 
-slots.biosampleFromSubject__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="biosampleFromSubject__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.biosampleFromSubject__subject_id_namespace, domain=None, range=str)
+slots.biosampleFromSubject__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="biosampleFromSubject__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleFromSubject__subject_id_namespace, domain=None, range=str)
 
-slots.biosampleFromSubject__subject_local_id = Slot(uri=EX.subject_local_id, name="biosampleFromSubject__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.biosampleFromSubject__subject_local_id, domain=None, range=str)
+slots.biosampleFromSubject__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="biosampleFromSubject__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleFromSubject__subject_local_id, domain=None, range=str)
 
-slots.biosampleFromSubject__age_at_sampling = Slot(uri=EX.age_at_sampling, name="biosampleFromSubject__age_at_sampling", curie=EX.curie('age_at_sampling'),
-                   model_uri=EX.biosampleFromSubject__age_at_sampling, domain=None, range=Optional[Decimal])
+slots.biosampleFromSubject__age_at_sampling = Slot(uri=CFDE_SCHEMA.age_at_sampling, name="biosampleFromSubject__age_at_sampling", curie=CFDE_SCHEMA.curie('age_at_sampling'),
+                   model_uri=CFDE_SCHEMA.biosampleFromSubject__age_at_sampling, domain=None, range=Optional[Decimal])
 
-slots.biosampleDisease__biosample_id_namespace = Slot(uri=EX.biosample_id_namespace, name="biosampleDisease__biosample_id_namespace", curie=EX.curie('biosample_id_namespace'),
-                   model_uri=EX.biosampleDisease__biosample_id_namespace, domain=None, range=str)
+slots.biosampleDisease__biosample_id_namespace = Slot(uri=CFDE_SCHEMA.biosample_id_namespace, name="biosampleDisease__biosample_id_namespace", curie=CFDE_SCHEMA.curie('biosample_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleDisease__biosample_id_namespace, domain=None, range=str)
 
-slots.biosampleDisease__biosample_local_id = Slot(uri=EX.biosample_local_id, name="biosampleDisease__biosample_local_id", curie=EX.curie('biosample_local_id'),
-                   model_uri=EX.biosampleDisease__biosample_local_id, domain=None, range=str)
+slots.biosampleDisease__biosample_local_id = Slot(uri=CFDE_SCHEMA.biosample_local_id, name="biosampleDisease__biosample_local_id", curie=CFDE_SCHEMA.curie('biosample_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleDisease__biosample_local_id, domain=None, range=str)
 
-slots.biosampleDisease__association_type = Slot(uri=EX.association_type, name="biosampleDisease__association_type", curie=EX.curie('association_type'),
-                   model_uri=EX.biosampleDisease__association_type, domain=None, range=Union[str, "AssociationTypeEnum"])
+slots.biosampleDisease__association_type = Slot(uri=CFDE_SCHEMA.association_type, name="biosampleDisease__association_type", curie=CFDE_SCHEMA.curie('association_type'),
+                   model_uri=CFDE_SCHEMA.biosampleDisease__association_type, domain=None, range=Union[str, "AssociationTypeEnum"])
 
-slots.biosampleDisease__disease = Slot(uri=EX.disease, name="biosampleDisease__disease", curie=EX.curie('disease'),
-                   model_uri=EX.biosampleDisease__disease, domain=None, range=str)
+slots.biosampleDisease__disease = Slot(uri=CFDE_SCHEMA.disease, name="biosampleDisease__disease", curie=CFDE_SCHEMA.curie('disease'),
+                   model_uri=CFDE_SCHEMA.biosampleDisease__disease, domain=None, range=Union[str, DiseaseId])
 
-slots.subjectDisease__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="subjectDisease__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.subjectDisease__subject_id_namespace, domain=None, range=str)
+slots.subjectDisease__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="subjectDisease__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectDisease__subject_id_namespace, domain=None, range=str)
 
-slots.subjectDisease__subject_local_id = Slot(uri=EX.subject_local_id, name="subjectDisease__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.subjectDisease__subject_local_id, domain=None, range=str)
+slots.subjectDisease__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="subjectDisease__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectDisease__subject_local_id, domain=None, range=str)
 
-slots.subjectDisease__association_type = Slot(uri=EX.association_type, name="subjectDisease__association_type", curie=EX.curie('association_type'),
-                   model_uri=EX.subjectDisease__association_type, domain=None, range=Union[str, "AssociationTypeEnum"])
+slots.subjectDisease__association_type = Slot(uri=CFDE_SCHEMA.association_type, name="subjectDisease__association_type", curie=CFDE_SCHEMA.curie('association_type'),
+                   model_uri=CFDE_SCHEMA.subjectDisease__association_type, domain=None, range=Union[str, "AssociationTypeEnum"])
 
-slots.subjectDisease__disease = Slot(uri=EX.disease, name="subjectDisease__disease", curie=EX.curie('disease'),
-                   model_uri=EX.subjectDisease__disease, domain=None, range=str)
+slots.subjectDisease__disease = Slot(uri=CFDE_SCHEMA.disease, name="subjectDisease__disease", curie=CFDE_SCHEMA.curie('disease'),
+                   model_uri=CFDE_SCHEMA.subjectDisease__disease, domain=None, range=Union[str, DiseaseId])
 
-slots.collectionDisease__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionDisease__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionDisease__collection_id_namespace, domain=None, range=str)
+slots.collectionDisease__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionDisease__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionDisease__collection_id_namespace, domain=None, range=str)
 
-slots.collectionDisease__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionDisease__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionDisease__collection_local_id, domain=None, range=str)
+slots.collectionDisease__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionDisease__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionDisease__collection_local_id, domain=None, range=str)
 
-slots.collectionDisease__disease = Slot(uri=EX.disease, name="collectionDisease__disease", curie=EX.curie('disease'),
-                   model_uri=EX.collectionDisease__disease, domain=None, range=str)
+slots.collectionDisease__disease = Slot(uri=CFDE_SCHEMA.disease, name="collectionDisease__disease", curie=CFDE_SCHEMA.curie('disease'),
+                   model_uri=CFDE_SCHEMA.collectionDisease__disease, domain=None, range=Union[str, DiseaseId])
 
-slots.collectionPhenotype__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionPhenotype__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionPhenotype__collection_id_namespace, domain=None, range=str)
+slots.collectionPhenotype__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionPhenotype__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionPhenotype__collection_id_namespace, domain=None, range=str)
 
-slots.collectionPhenotype__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionPhenotype__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionPhenotype__collection_local_id, domain=None, range=str)
+slots.collectionPhenotype__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionPhenotype__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionPhenotype__collection_local_id, domain=None, range=str)
 
-slots.collectionPhenotype__phenotype = Slot(uri=EX.phenotype, name="collectionPhenotype__phenotype", curie=EX.curie('phenotype'),
-                   model_uri=EX.collectionPhenotype__phenotype, domain=None, range=str)
+slots.collectionPhenotype__phenotype = Slot(uri=CFDE_SCHEMA.phenotype, name="collectionPhenotype__phenotype", curie=CFDE_SCHEMA.curie('phenotype'),
+                   model_uri=CFDE_SCHEMA.collectionPhenotype__phenotype, domain=None, range=Union[str, PhenotypeId])
 
-slots.collectionGene__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionGene__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionGene__collection_id_namespace, domain=None, range=str)
+slots.collectionGene__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionGene__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionGene__collection_id_namespace, domain=None, range=str)
 
-slots.collectionGene__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionGene__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionGene__collection_local_id, domain=None, range=str)
+slots.collectionGene__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionGene__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionGene__collection_local_id, domain=None, range=str)
 
-slots.collectionGene__gene = Slot(uri=EX.gene, name="collectionGene__gene", curie=EX.curie('gene'),
-                   model_uri=EX.collectionGene__gene, domain=None, range=str)
+slots.collectionGene__gene = Slot(uri=CFDE_SCHEMA.gene, name="collectionGene__gene", curie=CFDE_SCHEMA.curie('gene'),
+                   model_uri=CFDE_SCHEMA.collectionGene__gene, domain=None, range=Union[str, GeneId])
 
-slots.collectionCompound__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionCompound__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionCompound__collection_id_namespace, domain=None, range=str)
+slots.collectionCompound__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionCompound__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionCompound__collection_id_namespace, domain=None, range=str)
 
-slots.collectionCompound__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionCompound__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionCompound__collection_local_id, domain=None, range=str)
+slots.collectionCompound__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionCompound__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionCompound__collection_local_id, domain=None, range=str)
 
-slots.collectionCompound__compound = Slot(uri=EX.compound, name="collectionCompound__compound", curie=EX.curie('compound'),
-                   model_uri=EX.collectionCompound__compound, domain=None, range=str)
+slots.collectionCompound__compound = Slot(uri=CFDE_SCHEMA.compound, name="collectionCompound__compound", curie=CFDE_SCHEMA.curie('compound'),
+                   model_uri=CFDE_SCHEMA.collectionCompound__compound, domain=None, range=Union[str, CompoundId])
 
-slots.collectionSubstance__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionSubstance__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionSubstance__collection_id_namespace, domain=None, range=str)
+slots.collectionSubstance__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionSubstance__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionSubstance__collection_id_namespace, domain=None, range=str)
 
-slots.collectionSubstance__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionSubstance__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionSubstance__collection_local_id, domain=None, range=str)
+slots.collectionSubstance__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionSubstance__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionSubstance__collection_local_id, domain=None, range=str)
 
-slots.collectionSubstance__substance = Slot(uri=EX.substance, name="collectionSubstance__substance", curie=EX.curie('substance'),
-                   model_uri=EX.collectionSubstance__substance, domain=None, range=str)
+slots.collectionSubstance__substance = Slot(uri=CFDE_SCHEMA.substance, name="collectionSubstance__substance", curie=CFDE_SCHEMA.curie('substance'),
+                   model_uri=CFDE_SCHEMA.collectionSubstance__substance, domain=None, range=Union[str, SubstanceId])
 
-slots.collectionTaxonomy__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionTaxonomy__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionTaxonomy__collection_id_namespace, domain=None, range=str)
+slots.collectionTaxonomy__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionTaxonomy__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionTaxonomy__collection_id_namespace, domain=None, range=str)
 
-slots.collectionTaxonomy__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionTaxonomy__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionTaxonomy__collection_local_id, domain=None, range=str)
+slots.collectionTaxonomy__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionTaxonomy__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionTaxonomy__collection_local_id, domain=None, range=str)
 
-slots.collectionTaxonomy__taxon = Slot(uri=EX.taxon, name="collectionTaxonomy__taxon", curie=EX.curie('taxon'),
-                   model_uri=EX.collectionTaxonomy__taxon, domain=None, range=str)
+slots.collectionTaxonomy__taxon = Slot(uri=CFDE_SCHEMA.taxon, name="collectionTaxonomy__taxon", curie=CFDE_SCHEMA.curie('taxon'),
+                   model_uri=CFDE_SCHEMA.collectionTaxonomy__taxon, domain=None, range=Union[str, NcbiTaxonomyId])
 
-slots.collectionAnatomy__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionAnatomy__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionAnatomy__collection_id_namespace, domain=None, range=str)
+slots.collectionAnatomy__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionAnatomy__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionAnatomy__collection_id_namespace, domain=None, range=str)
 
-slots.collectionAnatomy__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionAnatomy__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionAnatomy__collection_local_id, domain=None, range=str)
+slots.collectionAnatomy__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionAnatomy__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionAnatomy__collection_local_id, domain=None, range=str)
 
-slots.collectionAnatomy__anatomy = Slot(uri=EX.anatomy, name="collectionAnatomy__anatomy", curie=EX.curie('anatomy'),
-                   model_uri=EX.collectionAnatomy__anatomy, domain=None, range=str)
+slots.collectionAnatomy__anatomy = Slot(uri=CFDE_SCHEMA.anatomy, name="collectionAnatomy__anatomy", curie=CFDE_SCHEMA.curie('anatomy'),
+                   model_uri=CFDE_SCHEMA.collectionAnatomy__anatomy, domain=None, range=Union[str, AnatomyId])
 
-slots.collectionProtein__collection_id_namespace = Slot(uri=EX.collection_id_namespace, name="collectionProtein__collection_id_namespace", curie=EX.curie('collection_id_namespace'),
-                   model_uri=EX.collectionProtein__collection_id_namespace, domain=None, range=str)
+slots.collectionProtein__collection_id_namespace = Slot(uri=CFDE_SCHEMA.collection_id_namespace, name="collectionProtein__collection_id_namespace", curie=CFDE_SCHEMA.curie('collection_id_namespace'),
+                   model_uri=CFDE_SCHEMA.collectionProtein__collection_id_namespace, domain=None, range=str)
 
-slots.collectionProtein__collection_local_id = Slot(uri=EX.collection_local_id, name="collectionProtein__collection_local_id", curie=EX.curie('collection_local_id'),
-                   model_uri=EX.collectionProtein__collection_local_id, domain=None, range=str)
+slots.collectionProtein__collection_local_id = Slot(uri=CFDE_SCHEMA.collection_local_id, name="collectionProtein__collection_local_id", curie=CFDE_SCHEMA.curie('collection_local_id'),
+                   model_uri=CFDE_SCHEMA.collectionProtein__collection_local_id, domain=None, range=str)
 
-slots.collectionProtein__protein = Slot(uri=EX.protein, name="collectionProtein__protein", curie=EX.curie('protein'),
-                   model_uri=EX.collectionProtein__protein, domain=None, range=str)
+slots.collectionProtein__protein = Slot(uri=CFDE_SCHEMA.protein, name="collectionProtein__protein", curie=CFDE_SCHEMA.curie('protein'),
+                   model_uri=CFDE_SCHEMA.collectionProtein__protein, domain=None, range=Union[str, ProteinId])
 
-slots.subjectPhenotype__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="subjectPhenotype__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.subjectPhenotype__subject_id_namespace, domain=None, range=str)
+slots.subjectPhenotype__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="subjectPhenotype__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectPhenotype__subject_id_namespace, domain=None, range=str)
 
-slots.subjectPhenotype__subject_local_id = Slot(uri=EX.subject_local_id, name="subjectPhenotype__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.subjectPhenotype__subject_local_id, domain=None, range=str)
+slots.subjectPhenotype__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="subjectPhenotype__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectPhenotype__subject_local_id, domain=None, range=str)
 
-slots.subjectPhenotype__association_type = Slot(uri=EX.association_type, name="subjectPhenotype__association_type", curie=EX.curie('association_type'),
-                   model_uri=EX.subjectPhenotype__association_type, domain=None, range=Union[str, "AssociationTypeEnum"])
+slots.subjectPhenotype__association_type = Slot(uri=CFDE_SCHEMA.association_type, name="subjectPhenotype__association_type", curie=CFDE_SCHEMA.curie('association_type'),
+                   model_uri=CFDE_SCHEMA.subjectPhenotype__association_type, domain=None, range=Union[str, "AssociationTypeEnum"])
 
-slots.subjectPhenotype__phenotype = Slot(uri=EX.phenotype, name="subjectPhenotype__phenotype", curie=EX.curie('phenotype'),
-                   model_uri=EX.subjectPhenotype__phenotype, domain=None, range=str)
+slots.subjectPhenotype__phenotype = Slot(uri=CFDE_SCHEMA.phenotype, name="subjectPhenotype__phenotype", curie=CFDE_SCHEMA.curie('phenotype'),
+                   model_uri=CFDE_SCHEMA.subjectPhenotype__phenotype, domain=None, range=Union[str, PhenotypeId])
 
-slots.biosampleSubstance__biosample_id_namespace = Slot(uri=EX.biosample_id_namespace, name="biosampleSubstance__biosample_id_namespace", curie=EX.curie('biosample_id_namespace'),
-                   model_uri=EX.biosampleSubstance__biosample_id_namespace, domain=None, range=str)
+slots.biosampleSubstance__biosample_id_namespace = Slot(uri=CFDE_SCHEMA.biosample_id_namespace, name="biosampleSubstance__biosample_id_namespace", curie=CFDE_SCHEMA.curie('biosample_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleSubstance__biosample_id_namespace, domain=None, range=str)
 
-slots.biosampleSubstance__biosample_local_id = Slot(uri=EX.biosample_local_id, name="biosampleSubstance__biosample_local_id", curie=EX.curie('biosample_local_id'),
-                   model_uri=EX.biosampleSubstance__biosample_local_id, domain=None, range=str)
+slots.biosampleSubstance__biosample_local_id = Slot(uri=CFDE_SCHEMA.biosample_local_id, name="biosampleSubstance__biosample_local_id", curie=CFDE_SCHEMA.curie('biosample_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleSubstance__biosample_local_id, domain=None, range=str)
 
-slots.biosampleSubstance__substance = Slot(uri=EX.substance, name="biosampleSubstance__substance", curie=EX.curie('substance'),
-                   model_uri=EX.biosampleSubstance__substance, domain=None, range=str)
+slots.biosampleSubstance__substance = Slot(uri=CFDE_SCHEMA.substance, name="biosampleSubstance__substance", curie=CFDE_SCHEMA.curie('substance'),
+                   model_uri=CFDE_SCHEMA.biosampleSubstance__substance, domain=None, range=Union[str, SubstanceId])
 
-slots.subjectSubstance__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="subjectSubstance__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.subjectSubstance__subject_id_namespace, domain=None, range=str)
+slots.subjectSubstance__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="subjectSubstance__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectSubstance__subject_id_namespace, domain=None, range=str)
 
-slots.subjectSubstance__subject_local_id = Slot(uri=EX.subject_local_id, name="subjectSubstance__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.subjectSubstance__subject_local_id, domain=None, range=str)
+slots.subjectSubstance__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="subjectSubstance__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectSubstance__subject_local_id, domain=None, range=str)
 
-slots.subjectSubstance__substance = Slot(uri=EX.substance, name="subjectSubstance__substance", curie=EX.curie('substance'),
-                   model_uri=EX.subjectSubstance__substance, domain=None, range=str)
+slots.subjectSubstance__substance = Slot(uri=CFDE_SCHEMA.substance, name="subjectSubstance__substance", curie=CFDE_SCHEMA.curie('substance'),
+                   model_uri=CFDE_SCHEMA.subjectSubstance__substance, domain=None, range=Union[str, SubstanceId])
 
-slots.biosampleGene__biosample_id_namespace = Slot(uri=EX.biosample_id_namespace, name="biosampleGene__biosample_id_namespace", curie=EX.curie('biosample_id_namespace'),
-                   model_uri=EX.biosampleGene__biosample_id_namespace, domain=None, range=str)
+slots.biosampleGene__biosample_id_namespace = Slot(uri=CFDE_SCHEMA.biosample_id_namespace, name="biosampleGene__biosample_id_namespace", curie=CFDE_SCHEMA.curie('biosample_id_namespace'),
+                   model_uri=CFDE_SCHEMA.biosampleGene__biosample_id_namespace, domain=None, range=str)
 
-slots.biosampleGene__biosample_local_id = Slot(uri=EX.biosample_local_id, name="biosampleGene__biosample_local_id", curie=EX.curie('biosample_local_id'),
-                   model_uri=EX.biosampleGene__biosample_local_id, domain=None, range=str)
+slots.biosampleGene__biosample_local_id = Slot(uri=CFDE_SCHEMA.biosample_local_id, name="biosampleGene__biosample_local_id", curie=CFDE_SCHEMA.curie('biosample_local_id'),
+                   model_uri=CFDE_SCHEMA.biosampleGene__biosample_local_id, domain=None, range=str)
 
-slots.biosampleGene__gene = Slot(uri=EX.gene, name="biosampleGene__gene", curie=EX.curie('gene'),
-                   model_uri=EX.biosampleGene__gene, domain=None, range=str)
+slots.biosampleGene__gene = Slot(uri=CFDE_SCHEMA.gene, name="biosampleGene__gene", curie=CFDE_SCHEMA.curie('gene'),
+                   model_uri=CFDE_SCHEMA.biosampleGene__gene, domain=None, range=Union[str, GeneId])
 
-slots.phenotypeGene__phenotype = Slot(uri=EX.phenotype, name="phenotypeGene__phenotype", curie=EX.curie('phenotype'),
-                   model_uri=EX.phenotypeGene__phenotype, domain=None, range=str)
+slots.phenotypeGene__phenotype = Slot(uri=CFDE_SCHEMA.phenotype, name="phenotypeGene__phenotype", curie=CFDE_SCHEMA.curie('phenotype'),
+                   model_uri=CFDE_SCHEMA.phenotypeGene__phenotype, domain=None, range=Union[str, PhenotypeId])
 
-slots.phenotypeGene__gene = Slot(uri=EX.gene, name="phenotypeGene__gene", curie=EX.curie('gene'),
-                   model_uri=EX.phenotypeGene__gene, domain=None, range=str)
+slots.phenotypeGene__gene = Slot(uri=CFDE_SCHEMA.gene, name="phenotypeGene__gene", curie=CFDE_SCHEMA.curie('gene'),
+                   model_uri=CFDE_SCHEMA.phenotypeGene__gene, domain=None, range=Union[str, GeneId])
 
-slots.phenotypeDisease__phenotype = Slot(uri=EX.phenotype, name="phenotypeDisease__phenotype", curie=EX.curie('phenotype'),
-                   model_uri=EX.phenotypeDisease__phenotype, domain=None, range=str)
+slots.phenotypeDisease__phenotype = Slot(uri=CFDE_SCHEMA.phenotype, name="phenotypeDisease__phenotype", curie=CFDE_SCHEMA.curie('phenotype'),
+                   model_uri=CFDE_SCHEMA.phenotypeDisease__phenotype, domain=None, range=Union[str, PhenotypeId])
 
-slots.phenotypeDisease__disease = Slot(uri=EX.disease, name="phenotypeDisease__disease", curie=EX.curie('disease'),
-                   model_uri=EX.phenotypeDisease__disease, domain=None, range=str)
+slots.phenotypeDisease__disease = Slot(uri=CFDE_SCHEMA.disease, name="phenotypeDisease__disease", curie=CFDE_SCHEMA.curie('disease'),
+                   model_uri=CFDE_SCHEMA.phenotypeDisease__disease, domain=None, range=Union[str, DiseaseId])
 
-slots.subjectRace__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="subjectRace__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.subjectRace__subject_id_namespace, domain=None, range=str)
+slots.subjectRace__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="subjectRace__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectRace__subject_id_namespace, domain=None, range=str)
 
-slots.subjectRace__subject_local_id = Slot(uri=EX.subject_local_id, name="subjectRace__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.subjectRace__subject_local_id, domain=None, range=str)
+slots.subjectRace__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="subjectRace__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectRace__subject_local_id, domain=None, range=str)
 
-slots.subjectRace__race = Slot(uri=EX.race, name="subjectRace__race", curie=EX.curie('race'),
-                   model_uri=EX.subjectRace__race, domain=None, range=Optional[Union[str, "RaceEnum"]])
+slots.subjectRace__race = Slot(uri=CFDE_SCHEMA.race, name="subjectRace__race", curie=CFDE_SCHEMA.curie('race'),
+                   model_uri=CFDE_SCHEMA.subjectRace__race, domain=None, range=Optional[Union[str, "RaceEnum"]])
 
-slots.subjectRoleTaxonomy__subject_id_namespace = Slot(uri=EX.subject_id_namespace, name="subjectRoleTaxonomy__subject_id_namespace", curie=EX.curie('subject_id_namespace'),
-                   model_uri=EX.subjectRoleTaxonomy__subject_id_namespace, domain=None, range=str)
+slots.subjectRoleTaxonomy__subject_id_namespace = Slot(uri=CFDE_SCHEMA.subject_id_namespace, name="subjectRoleTaxonomy__subject_id_namespace", curie=CFDE_SCHEMA.curie('subject_id_namespace'),
+                   model_uri=CFDE_SCHEMA.subjectRoleTaxonomy__subject_id_namespace, domain=None, range=str)
 
-slots.subjectRoleTaxonomy__subject_local_id = Slot(uri=EX.subject_local_id, name="subjectRoleTaxonomy__subject_local_id", curie=EX.curie('subject_local_id'),
-                   model_uri=EX.subjectRoleTaxonomy__subject_local_id, domain=None, range=str)
+slots.subjectRoleTaxonomy__subject_local_id = Slot(uri=CFDE_SCHEMA.subject_local_id, name="subjectRoleTaxonomy__subject_local_id", curie=CFDE_SCHEMA.curie('subject_local_id'),
+                   model_uri=CFDE_SCHEMA.subjectRoleTaxonomy__subject_local_id, domain=None, range=str)
 
-slots.subjectRoleTaxonomy__role_id = Slot(uri=EX.role_id, name="subjectRoleTaxonomy__role_id", curie=EX.curie('role_id'),
-                   model_uri=EX.subjectRoleTaxonomy__role_id, domain=None, range=Union[str, "RoleIdEnum"])
+slots.subjectRoleTaxonomy__role_id = Slot(uri=CFDE_SCHEMA.role_id, name="subjectRoleTaxonomy__role_id", curie=CFDE_SCHEMA.curie('role_id'),
+                   model_uri=CFDE_SCHEMA.subjectRoleTaxonomy__role_id, domain=None, range=Union[str, "RoleIdEnum"])
 
-slots.subjectRoleTaxonomy__taxonomy_id = Slot(uri=EX.taxonomy_id, name="subjectRoleTaxonomy__taxonomy_id", curie=EX.curie('taxonomy_id'),
-                   model_uri=EX.subjectRoleTaxonomy__taxonomy_id, domain=None, range=str)
+slots.subjectRoleTaxonomy__taxonomy_id = Slot(uri=CFDE_SCHEMA.taxonomy_id, name="subjectRoleTaxonomy__taxonomy_id", curie=CFDE_SCHEMA.curie('taxonomy_id'),
+                   model_uri=CFDE_SCHEMA.subjectRoleTaxonomy__taxonomy_id, domain=None, range=Union[str, NcbiTaxonomyId])
 
-slots.assayType__id = Slot(uri=EX.id, name="assayType__id", curie=EX.curie('id'),
-                   model_uri=EX.assayType__id, domain=None, range=str)
+slots.assayType__id = Slot(uri=CFDE_SCHEMA.id, name="assayType__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.assayType__id, domain=None, range=URIRef)
 
-slots.assayType__description = Slot(uri=EX.description, name="assayType__description", curie=EX.curie('description'),
-                   model_uri=EX.assayType__description, domain=None, range=Optional[str])
+slots.assayType__description = Slot(uri=CFDE_SCHEMA.description, name="assayType__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.assayType__description, domain=None, range=Optional[str])
 
-slots.assayType__synonyms = Slot(uri=EX.synonyms, name="assayType__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.assayType__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.assayType__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="assayType__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.assayType__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.analysisType__id = Slot(uri=EX.id, name="analysisType__id", curie=EX.curie('id'),
-                   model_uri=EX.analysisType__id, domain=None, range=str)
+slots.analysisType__id = Slot(uri=CFDE_SCHEMA.id, name="analysisType__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.analysisType__id, domain=None, range=URIRef)
 
-slots.analysisType__description = Slot(uri=EX.description, name="analysisType__description", curie=EX.curie('description'),
-                   model_uri=EX.analysisType__description, domain=None, range=Optional[str])
+slots.analysisType__description = Slot(uri=CFDE_SCHEMA.description, name="analysisType__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.analysisType__description, domain=None, range=Optional[str])
 
-slots.analysisType__synonyms = Slot(uri=EX.synonyms, name="analysisType__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.analysisType__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.analysisType__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="analysisType__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.analysisType__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.ncbiTaxonomy__id = Slot(uri=EX.id, name="ncbiTaxonomy__id", curie=EX.curie('id'),
-                   model_uri=EX.ncbiTaxonomy__id, domain=None, range=str,
+slots.ncbiTaxonomy__id = Slot(uri=CFDE_SCHEMA.id, name="ncbiTaxonomy__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.ncbiTaxonomy__id, domain=None, range=URIRef,
                    pattern=re.compile(r'^NCBI:txid[0-9]+$'))
 
-slots.ncbiTaxonomy__clade = Slot(uri=EX.clade, name="ncbiTaxonomy__clade", curie=EX.curie('clade'),
-                   model_uri=EX.ncbiTaxonomy__clade, domain=None, range=str)
+slots.ncbiTaxonomy__clade = Slot(uri=CFDE_SCHEMA.clade, name="ncbiTaxonomy__clade", curie=CFDE_SCHEMA.curie('clade'),
+                   model_uri=CFDE_SCHEMA.ncbiTaxonomy__clade, domain=None, range=str)
 
-slots.ncbiTaxonomy__description = Slot(uri=EX.description, name="ncbiTaxonomy__description", curie=EX.curie('description'),
-                   model_uri=EX.ncbiTaxonomy__description, domain=None, range=Optional[str])
+slots.ncbiTaxonomy__description = Slot(uri=CFDE_SCHEMA.description, name="ncbiTaxonomy__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.ncbiTaxonomy__description, domain=None, range=Optional[str])
 
-slots.ncbiTaxonomy__synonyms = Slot(uri=EX.synonyms, name="ncbiTaxonomy__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.ncbiTaxonomy__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.ncbiTaxonomy__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="ncbiTaxonomy__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.ncbiTaxonomy__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.anatomy__id = Slot(uri=EX.id, name="anatomy__id", curie=EX.curie('id'),
-                   model_uri=EX.anatomy__id, domain=None, range=str)
+slots.anatomy__id = Slot(uri=CFDE_SCHEMA.id, name="anatomy__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.anatomy__id, domain=None, range=URIRef)
 
-slots.anatomy__description = Slot(uri=EX.description, name="anatomy__description", curie=EX.curie('description'),
-                   model_uri=EX.anatomy__description, domain=None, range=Optional[str])
+slots.anatomy__description = Slot(uri=CFDE_SCHEMA.description, name="anatomy__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.anatomy__description, domain=None, range=Optional[str])
 
-slots.anatomy__synonyms = Slot(uri=EX.synonyms, name="anatomy__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.anatomy__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.anatomy__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="anatomy__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.anatomy__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.fileFormat__id = Slot(uri=EX.id, name="fileFormat__id", curie=EX.curie('id'),
-                   model_uri=EX.fileFormat__id, domain=None, range=str)
+slots.fileFormat__id = Slot(uri=CFDE_SCHEMA.id, name="fileFormat__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.fileFormat__id, domain=None, range=URIRef)
 
-slots.fileFormat__description = Slot(uri=EX.description, name="fileFormat__description", curie=EX.curie('description'),
-                   model_uri=EX.fileFormat__description, domain=None, range=Optional[str])
+slots.fileFormat__description = Slot(uri=CFDE_SCHEMA.description, name="fileFormat__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.fileFormat__description, domain=None, range=Optional[str])
 
-slots.fileFormat__synonyms = Slot(uri=EX.synonyms, name="fileFormat__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.fileFormat__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.fileFormat__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="fileFormat__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.fileFormat__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.dataType__id = Slot(uri=EX.id, name="dataType__id", curie=EX.curie('id'),
-                   model_uri=EX.dataType__id, domain=None, range=str)
+slots.dataType__id = Slot(uri=CFDE_SCHEMA.id, name="dataType__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.dataType__id, domain=None, range=URIRef)
 
-slots.dataType__description = Slot(uri=EX.description, name="dataType__description", curie=EX.curie('description'),
-                   model_uri=EX.dataType__description, domain=None, range=Optional[str])
+slots.dataType__description = Slot(uri=CFDE_SCHEMA.description, name="dataType__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.dataType__description, domain=None, range=Optional[str])
 
-slots.dataType__synonyms = Slot(uri=EX.synonyms, name="dataType__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.dataType__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.dataType__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="dataType__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.dataType__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.disease__id = Slot(uri=EX.id, name="disease__id", curie=EX.curie('id'),
-                   model_uri=EX.disease__id, domain=None, range=str)
+slots.disease__id = Slot(uri=CFDE_SCHEMA.id, name="disease__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.disease__id, domain=None, range=URIRef)
 
-slots.disease__description = Slot(uri=EX.description, name="disease__description", curie=EX.curie('description'),
-                   model_uri=EX.disease__description, domain=None, range=Optional[str])
+slots.disease__description = Slot(uri=CFDE_SCHEMA.description, name="disease__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.disease__description, domain=None, range=Optional[str])
 
-slots.disease__synonyms = Slot(uri=EX.synonyms, name="disease__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.disease__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.disease__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="disease__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.disease__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.phenotype__id = Slot(uri=EX.id, name="phenotype__id", curie=EX.curie('id'),
-                   model_uri=EX.phenotype__id, domain=None, range=str)
+slots.phenotype__id = Slot(uri=CFDE_SCHEMA.id, name="phenotype__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.phenotype__id, domain=None, range=URIRef)
 
-slots.phenotype__description = Slot(uri=EX.description, name="phenotype__description", curie=EX.curie('description'),
-                   model_uri=EX.phenotype__description, domain=None, range=Optional[str])
+slots.phenotype__description = Slot(uri=CFDE_SCHEMA.description, name="phenotype__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.phenotype__description, domain=None, range=Optional[str])
 
-slots.phenotype__synonyms = Slot(uri=EX.synonyms, name="phenotype__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.phenotype__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.phenotype__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="phenotype__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.phenotype__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.compound__id = Slot(uri=EX.id, name="compound__id", curie=EX.curie('id'),
-                   model_uri=EX.compound__id, domain=None, range=str)
+slots.compound__id = Slot(uri=CFDE_SCHEMA.id, name="compound__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.compound__id, domain=None, range=URIRef)
 
-slots.compound__description = Slot(uri=EX.description, name="compound__description", curie=EX.curie('description'),
-                   model_uri=EX.compound__description, domain=None, range=Optional[str])
+slots.compound__description = Slot(uri=CFDE_SCHEMA.description, name="compound__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.compound__description, domain=None, range=Optional[str])
 
-slots.compound__synonyms = Slot(uri=EX.synonyms, name="compound__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.compound__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.compound__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="compound__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.compound__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.substance__id = Slot(uri=EX.id, name="substance__id", curie=EX.curie('id'),
-                   model_uri=EX.substance__id, domain=None, range=str)
+slots.substance__id = Slot(uri=CFDE_SCHEMA.id, name="substance__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.substance__id, domain=None, range=URIRef)
 
-slots.substance__description = Slot(uri=EX.description, name="substance__description", curie=EX.curie('description'),
-                   model_uri=EX.substance__description, domain=None, range=Optional[str])
+slots.substance__description = Slot(uri=CFDE_SCHEMA.description, name="substance__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.substance__description, domain=None, range=Optional[str])
 
-slots.substance__synonyms = Slot(uri=EX.synonyms, name="substance__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.substance__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.substance__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="substance__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.substance__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.substance__compound = Slot(uri=EX.compound, name="substance__compound", curie=EX.curie('compound'),
-                   model_uri=EX.substance__compound, domain=None, range=str)
+slots.substance__compound = Slot(uri=CFDE_SCHEMA.compound, name="substance__compound", curie=CFDE_SCHEMA.curie('compound'),
+                   model_uri=CFDE_SCHEMA.substance__compound, domain=None, range=Union[str, CompoundId])
 
-slots.gene__id = Slot(uri=EX.id, name="gene__id", curie=EX.curie('id'),
-                   model_uri=EX.gene__id, domain=None, range=str)
+slots.gene__id = Slot(uri=CFDE_SCHEMA.id, name="gene__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.gene__id, domain=None, range=URIRef)
 
-slots.gene__description = Slot(uri=EX.description, name="gene__description", curie=EX.curie('description'),
-                   model_uri=EX.gene__description, domain=None, range=Optional[str])
+slots.gene__description = Slot(uri=CFDE_SCHEMA.description, name="gene__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.gene__description, domain=None, range=Optional[str])
 
-slots.gene__synonyms = Slot(uri=EX.synonyms, name="gene__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.gene__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.gene__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="gene__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.gene__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.gene__organism = Slot(uri=EX.organism, name="gene__organism", curie=EX.curie('organism'),
-                   model_uri=EX.gene__organism, domain=None, range=str,
+slots.gene__organism = Slot(uri=CFDE_SCHEMA.organism, name="gene__organism", curie=CFDE_SCHEMA.curie('organism'),
+                   model_uri=CFDE_SCHEMA.gene__organism, domain=None, range=Union[str, NcbiTaxonomyId],
                    pattern=re.compile(r'^NCBI:txid[0-9]+$'))
 
-slots.protein__id = Slot(uri=EX.id, name="protein__id", curie=EX.curie('id'),
-                   model_uri=EX.protein__id, domain=None, range=str)
+slots.protein__id = Slot(uri=CFDE_SCHEMA.id, name="protein__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.protein__id, domain=None, range=URIRef)
 
-slots.protein__description = Slot(uri=EX.description, name="protein__description", curie=EX.curie('description'),
-                   model_uri=EX.protein__description, domain=None, range=Optional[str])
+slots.protein__description = Slot(uri=CFDE_SCHEMA.description, name="protein__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.protein__description, domain=None, range=Optional[str])
 
-slots.protein__synonyms = Slot(uri=EX.synonyms, name="protein__synonyms", curie=EX.curie('synonyms'),
-                   model_uri=EX.protein__synonyms, domain=None, range=Optional[Union[str, List[str]]])
+slots.protein__synonyms = Slot(uri=CFDE_SCHEMA.synonyms, name="protein__synonyms", curie=CFDE_SCHEMA.curie('synonyms'),
+                   model_uri=CFDE_SCHEMA.protein__synonyms, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.protein__organism = Slot(uri=EX.organism, name="protein__organism", curie=EX.curie('organism'),
-                   model_uri=EX.protein__organism, domain=None, range=Optional[str],
+slots.protein__organism = Slot(uri=CFDE_SCHEMA.organism, name="protein__organism", curie=CFDE_SCHEMA.curie('organism'),
+                   model_uri=CFDE_SCHEMA.protein__organism, domain=None, range=Optional[Union[str, NcbiTaxonomyId]],
                    pattern=re.compile(r'^NCBI:txid[0-9]+$'))
 
-slots.proteinGene__protein = Slot(uri=EX.protein, name="proteinGene__protein", curie=EX.curie('protein'),
-                   model_uri=EX.proteinGene__protein, domain=None, range=str)
+slots.proteinGene__protein = Slot(uri=CFDE_SCHEMA.protein, name="proteinGene__protein", curie=CFDE_SCHEMA.curie('protein'),
+                   model_uri=CFDE_SCHEMA.proteinGene__protein, domain=None, range=Union[str, ProteinId])
 
-slots.proteinGene__gene = Slot(uri=EX.gene, name="proteinGene__gene", curie=EX.curie('gene'),
-                   model_uri=EX.proteinGene__gene, domain=None, range=str)
+slots.proteinGene__gene = Slot(uri=CFDE_SCHEMA.gene, name="proteinGene__gene", curie=CFDE_SCHEMA.curie('gene'),
+                   model_uri=CFDE_SCHEMA.proteinGene__gene, domain=None, range=Union[str, GeneId])
 
-slots.idNamespace__id = Slot(uri=EX.id, name="idNamespace__id", curie=EX.curie('id'),
-                   model_uri=EX.idNamespace__id, domain=None, range=str)
+slots.idNamespace__id = Slot(uri=CFDE_SCHEMA.id, name="idNamespace__id", curie=CFDE_SCHEMA.curie('id'),
+                   model_uri=CFDE_SCHEMA.idNamespace__id, domain=None, range=URIRef)
 
-slots.idNamespace__abbreviation = Slot(uri=EX.abbreviation, name="idNamespace__abbreviation", curie=EX.curie('abbreviation'),
-                   model_uri=EX.idNamespace__abbreviation, domain=None, range=Optional[str],
+slots.idNamespace__abbreviation = Slot(uri=CFDE_SCHEMA.abbreviation, name="idNamespace__abbreviation", curie=CFDE_SCHEMA.curie('abbreviation'),
+                   model_uri=CFDE_SCHEMA.idNamespace__abbreviation, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[a-zA-Z0-9_]+$'))
 
-slots.idNamespace__description = Slot(uri=EX.description, name="idNamespace__description", curie=EX.curie('description'),
-                   model_uri=EX.idNamespace__description, domain=None, range=Optional[str])
+slots.idNamespace__description = Slot(uri=CFDE_SCHEMA.description, name="idNamespace__description", curie=CFDE_SCHEMA.curie('description'),
+                   model_uri=CFDE_SCHEMA.idNamespace__description, domain=None, range=Optional[str])

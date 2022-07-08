@@ -1,4 +1,4 @@
-BASE <https://example.org/test/>
+BASE <https://w3id.org/linkml/cfde/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
@@ -35,41 +35,38 @@ linkml:Objectidentifier IRI
 linkml:Nodeidentifier NONLITERAL
 
 <AnalysisType> CLOSED {
-    (  $<AnalysisType_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<AnalysisType_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <AnalysisType> ] ?
+       rdf:type [ <AnalysisType> ]
     )
 }
 
 <Anatomy> CLOSED {
-    (  $<Anatomy_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Anatomy_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <Anatomy> ] ?
+       rdf:type [ <Anatomy> ]
     )
 }
 
 <AssayType> CLOSED {
-    (  $<AssayType_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<AssayType_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <AssayType> ] ?
+       rdf:type [ <AssayType> ]
     )
 }
 
 <Biosample> CLOSED {
-    (  $<Biosample_tes> (  <id_namespace> @linkml:String ;
+    (  $<Biosample_tes> (  <id_namespace> @<IdNamespace> ;
           <local_id> @linkml:String ;
           <project_id_namespace> @linkml:String ;
           <project_local_id> @linkml:String ;
           <persistent_id> @linkml:String ? ;
           <creation_time> @linkml:Datetime ? ;
-          <assay_type> @linkml:String ? ;
-          <anatomy> @linkml:String ?
+          <assay_type> @<AssayType> ? ;
+          <anatomy> @<Anatomy> ?
        ) ;
        rdf:type [ <Biosample> ] ?
     )
@@ -79,7 +76,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<BiosampleDisease_tes> (  <biosample_id_namespace> @linkml:String ;
           <biosample_local_id> @linkml:String ;
           <association_type> @<AssociationTypeEnum> ;
-          <disease> @linkml:String
+          <disease> @<Disease>
        ) ;
        rdf:type [ <BiosampleDisease> ] ?
     )
@@ -99,7 +96,7 @@ linkml:Nodeidentifier NONLITERAL
 <BiosampleGene> CLOSED {
     (  $<BiosampleGene_tes> (  <biosample_id_namespace> @linkml:String ;
           <biosample_local_id> @linkml:String ;
-          <gene> @linkml:String
+          <gene> @<Gene>
        ) ;
        rdf:type [ <BiosampleGene> ] ?
     )
@@ -118,14 +115,14 @@ linkml:Nodeidentifier NONLITERAL
 <BiosampleSubstance> CLOSED {
     (  $<BiosampleSubstance_tes> (  <biosample_id_namespace> @linkml:String ;
           <biosample_local_id> @linkml:String ;
-          <substance> @linkml:String
+          <substance> @<Substance>
        ) ;
        rdf:type [ <BiosampleSubstance> ] ?
     )
 }
 
 <Collection> CLOSED {
-    (  $<Collection_tes> (  <id_namespace> @linkml:String ;
+    (  $<Collection_tes> (  <id_namespace> @<IdNamespace> ;
           <local_id> @linkml:String ;
           <persistent_id> @linkml:String ? ;
           <creation_time> @linkml:Datetime ? ;
@@ -140,7 +137,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionAnatomy> CLOSED {
     (  $<CollectionAnatomy_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <anatomy> @linkml:String
+          <anatomy> @<Anatomy>
        ) ;
        rdf:type [ <CollectionAnatomy> ] ?
     )
@@ -149,7 +146,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionCompound> CLOSED {
     (  $<CollectionCompound_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <compound> @linkml:String
+          <compound> @<Compound>
        ) ;
        rdf:type [ <CollectionCompound> ] ?
     )
@@ -168,7 +165,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionDisease> CLOSED {
     (  $<CollectionDisease_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <disease> @linkml:String
+          <disease> @<Disease>
        ) ;
        rdf:type [ <CollectionDisease> ] ?
     )
@@ -177,7 +174,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionGene> CLOSED {
     (  $<CollectionGene_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <gene> @linkml:String
+          <gene> @<Gene>
        ) ;
        rdf:type [ <CollectionGene> ] ?
     )
@@ -196,7 +193,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionPhenotype> CLOSED {
     (  $<CollectionPhenotype_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <phenotype> @linkml:String
+          <phenotype> @<Phenotype>
        ) ;
        rdf:type [ <CollectionPhenotype> ] ?
     )
@@ -205,7 +202,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionProtein> CLOSED {
     (  $<CollectionProtein_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <protein> @linkml:String
+          <protein> @<Protein>
        ) ;
        rdf:type [ <CollectionProtein> ] ?
     )
@@ -214,7 +211,7 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionSubstance> CLOSED {
     (  $<CollectionSubstance_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <substance> @linkml:String
+          <substance> @<Substance>
        ) ;
        rdf:type [ <CollectionSubstance> ] ?
     )
@@ -223,33 +220,30 @@ linkml:Nodeidentifier NONLITERAL
 <CollectionTaxonomy> CLOSED {
     (  $<CollectionTaxonomy_tes> (  <collection_id_namespace> @linkml:String ;
           <collection_local_id> @linkml:String ;
-          <taxon> @linkml:String
+          <taxon> @<NcbiTaxonomy>
        ) ;
        rdf:type [ <CollectionTaxonomy> ] ?
     )
 }
 
 <Compound> CLOSED {
-    (  $<Compound_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Compound_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <Compound> ] ?
+       rdf:type [ <Compound> ]
     )
 }
 
 <DataType> CLOSED {
-    (  $<DataType_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<DataType_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <DataType> ] ?
+       rdf:type [ <DataType> ]
     )
 }
 
 <Dcc> CLOSED {
-    (  $<Dcc_tes> (  <id> @linkml:String ;
-          <dcc_name> @linkml:String ;
+    (  $<Dcc_tes> (  <dcc_name> @linkml:String ;
           <dcc_abbreviation> @linkml:String ;
           <dcc_description> @linkml:String ? ;
           <contact_email> @linkml:String ;
@@ -258,21 +252,20 @@ linkml:Nodeidentifier NONLITERAL
           <project_id_namespace> @linkml:String ;
           <project_local_id> @linkml:String
        ) ;
-       rdf:type [ <Dcc> ] ?
+       rdf:type [ <Dcc> ]
     )
 }
 
 <Disease> CLOSED {
-    (  $<Disease_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Disease_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <Disease> ] ?
+       rdf:type [ <Disease> ]
     )
 }
 
 <File> CLOSED {
-    (  $<File_tes> (  <id_namespace> @linkml:String ;
+    (  $<File_tes> (  <id_namespace> @<IdNamespace> ;
           <local_id> @linkml:String ;
           <project_id_namespace> @linkml:String ;
           <project_local_id> @linkml:String ;
@@ -283,11 +276,11 @@ linkml:Nodeidentifier NONLITERAL
           <sha256> @linkml:String ? ;
           <md5> @linkml:String ? ;
           <filename> @linkml:String ? ;
-          <file_format> @linkml:String ? ;
-          <compression_format> @linkml:String ? ;
-          <data_type> @linkml:String ? ;
-          <assay_type> @linkml:String ? ;
-          <analysis_type> @linkml:String ? ;
+          <file_format> @<FileFormat> ? ;
+          <compression_format> @<FileFormat> ? ;
+          <data_type> @<DataType> ? ;
+          <assay_type> @<AssayType> ? ;
+          <analysis_type> @<AnalysisType> ? ;
           <mime_type> @linkml:String ? ;
           <bundle_collection_id_namespace> @linkml:String ? ;
           <bundle_collection_local_id> @linkml:String ? ;
@@ -328,11 +321,10 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <FileFormat> CLOSED {
-    (  $<FileFormat_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<FileFormat_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <FileFormat> ] ?
+       rdf:type [ <FileFormat> ]
     )
 }
 
@@ -347,61 +339,57 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Gene> CLOSED {
-    (  $<Gene_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Gene_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String * ;
-          <organism> @linkml:String
+          <organism> @<NcbiTaxonomy>
        ) ;
-       rdf:type [ <Gene> ] ?
+       rdf:type [ <Gene> ]
     )
 }
 
 <IdNamespace> CLOSED {
-    (  $<IdNamespace_tes> (  <id> @linkml:String ;
-          <abbreviation> @linkml:String ? ;
+    (  $<IdNamespace_tes> (  <abbreviation> @linkml:String ? ;
           <description> @linkml:String ?
        ) ;
-       rdf:type [ <IdNamespace> ] ?
+       rdf:type [ <IdNamespace> ]
     )
 }
 
 <NcbiTaxonomy> CLOSED {
-    (  $<NcbiTaxonomy_tes> (  <id> @linkml:String ;
-          <clade> @linkml:String ;
+    (  $<NcbiTaxonomy_tes> (  <clade> @linkml:String ;
           <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <NcbiTaxonomy> ] ?
+       rdf:type [ <NcbiTaxonomy> ]
     )
 }
 
 <Phenotype> CLOSED {
-    (  $<Phenotype_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Phenotype_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String *
        ) ;
-       rdf:type [ <Phenotype> ] ?
+       rdf:type [ <Phenotype> ]
     )
 }
 
 <PhenotypeDisease> CLOSED {
-    (  $<PhenotypeDisease_tes> (  <phenotype> @linkml:String ;
-          <disease> @linkml:String
+    (  $<PhenotypeDisease_tes> (  <phenotype> @<Phenotype> ;
+          <disease> @<Disease>
        ) ;
        rdf:type [ <PhenotypeDisease> ] ?
     )
 }
 
 <PhenotypeGene> CLOSED {
-    (  $<PhenotypeGene_tes> (  <phenotype> @linkml:String ;
-          <gene> @linkml:String
+    (  $<PhenotypeGene_tes> (  <phenotype> @<Phenotype> ;
+          <gene> @<Gene>
        ) ;
        rdf:type [ <PhenotypeGene> ] ?
     )
 }
 
 <Project> CLOSED {
-    (  $<Project_tes> (  <id_namespace> @linkml:String ;
+    (  $<Project_tes> (  <id_namespace> @<IdNamespace> ;
           <local_id> @linkml:String ;
           <persistent_id> @linkml:String ? ;
           <creation_time> @linkml:Datetime ? ;
@@ -423,25 +411,24 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Protein> CLOSED {
-    (  $<Protein_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Protein_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String * ;
-          <organism> @linkml:String ?
+          <organism> @<NcbiTaxonomy> ?
        ) ;
-       rdf:type [ <Protein> ] ?
+       rdf:type [ <Protein> ]
     )
 }
 
 <ProteinGene> CLOSED {
-    (  $<ProteinGene_tes> (  <protein> @linkml:String ;
-          <gene> @linkml:String
+    (  $<ProteinGene_tes> (  <protein> @<Protein> ;
+          <gene> @<Gene>
        ) ;
        rdf:type [ <ProteinGene> ] ?
     )
 }
 
 <Subject> CLOSED {
-    (  $<Subject_tes> (  <id_namespace> @linkml:String ;
+    (  $<Subject_tes> (  <id_namespace> @<IdNamespace> ;
           <local_id> @linkml:String ;
           <project_id_namespace> @linkml:String ;
           <project_local_id> @linkml:String ;
@@ -460,7 +447,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<SubjectDisease_tes> (  <subject_id_namespace> @linkml:String ;
           <subject_local_id> @linkml:String ;
           <association_type> @<AssociationTypeEnum> ;
-          <disease> @linkml:String
+          <disease> @<Disease>
        ) ;
        rdf:type [ <SubjectDisease> ] ?
     )
@@ -480,7 +467,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<SubjectPhenotype_tes> (  <subject_id_namespace> @linkml:String ;
           <subject_local_id> @linkml:String ;
           <association_type> @<AssociationTypeEnum> ;
-          <phenotype> @linkml:String
+          <phenotype> @<Phenotype>
        ) ;
        rdf:type [ <SubjectPhenotype> ] ?
     )
@@ -499,7 +486,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<SubjectRoleTaxonomy_tes> (  <subject_id_namespace> @linkml:String ;
           <subject_local_id> @linkml:String ;
           <role_id> @<RoleIdEnum> ;
-          <taxonomy_id> @linkml:String
+          <taxonomy_id> @<NcbiTaxonomy>
        ) ;
        rdf:type [ <SubjectRoleTaxonomy> ] ?
     )
@@ -508,19 +495,18 @@ linkml:Nodeidentifier NONLITERAL
 <SubjectSubstance> CLOSED {
     (  $<SubjectSubstance_tes> (  <subject_id_namespace> @linkml:String ;
           <subject_local_id> @linkml:String ;
-          <substance> @linkml:String
+          <substance> @<Substance>
        ) ;
        rdf:type [ <SubjectSubstance> ] ?
     )
 }
 
 <Substance> CLOSED {
-    (  $<Substance_tes> (  <id> @linkml:String ;
-          <description> @linkml:String ? ;
+    (  $<Substance_tes> (  <description> @linkml:String ? ;
           <synonyms> @linkml:String * ;
-          <compound> @linkml:String
+          <compound> @<Compound>
        ) ;
-       rdf:type [ <Substance> ] ?
+       rdf:type [ <Substance> ]
     )
 }
 

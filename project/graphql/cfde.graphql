@@ -21,14 +21,14 @@ type AssayType
 
 type Biosample
   {
-    idNamespace: String!
+    idNamespace: IdNamespace!
     localId: String!
     projectIdNamespace: String!
     projectLocalId: String!
     persistentId: String
     creationTime: Datetime
-    assayType: String
-    anatomy: String
+    assayType: AssayType
+    anatomy: Anatomy
   }
 
 type BiosampleDisease
@@ -36,7 +36,7 @@ type BiosampleDisease
     biosampleIdNamespace: String!
     biosampleLocalId: String!
     associationType: AssociationTypeEnum!
-    disease: String!
+    disease: Disease!
   }
 
 type BiosampleFromSubject
@@ -52,7 +52,7 @@ type BiosampleGene
   {
     biosampleIdNamespace: String!
     biosampleLocalId: String!
-    gene: String!
+    gene: Gene!
   }
 
 type BiosampleInCollection
@@ -67,12 +67,12 @@ type BiosampleSubstance
   {
     biosampleIdNamespace: String!
     biosampleLocalId: String!
-    substance: String!
+    substance: Substance!
   }
 
 type Collection
   {
-    idNamespace: String!
+    idNamespace: IdNamespace!
     localId: String!
     persistentId: String
     creationTime: Datetime
@@ -85,14 +85,14 @@ type CollectionAnatomy
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    anatomy: String!
+    anatomy: Anatomy!
   }
 
 type CollectionCompound
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    compound: String!
+    compound: Compound!
   }
 
 type CollectionDefinedByProject
@@ -107,14 +107,14 @@ type CollectionDisease
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    disease: String!
+    disease: Disease!
   }
 
 type CollectionGene
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    gene: String!
+    gene: Gene!
   }
 
 type CollectionInCollection
@@ -129,28 +129,28 @@ type CollectionPhenotype
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    phenotype: String!
+    phenotype: Phenotype!
   }
 
 type CollectionProtein
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    protein: String!
+    protein: Protein!
   }
 
 type CollectionSubstance
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    substance: String!
+    substance: Substance!
   }
 
 type CollectionTaxonomy
   {
     collectionIdNamespace: String!
     collectionLocalId: String!
-    taxon: String!
+    taxon: NcbiTaxonomy!
   }
 
 type Compound
@@ -189,7 +189,7 @@ type Disease
 
 type File
   {
-    idNamespace: String!
+    idNamespace: IdNamespace!
     localId: String!
     projectIdNamespace: String!
     projectLocalId: String!
@@ -200,11 +200,11 @@ type File
     sha256: String
     md5: String
     filename: String
-    fileFormat: String
-    compressionFormat: String
-    dataType: String
-    assayType: String
-    analysisType: String
+    fileFormat: FileFormat
+    compressionFormat: FileFormat
+    dataType: DataType
+    assayType: AssayType
+    analysisType: AnalysisType
     mimeType: String
     bundleCollectionIdNamespace: String
     bundleCollectionLocalId: String
@@ -255,7 +255,7 @@ type Gene
     id: String!
     description: String
     synonyms: [String]
-    organism: String!
+    organism: NcbiTaxonomy!
   }
 
 type IdNamespace
@@ -282,19 +282,19 @@ type Phenotype
 
 type PhenotypeDisease
   {
-    phenotype: String!
-    disease: String!
+    phenotype: Phenotype!
+    disease: Disease!
   }
 
 type PhenotypeGene
   {
-    phenotype: String!
-    gene: String!
+    phenotype: Phenotype!
+    gene: Gene!
   }
 
 type Project
   {
-    idNamespace: String!
+    idNamespace: IdNamespace!
     localId: String!
     persistentId: String
     creationTime: Datetime
@@ -315,18 +315,18 @@ type Protein
     id: String!
     description: String
     synonyms: [String]
-    organism: String
+    organism: NcbiTaxonomy
   }
 
 type ProteinGene
   {
-    protein: String!
-    gene: String!
+    protein: Protein!
+    gene: Gene!
   }
 
 type Subject
   {
-    idNamespace: String!
+    idNamespace: IdNamespace!
     localId: String!
     projectIdNamespace: String!
     projectLocalId: String!
@@ -343,7 +343,7 @@ type SubjectDisease
     subjectIdNamespace: String!
     subjectLocalId: String!
     associationType: AssociationTypeEnum!
-    disease: String!
+    disease: Disease!
   }
 
 type SubjectInCollection
@@ -359,7 +359,7 @@ type SubjectPhenotype
     subjectIdNamespace: String!
     subjectLocalId: String!
     associationType: AssociationTypeEnum!
-    phenotype: String!
+    phenotype: Phenotype!
   }
 
 type SubjectRace
@@ -374,14 +374,14 @@ type SubjectRoleTaxonomy
     subjectIdNamespace: String!
     subjectLocalId: String!
     roleId: RoleIdEnum!
-    taxonomyId: String!
+    taxonomyId: NcbiTaxonomy!
   }
 
 type SubjectSubstance
   {
     subjectIdNamespace: String!
     subjectLocalId: String!
-    substance: String!
+    substance: Substance!
   }
 
 type Substance
@@ -389,6 +389,6 @@ type Substance
     id: String!
     description: String
     synonyms: [String]
-    compound: String!
+    compound: Compound!
   }
 

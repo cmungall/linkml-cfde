@@ -22,14 +22,14 @@ message AssayType
 // A tissue sample or other physical specimen
 message Biosample
  {
-  string idNamespace = 0
+  idNamespace idNamespace = 0
   string localId = 0
   string projectIdNamespace = 0
   string projectLocalId = 0
   string persistentId = 0
   datetime creationTime = 0
-  string assayType = 0
-  string anatomy = 0
+  assayType assayType = 0
+  anatomy anatomy = 0
  }
 // Association between a C2M2 biosample and a disease positively (e.g. cancer tumor tissue sample) OR negatively (e.g. cancer-free tissue sample) identified for that biosample
 message BiosampleDisease
@@ -37,7 +37,7 @@ message BiosampleDisease
   string biosampleIdNamespace = 0
   string biosampleLocalId = 0
   associationTypeEnum associationType = 0
-  string disease = 0
+  disease disease = 0
  }
 // Association between a biosample and its source subject
 message BiosampleFromSubject
@@ -53,7 +53,7 @@ message BiosampleGene
  {
   string biosampleIdNamespace = 0
   string biosampleLocalId = 0
-  string gene = 0
+  gene gene = 0
  }
 // Association between a biosample and a (containing) collection
 message BiosampleInCollection
@@ -68,12 +68,12 @@ message BiosampleSubstance
  {
   string biosampleIdNamespace = 0
   string biosampleLocalId = 0
-  string substance = 0
+  substance substance = 0
  }
 // A grouping of C2M2 files, biosamples and/or subjects
 message Collection
  {
-  string idNamespace = 0
+  idNamespace idNamespace = 0
   string localId = 0
   string persistentId = 0
   datetime creationTime = 0
@@ -86,14 +86,14 @@ message CollectionAnatomy
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string anatomy = 0
+  anatomy anatomy = 0
  }
 // Association between a compound and a C2M2 collection containing experimental resources directly related to the study of that compound
 message CollectionCompound
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string compound = 0
+  compound compound = 0
  }
 // (Shallow) association between a collection and a project that defined it
 message CollectionDefinedByProject
@@ -108,14 +108,14 @@ message CollectionDisease
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string disease = 0
+  disease disease = 0
  }
 // Association between a gene and a C2M2 collection containing experimental resources directly related to the study of that gene
 message CollectionGene
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string gene = 0
+  gene gene = 0
  }
 // Association between a containing collection (superset) and a contained collection (subset)
 message CollectionInCollection
@@ -130,28 +130,28 @@ message CollectionPhenotype
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string phenotype = 0
+  phenotype phenotype = 0
  }
 // Association between a protein and a C2M2 collection containing experimental resources directly related to the study of that protein
 message CollectionProtein
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string protein = 0
+  protein protein = 0
  }
 // Association between a substance and a C2M2 collection containing experimental resources directly related to the study of that substance
 message CollectionSubstance
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string substance = 0
+  substance substance = 0
  }
 // Association between a taxon and a C2M2 collection containing experimental resources directly related to the study of that taxon
 message CollectionTaxonomy
  {
   string collectionIdNamespace = 0
   string collectionLocalId = 0
-  string taxon = 0
+  ncbiTaxonomy taxon = 0
  }
 // List of (i) GlyTouCan terms or (ii) PubChem 'compound' terms (normalized chemical structures) referenced in this submission; (ii) will include all PubChem 'compound' terms associated with any PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this submission, in addition to any 'compound' terms directly referenced
 message Compound
@@ -190,7 +190,7 @@ message Disease
 // A stable digital asset
 message File
  {
-  string idNamespace = 0
+  idNamespace idNamespace = 0
   string localId = 0
   string projectIdNamespace = 0
   string projectLocalId = 0
@@ -201,11 +201,11 @@ message File
   string sha256 = 0
   string md5 = 0
   string filename = 0
-  string fileFormat = 0
-  string compressionFormat = 0
-  string dataType = 0
-  string assayType = 0
-  string analysisType = 0
+  fileFormat fileFormat = 0
+  fileFormat compressionFormat = 0
+  dataType dataType = 0
+  assayType assayType = 0
+  analysisType analysisType = 0
   string mimeType = 0
   string bundleCollectionIdNamespace = 0
   string bundleCollectionLocalId = 0
@@ -256,7 +256,7 @@ message Gene
   string id = 0
   string description = 0
  repeated  string synonyms = 0
-  string organism = 0
+  ncbiTaxonomy organism = 0
  }
 // A table listing identifier namespaces registered by the DCC submitting this C2M2 instance
 message IdNamespace
@@ -283,19 +283,19 @@ message Phenotype
 // Association between a Human Phenotype Ontology term and a Disease Ontology term identifying a disease especially relevant to it
 message PhenotypeDisease
  {
-  string phenotype = 0
-  string disease = 0
+  phenotype phenotype = 0
+  disease disease = 0
  }
 // Association between a Human Phenotype Ontology term and an Ensembl gene especially relevant to it
 message PhenotypeGene
  {
-  string phenotype = 0
-  string gene = 0
+  phenotype phenotype = 0
+  gene gene = 0
  }
 // A node in the C2M2 project hierarchy subdividing all resources described by this DCC's C2M2 metadata
 message Project
  {
-  string idNamespace = 0
+  idNamespace idNamespace = 0
   string localId = 0
   string persistentId = 0
   datetime creationTime = 0
@@ -316,18 +316,18 @@ message Protein
   string id = 0
   string description = 0
  repeated  string synonyms = 0
-  string organism = 0
+  ncbiTaxonomy organism = 0
  }
 // Association between a UniProtKB protein term and an Ensembl term identifying a gene encoding that protein
 message ProteinGene
  {
-  string protein = 0
-  string gene = 0
+  protein protein = 0
+  gene gene = 0
  }
 // A biological entity from which a C2M2 biosample can in principle be generated
 message Subject
  {
-  string idNamespace = 0
+  idNamespace idNamespace = 0
   string localId = 0
   string projectIdNamespace = 0
   string projectLocalId = 0
@@ -344,7 +344,7 @@ message SubjectDisease
   string subjectIdNamespace = 0
   string subjectLocalId = 0
   associationTypeEnum associationType = 0
-  string disease = 0
+  disease disease = 0
  }
 // Association between a subject and a (containing) collection
 message SubjectInCollection
@@ -360,7 +360,7 @@ message SubjectPhenotype
   string subjectIdNamespace = 0
   string subjectLocalId = 0
   associationTypeEnum associationType = 0
-  string phenotype = 0
+  phenotype phenotype = 0
  }
 // Identification of a C2M2 subject with one or more self-selected races
 message SubjectRace
@@ -375,14 +375,14 @@ message SubjectRoleTaxonomy
   string subjectIdNamespace = 0
   string subjectLocalId = 0
   roleIdEnum roleId = 0
-  string taxonomyId = 0
+  ncbiTaxonomy taxonomyId = 0
  }
 // Association between a C2M2 subject and a PubChem substance experimentally associated with that subject
 message SubjectSubstance
  {
   string subjectIdNamespace = 0
   string subjectLocalId = 0
-  string substance = 0
+  substance substance = 0
  }
 // List of PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this C2M2 submission
 message Substance
@@ -390,5 +390,5 @@ message Substance
   string id = 0
   string description = 0
  repeated  string synonyms = 0
-  string compound = 0
+  compound compound = 0
  }

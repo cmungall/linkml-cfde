@@ -1,11 +1,12 @@
 {
-   "cfde_disease_association_type": "http://example.org/test//cfde_disease_association_type/",
-   "cfde_phenotype_association_type": "http://example.org/test//cfde_phenotype_association_type/",
-   "cfde_subject_ethnicity": "http://example.org/test//cfde_subject_ethnicity/",
-   "cfde_subject_granularity": "http://example.org/test//cfde_subject_granularity/",
-   "cfde_subject_race": "http://example.org/test//cfde_subject_race/",
-   "cfde_subject_role": "http://example.org/test//cfde_subject_role/",
-   "cfde_subject_sex": "http://example.org/test//cfde_subject_sex/",
+   "cfde_disease_association_type": "https://w3id.org/linkml/cfde/cfde_disease_association_type/",
+   "cfde_phenotype_association_type": "https://w3id.org/linkml/cfde/cfde_phenotype_association_type/",
+   "cfde_schema": "https://w3id.org/linkml/cfde/",
+   "cfde_subject_ethnicity": "https://w3id.org/linkml/cfde/cfde_subject_ethnicity/",
+   "cfde_subject_granularity": "https://w3id.org/linkml/cfde/cfde_subject_granularity/",
+   "cfde_subject_race": "https://w3id.org/linkml/cfde/cfde_subject_race/",
+   "cfde_subject_role": "https://w3id.org/linkml/cfde/cfde_subject_role/",
+   "cfde_subject_sex": "https://w3id.org/linkml/cfde/cfde_subject_sex/",
    "ex": "https://example.org/test/",
    "linkml": "https://w3id.org/linkml/"
 }
