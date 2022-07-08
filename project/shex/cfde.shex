@@ -1,0 +1,527 @@
+BASE <https://example.org/test/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:dateTime
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+<AnalysisType> CLOSED {
+    (  $<AnalysisType_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <AnalysisType> ] ?
+    )
+}
+
+<Anatomy> CLOSED {
+    (  $<Anatomy_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <Anatomy> ] ?
+    )
+}
+
+<AssayType> CLOSED {
+    (  $<AssayType_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <AssayType> ] ?
+    )
+}
+
+<Biosample> CLOSED {
+    (  $<Biosample_tes> (  <id_namespace> @linkml:String ;
+          <local_id> @linkml:String ;
+          <project_id_namespace> @linkml:String ;
+          <project_local_id> @linkml:String ;
+          <persistent_id> @linkml:String ? ;
+          <creation_time> @linkml:Datetime ? ;
+          <assay_type> @linkml:String ? ;
+          <anatomy> @linkml:String ?
+       ) ;
+       rdf:type [ <Biosample> ] ?
+    )
+}
+
+<BiosampleDisease> CLOSED {
+    (  $<BiosampleDisease_tes> (  <biosample_id_namespace> @linkml:String ;
+          <biosample_local_id> @linkml:String ;
+          <association_type> @<AssociationTypeEnum> ;
+          <disease> @linkml:String
+       ) ;
+       rdf:type [ <BiosampleDisease> ] ?
+    )
+}
+
+<BiosampleFromSubject> CLOSED {
+    (  $<BiosampleFromSubject_tes> (  <biosample_id_namespace> @linkml:String ;
+          <biosample_local_id> @linkml:String ;
+          <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <age_at_sampling> @linkml:Decimal ?
+       ) ;
+       rdf:type [ <BiosampleFromSubject> ] ?
+    )
+}
+
+<BiosampleGene> CLOSED {
+    (  $<BiosampleGene_tes> (  <biosample_id_namespace> @linkml:String ;
+          <biosample_local_id> @linkml:String ;
+          <gene> @linkml:String
+       ) ;
+       rdf:type [ <BiosampleGene> ] ?
+    )
+}
+
+<BiosampleInCollection> CLOSED {
+    (  $<BiosampleInCollection_tes> (  <biosample_id_namespace> @linkml:String ;
+          <biosample_local_id> @linkml:String ;
+          <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String
+       ) ;
+       rdf:type [ <BiosampleInCollection> ] ?
+    )
+}
+
+<BiosampleSubstance> CLOSED {
+    (  $<BiosampleSubstance_tes> (  <biosample_id_namespace> @linkml:String ;
+          <biosample_local_id> @linkml:String ;
+          <substance> @linkml:String
+       ) ;
+       rdf:type [ <BiosampleSubstance> ] ?
+    )
+}
+
+<Collection> CLOSED {
+    (  $<Collection_tes> (  <id_namespace> @linkml:String ;
+          <local_id> @linkml:String ;
+          <persistent_id> @linkml:String ? ;
+          <creation_time> @linkml:Datetime ? ;
+          <abbreviation> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <has_time_series_data> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <Collection> ] ?
+    )
+}
+
+<CollectionAnatomy> CLOSED {
+    (  $<CollectionAnatomy_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <anatomy> @linkml:String
+       ) ;
+       rdf:type [ <CollectionAnatomy> ] ?
+    )
+}
+
+<CollectionCompound> CLOSED {
+    (  $<CollectionCompound_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <compound> @linkml:String
+       ) ;
+       rdf:type [ <CollectionCompound> ] ?
+    )
+}
+
+<CollectionDefinedByProject> CLOSED {
+    (  $<CollectionDefinedByProject_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <project_id_namespace> @linkml:String ;
+          <project_local_id> @linkml:String
+       ) ;
+       rdf:type [ <CollectionDefinedByProject> ] ?
+    )
+}
+
+<CollectionDisease> CLOSED {
+    (  $<CollectionDisease_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <disease> @linkml:String
+       ) ;
+       rdf:type [ <CollectionDisease> ] ?
+    )
+}
+
+<CollectionGene> CLOSED {
+    (  $<CollectionGene_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <gene> @linkml:String
+       ) ;
+       rdf:type [ <CollectionGene> ] ?
+    )
+}
+
+<CollectionInCollection> CLOSED {
+    (  $<CollectionInCollection_tes> (  <superset_collection_id_namespace> @linkml:String ;
+          <superset_collection_local_id> @linkml:String ;
+          <subset_collection_id_namespace> @linkml:String ;
+          <subset_collection_local_id> @linkml:String
+       ) ;
+       rdf:type [ <CollectionInCollection> ] ?
+    )
+}
+
+<CollectionPhenotype> CLOSED {
+    (  $<CollectionPhenotype_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <phenotype> @linkml:String
+       ) ;
+       rdf:type [ <CollectionPhenotype> ] ?
+    )
+}
+
+<CollectionProtein> CLOSED {
+    (  $<CollectionProtein_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <protein> @linkml:String
+       ) ;
+       rdf:type [ <CollectionProtein> ] ?
+    )
+}
+
+<CollectionSubstance> CLOSED {
+    (  $<CollectionSubstance_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <substance> @linkml:String
+       ) ;
+       rdf:type [ <CollectionSubstance> ] ?
+    )
+}
+
+<CollectionTaxonomy> CLOSED {
+    (  $<CollectionTaxonomy_tes> (  <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String ;
+          <taxon> @linkml:String
+       ) ;
+       rdf:type [ <CollectionTaxonomy> ] ?
+    )
+}
+
+<Compound> CLOSED {
+    (  $<Compound_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <Compound> ] ?
+    )
+}
+
+<DataType> CLOSED {
+    (  $<DataType_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <DataType> ] ?
+    )
+}
+
+<Dcc> CLOSED {
+    (  $<Dcc_tes> (  <id> @linkml:String ;
+          <dcc_name> @linkml:String ;
+          <dcc_abbreviation> @linkml:String ;
+          <dcc_description> @linkml:String ? ;
+          <contact_email> @linkml:String ;
+          <contact_name> @linkml:String ;
+          <dcc_url> @linkml:String ;
+          <project_id_namespace> @linkml:String ;
+          <project_local_id> @linkml:String
+       ) ;
+       rdf:type [ <Dcc> ] ?
+    )
+}
+
+<Disease> CLOSED {
+    (  $<Disease_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <Disease> ] ?
+    )
+}
+
+<File> CLOSED {
+    (  $<File_tes> (  <id_namespace> @linkml:String ;
+          <local_id> @linkml:String ;
+          <project_id_namespace> @linkml:String ;
+          <project_local_id> @linkml:String ;
+          <persistent_id> @linkml:String ? ;
+          <creation_time> @linkml:Datetime ? ;
+          <size_in_bytes> @linkml:Integer ? ;
+          <uncompressed_size_in_bytes> @linkml:Integer ? ;
+          <sha256> @linkml:String ? ;
+          <md5> @linkml:String ? ;
+          <filename> @linkml:String ? ;
+          <file_format> @linkml:String ? ;
+          <compression_format> @linkml:String ? ;
+          <data_type> @linkml:String ? ;
+          <assay_type> @linkml:String ? ;
+          <analysis_type> @linkml:String ? ;
+          <mime_type> @linkml:String ? ;
+          <bundle_collection_id_namespace> @linkml:String ? ;
+          <bundle_collection_local_id> @linkml:String ? ;
+          <dbgap_study_id> @linkml:String ?
+       ) ;
+       rdf:type [ <File> ] ?
+    )
+}
+
+<FileDescribesBiosample> CLOSED {
+    (  $<FileDescribesBiosample_tes> (  <file_id_namespace> @linkml:String ;
+          <file_local_id> @linkml:String ;
+          <biosample_id_namespace> @linkml:String ;
+          <biosample_local_id> @linkml:String
+       ) ;
+       rdf:type [ <FileDescribesBiosample> ] ?
+    )
+}
+
+<FileDescribesCollection> CLOSED {
+    (  $<FileDescribesCollection_tes> (  <file_id_namespace> @linkml:String ;
+          <file_local_id> @linkml:String ;
+          <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String
+       ) ;
+       rdf:type [ <FileDescribesCollection> ] ?
+    )
+}
+
+<FileDescribesSubject> CLOSED {
+    (  $<FileDescribesSubject_tes> (  <file_id_namespace> @linkml:String ;
+          <file_local_id> @linkml:String ;
+          <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String
+       ) ;
+       rdf:type [ <FileDescribesSubject> ] ?
+    )
+}
+
+<FileFormat> CLOSED {
+    (  $<FileFormat_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <FileFormat> ] ?
+    )
+}
+
+<FileInCollection> CLOSED {
+    (  $<FileInCollection_tes> (  <file_id_namespace> @linkml:String ;
+          <file_local_id> @linkml:String ;
+          <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String
+       ) ;
+       rdf:type [ <FileInCollection> ] ?
+    )
+}
+
+<Gene> CLOSED {
+    (  $<Gene_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String * ;
+          <organism> @linkml:String
+       ) ;
+       rdf:type [ <Gene> ] ?
+    )
+}
+
+<IdNamespace> CLOSED {
+    (  $<IdNamespace_tes> (  <id> @linkml:String ;
+          <abbreviation> @linkml:String ? ;
+          <description> @linkml:String ?
+       ) ;
+       rdf:type [ <IdNamespace> ] ?
+    )
+}
+
+<NcbiTaxonomy> CLOSED {
+    (  $<NcbiTaxonomy_tes> (  <id> @linkml:String ;
+          <clade> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <NcbiTaxonomy> ] ?
+    )
+}
+
+<Phenotype> CLOSED {
+    (  $<Phenotype_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String *
+       ) ;
+       rdf:type [ <Phenotype> ] ?
+    )
+}
+
+<PhenotypeDisease> CLOSED {
+    (  $<PhenotypeDisease_tes> (  <phenotype> @linkml:String ;
+          <disease> @linkml:String
+       ) ;
+       rdf:type [ <PhenotypeDisease> ] ?
+    )
+}
+
+<PhenotypeGene> CLOSED {
+    (  $<PhenotypeGene_tes> (  <phenotype> @linkml:String ;
+          <gene> @linkml:String
+       ) ;
+       rdf:type [ <PhenotypeGene> ] ?
+    )
+}
+
+<Project> CLOSED {
+    (  $<Project_tes> (  <id_namespace> @linkml:String ;
+          <local_id> @linkml:String ;
+          <persistent_id> @linkml:String ? ;
+          <creation_time> @linkml:Datetime ? ;
+          <abbreviation> @linkml:String ? ;
+          <description> @linkml:String ?
+       ) ;
+       rdf:type [ <Project> ] ?
+    )
+}
+
+<ProjectInProject> CLOSED {
+    (  $<ProjectInProject_tes> (  <parent_project_id_namespace> @linkml:String ;
+          <parent_project_local_id> @linkml:String ;
+          <child_project_id_namespace> @linkml:String ;
+          <child_project_local_id> @linkml:String
+       ) ;
+       rdf:type [ <ProjectInProject> ] ?
+    )
+}
+
+<Protein> CLOSED {
+    (  $<Protein_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String * ;
+          <organism> @linkml:String ?
+       ) ;
+       rdf:type [ <Protein> ] ?
+    )
+}
+
+<ProteinGene> CLOSED {
+    (  $<ProteinGene_tes> (  <protein> @linkml:String ;
+          <gene> @linkml:String
+       ) ;
+       rdf:type [ <ProteinGene> ] ?
+    )
+}
+
+<Subject> CLOSED {
+    (  $<Subject_tes> (  <id_namespace> @linkml:String ;
+          <local_id> @linkml:String ;
+          <project_id_namespace> @linkml:String ;
+          <project_local_id> @linkml:String ;
+          <persistent_id> @linkml:String ? ;
+          <creation_time> @linkml:Datetime ? ;
+          <granularity> @<GranularityEnum> ;
+          <sex> @<SexEnum> ? ;
+          <ethnicity> @<EthnicityEnum> ? ;
+          <age_at_enrollment> @linkml:Decimal ?
+       ) ;
+       rdf:type [ <Subject> ] ?
+    )
+}
+
+<SubjectDisease> CLOSED {
+    (  $<SubjectDisease_tes> (  <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <association_type> @<AssociationTypeEnum> ;
+          <disease> @linkml:String
+       ) ;
+       rdf:type [ <SubjectDisease> ] ?
+    )
+}
+
+<SubjectInCollection> CLOSED {
+    (  $<SubjectInCollection_tes> (  <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <collection_id_namespace> @linkml:String ;
+          <collection_local_id> @linkml:String
+       ) ;
+       rdf:type [ <SubjectInCollection> ] ?
+    )
+}
+
+<SubjectPhenotype> CLOSED {
+    (  $<SubjectPhenotype_tes> (  <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <association_type> @<AssociationTypeEnum> ;
+          <phenotype> @linkml:String
+       ) ;
+       rdf:type [ <SubjectPhenotype> ] ?
+    )
+}
+
+<SubjectRace> CLOSED {
+    (  $<SubjectRace_tes> (  <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <race> @<RaceEnum> ?
+       ) ;
+       rdf:type [ <SubjectRace> ] ?
+    )
+}
+
+<SubjectRoleTaxonomy> CLOSED {
+    (  $<SubjectRoleTaxonomy_tes> (  <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <role_id> @<RoleIdEnum> ;
+          <taxonomy_id> @linkml:String
+       ) ;
+       rdf:type [ <SubjectRoleTaxonomy> ] ?
+    )
+}
+
+<SubjectSubstance> CLOSED {
+    (  $<SubjectSubstance_tes> (  <subject_id_namespace> @linkml:String ;
+          <subject_local_id> @linkml:String ;
+          <substance> @linkml:String
+       ) ;
+       rdf:type [ <SubjectSubstance> ] ?
+    )
+}
+
+<Substance> CLOSED {
+    (  $<Substance_tes> (  <id> @linkml:String ;
+          <description> @linkml:String ? ;
+          <synonyms> @linkml:String * ;
+          <compound> @linkml:String
+       ) ;
+       rdf:type [ <Substance> ] ?
+    )
+}
+
+

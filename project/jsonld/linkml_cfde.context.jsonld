@@ -1,0 +1,82 @@
+{
+   "_comments": "Auto generated from linkml_cfde.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-08T12:46:31\n    Schema: test-schema\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: http://example.org/test/\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "@context": {
+      "cfde_disease_association_type": "http://example.org/test//cfde_disease_association_type/",
+      "cfde_phenotype_association_type": "http://example.org/test//cfde_phenotype_association_type/",
+      "cfde_subject_ethnicity": "http://example.org/test//cfde_subject_ethnicity/",
+      "cfde_subject_granularity": "http://example.org/test//cfde_subject_granularity/",
+      "cfde_subject_race": "http://example.org/test//cfde_subject_race/",
+      "cfde_subject_role": "http://example.org/test//cfde_subject_role/",
+      "cfde_subject_sex": "http://example.org/test//cfde_subject_sex/",
+      "ex": "https://example.org/test/",
+      "linkml": "https://w3id.org/linkml/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "@vocab": "https://example.org/test/",
+      "creation_time": {
+         "@type": "xsd:dateTime"
+      },
+      "association_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "age_at_sampling": {
+         "@type": "xsd:decimal"
+      },
+      "has_time_series_data": {
+         "@type": "xsd:boolean"
+      },
+      "size_in_bytes": {
+         "@type": "xsd:integer"
+      },
+      "uncompressed_size_in_bytes": {
+         "@type": "xsd:integer"
+      },
+      "age_at_enrollment": {
+         "@type": "xsd:decimal"
+      },
+      "ethnicity": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "granularity": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "sex": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "race": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "role_id": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      }
+   }
+}

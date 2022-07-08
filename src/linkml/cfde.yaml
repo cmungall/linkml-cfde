@@ -1,0 +1,1287 @@
+name: test-schema
+id: http://example.org/test/
+imports:
+- linkml:types
+prefixes:
+  cfde_subject_granularity: http://example.org/test//cfde_subject_granularity/
+  cfde_subject_sex: http://example.org/test//cfde_subject_sex/
+  cfde_subject_ethnicity: http://example.org/test//cfde_subject_ethnicity/
+  cfde_disease_association_type: http://example.org/test//cfde_disease_association_type/
+  cfde_phenotype_association_type: http://example.org/test//cfde_phenotype_association_type/
+  cfde_subject_race: http://example.org/test//cfde_subject_race/
+  cfde_subject_role: http://example.org/test//cfde_subject_role/
+  linkml: https://w3id.org/linkml/
+  ex: https://example.org/test/
+default_prefix: ex
+default_range: string
+enums:
+  GranularityEnum:
+    permissible_values:
+      '0':
+        meaning: cfde_subject_granularity:0
+      '1':
+        meaning: cfde_subject_granularity:1
+      '2':
+        meaning: cfde_subject_granularity:2
+      '3':
+        meaning: cfde_subject_granularity:3
+      '4':
+        meaning: cfde_subject_granularity:4
+      '5':
+        meaning: cfde_subject_granularity:5
+  SexEnum:
+    permissible_values:
+      '0':
+        meaning: cfde_subject_sex:0
+      '1':
+        meaning: cfde_subject_sex:1
+      '2':
+        meaning: cfde_subject_sex:2
+      '3':
+        meaning: cfde_subject_sex:3
+      '4':
+        meaning: cfde_subject_sex:4
+      '5':
+        meaning: cfde_subject_sex:5
+  EthnicityEnum:
+    permissible_values:
+      '0':
+        meaning: cfde_subject_ethnicity:0
+      '1':
+        meaning: cfde_subject_ethnicity:1
+  AssociationTypeEnum:
+    permissible_values:
+      '0':
+        meaning: cfde_phenotype_association_type:0
+      '1':
+        meaning: cfde_phenotype_association_type:1
+  RaceEnum:
+    permissible_values:
+      '0':
+        meaning: cfde_subject_race:0
+      '1':
+        meaning: cfde_subject_race:1
+      '2':
+        meaning: cfde_subject_race:2
+      '3':
+        meaning: cfde_subject_race:3
+      '4':
+        meaning: cfde_subject_race:4
+  RoleIdEnum:
+    permissible_values:
+      '0':
+        meaning: cfde_subject_role:0
+      '1':
+        meaning: cfde_subject_role:1
+      '2':
+        meaning: cfde_subject_role:2
+      '3':
+        meaning: cfde_subject_role:3
+      '4':
+        meaning: cfde_subject_role:4
+      '5':
+        meaning: cfde_subject_role:5
+      '6':
+        meaning: cfde_subject_role:6
+      '7':
+        meaning: cfde_subject_role:7
+classes:
+  file:
+    description: A stable digital asset
+    title: file
+    from_schema: http://example.org/
+    attributes:
+      id_namespace:
+        description: A CFDE-cleared identifier representing the top-level data space
+          containing this file [part 1 of 2-component composite primary key]
+        range: string
+        required: true
+      local_id:
+        description: An identifier representing this file, unique within this id_namespace
+          [part 2 of 2-component composite primary key]
+        range: string
+        required: true
+      project_id_namespace:
+        description: The id_namespace of the primary project within which this file
+          was created [part 1 of 2-component composite foreign key]
+        range: string
+        required: true
+      project_local_id:
+        description: The local_id of the primary project within which this file was
+          created [part 2 of 2-component composite foreign key]
+        range: string
+        required: true
+      persistent_id:
+        description: A persistent, resolvable (not necessarily retrievable) URI or
+          compact ID permanently attached to this file
+        range: string
+      creation_time:
+        description: "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting\
+          \ this file's creation time: YYYY-MM-DDTHH:MM:SS\xB1NN:NN"
+        range: datetime
+      size_in_bytes:
+        description: The size of this file in bytes
+        range: integer
+      uncompressed_size_in_bytes:
+        description: 'The total decompressed size in bytes of the contents of this
+          file: null if this file is not compressed'
+        range: integer
+      sha256:
+        description: (preferred) SHA-256 checksum for this file [sha256, md5 cannot
+          both be null]
+        range: string
+      md5:
+        description: (allowed) MD5 checksum for this file [sha256, md5 cannot both
+          be null]
+        range: string
+      filename:
+        description: A filename with no prepended PATH information
+        range: string
+        pattern: ^[^/\:]+$
+      file_format:
+        description: 'An EDAM CV term ID identifying the digital format of this file
+          (e.g. TSV or FASTQ): if this file is compressed, this should be its _uncompressed_
+          format'
+        range: string
+      compression_format:
+        description: 'An EDAM CV term ID identifying the compression format of this
+          file (e.g. gzip or bzip2): null if this file is not compressed'
+        range: string
+      data_type:
+        description: 'An EDAM CV term ID identifying the type of information stored
+          in this file (e.g. RNA sequence reads): null if is_bundle is set to true'
+        range: string
+      assay_type:
+        description: An OBI CV term ID describing the type of experiment that generated
+          the results summarized by this file
+        range: string
+      analysis_type:
+        description: An OBI CV term ID describing the type of analytic operation that
+          generated this file
+        range: string
+      mime_type:
+        description: A MIME type describing this file
+        range: string
+      bundle_collection_id_namespace:
+        description: If this file is a bundle encoding more than one sub-file, this
+          field gives the id_namespace of a collection listing the bundle's sub-file
+          contents; null otherwise
+        range: string
+      bundle_collection_local_id:
+        description: If this file is a bundle encoding more than one sub-file, this
+          field gives the local_id of a collection listing the bundle's sub-file contents;
+          null otherwise
+        range: string
+      dbgap_study_id:
+        description: The name of a dbGaP study ID governing access control for this
+          file, compatible for comparison to RAS user-level access control metadata
+        range: string
+  biosample:
+    description: A tissue sample or other physical specimen
+    title: biosample
+    from_schema: http://example.org/
+    attributes:
+      id_namespace:
+        description: A CFDE-cleared identifier representing the top-level data space
+          containing this biosample [part 1 of 2-component composite primary key]
+        range: string
+        required: true
+      local_id:
+        description: An identifier representing this biosample, unique within this
+          id_namespace [part 2 of 2-component composite primary key]
+        range: string
+        required: true
+      project_id_namespace:
+        description: The id_namespace of the primary project within which this biosample
+          was created [part 1 of 2-component composite foreign key]
+        range: string
+        required: true
+      project_local_id:
+        description: The local_id of the primary project within which this biosample
+          was created [part 2 of 2-component composite foreign key]
+        range: string
+        required: true
+      persistent_id:
+        description: A persistent, resolvable (not necessarily retrievable) URI or
+          compact ID permanently attached to this biosample
+        range: string
+      creation_time:
+        description: "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting\
+          \ this biosample's creation time: YYYY-MM-DDTHH:MM:SS\xB1NN:NN"
+        range: datetime
+      assay_type:
+        description: An OBI CV term ID (from the 'planned process' branch of the vocabulary,
+          excluding the 'assay' subtree) describing the preparation method that produced
+          this biosample
+        range: string
+      anatomy:
+        description: An UBERON CV term ID used to locate the origin of this biosample
+          within the physiology of its source or host organism
+        range: string
+  subject:
+    description: A biological entity from which a C2M2 biosample can in principle
+      be generated
+    title: subject
+    from_schema: http://example.org/
+    attributes:
+      id_namespace:
+        description: A CFDE-cleared identifier representing the top-level data space
+          containing this subject [part 1 of 2-component composite primary key]
+        range: string
+        required: true
+      local_id:
+        description: An identifier representing this subject, unique within this id_namespace
+          [part 2 of 2-component composite primary key]
+        range: string
+        required: true
+      project_id_namespace:
+        description: The id_namespace of the primary project within which this subject
+          was studied [part 1 of 2-component composite foreign key]
+        range: string
+        required: true
+      project_local_id:
+        description: The local_id of the primary project within which this subject
+          was studied [part 2 of 2-component composite foreign key]
+        range: string
+        required: true
+      persistent_id:
+        description: A persistent, resolvable (not necessarily retrievable) URI or
+          compact ID permanently attached to this subject
+        range: string
+      creation_time:
+        description: "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting\
+          \ this subject record's creation time: YYYY-MM-DDTHH:MM:SS\xB1NN:NN"
+        range: datetime
+      granularity:
+        description: A CFDE CV category characterizing this subject by multiplicity
+        range: GranularityEnum
+        required: true
+      sex:
+        description: A CFDE CV category characterizing the physiological sex of this
+          subject
+        range: SexEnum
+      ethnicity:
+        description: A CFDE CV category characterizing the self-reported ethnicity
+          of this subject
+        range: EthnicityEnum
+      age_at_enrollment:
+        description: The age in years (with a fixed precision of two digits past the
+          decimal point) of this subject when they were first enrolled in the primary
+          project within which they were studied
+        range: decimal
+  dcc:
+    description: The Common Fund program or data coordinating center (DCC, identified
+      by the given project foreign key) that produced this C2M2 instance
+    title: DCC
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: The identifier for this DCC, issued by the CFDE-CC
+        range: string
+        required: true
+      dcc_name:
+        description: A short, human-readable, machine-read-friendly label for this
+          DCC
+        range: string
+        required: true
+      dcc_abbreviation:
+        description: A very short display label for this contact's DCC
+        range: string
+        required: true
+        pattern: ^[a-zA-Z0-9_]+$
+      dcc_description:
+        description: A human-readable description of this DCC
+        range: string
+      contact_email:
+        description: Email address of this DCC's primary technical contact
+        range: string
+        required: true
+      contact_name:
+        description: Name of this DCC's primary technical contact
+        range: string
+        required: true
+      dcc_url:
+        description: URL of the front page of the website for this DCC
+        range: string
+        required: true
+      project_id_namespace:
+        description: ID of the identifier namespace for the project record representing
+          the C2M2 submission produced by this DCC
+        range: string
+        required: true
+      project_local_id:
+        description: Foreign key identifying the project record representing the C2M2
+          submission produced by this DCC
+        range: string
+        required: true
+    unique_keys:
+      dcc_abbreviation_unique_key:
+        unique_key_name: dcc_abbreviation_unique_key
+        unique_key_slots:
+        - dcc_abbreviation
+      contact_email_unique_key:
+        unique_key_name: contact_email_unique_key
+        unique_key_slots:
+        - contact_email
+  project:
+    description: A node in the C2M2 project hierarchy subdividing all resources described
+      by this DCC's C2M2 metadata
+    title: project
+    from_schema: http://example.org/
+    attributes:
+      id_namespace:
+        description: A CFDE-cleared identifier representing the top-level data space
+          containing this project [part 1 of 2-component composite primary key]
+        range: string
+        required: true
+      local_id:
+        description: An identifier representing this project, unique within this id_namespace
+          [part 2 of 2-component composite primary key]
+        range: string
+        required: true
+      persistent_id:
+        description: A persistent, resolvable (not necessarily retrievable) URI or
+          compact ID permanently attached to this project
+        range: string
+      creation_time:
+        description: "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting\
+          \ this project's creation time: YYYY-MM-DDTHH:MM:SS\xB1NN:NN"
+        range: datetime
+      abbreviation:
+        description: A very short display label for this project
+        range: string
+        pattern: ^[a-zA-Z0-9_]+$
+      description:
+        description: A human-readable description of this project
+        range: string
+    unique_keys:
+      name_unique_key:
+        unique_key_name: name_unique_key
+        unique_key_slots:
+        - name
+  project_in_project:
+    description: Association between a child project and its parent
+    title: project_in_project
+    from_schema: http://example.org/
+    attributes:
+      parent_project_id_namespace:
+        description: ID of the identifier namespace for the parent in this parent-child
+          project pair
+        range: string
+        required: true
+      parent_project_local_id:
+        description: The ID of the containing (parent) project
+        range: string
+        required: true
+      child_project_id_namespace:
+        description: ID of the identifier namespace for the child in this parent-child
+          project pair
+        range: string
+        required: true
+      child_project_local_id:
+        description: The ID of the contained (child) project
+        range: string
+        required: true
+  collection:
+    description: A grouping of C2M2 files, biosamples and/or subjects
+    title: collection
+    from_schema: http://example.org/
+    attributes:
+      id_namespace:
+        description: A CFDE-cleared identifier representing the top-level data space
+          containing this collection [part 1 of 2-component composite primary key]
+        range: string
+        required: true
+      local_id:
+        description: An identifier representing this collection, unique within this
+          id_namespace [part 2 of 2-component composite primary key]
+        range: string
+        required: true
+      persistent_id:
+        description: A persistent, resolvable (not necessarily retrievable) URI or
+          compact ID permanently attached to this collection
+        range: string
+      creation_time:
+        description: "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting\
+          \ this collection's creation time: YYYY-MM-DDTHH:MM:SS\xB1NN:NN"
+        range: datetime
+      abbreviation:
+        description: A very short display label for this collection
+        range: string
+        pattern: ^[a-zA-Z0-9_]+$
+      description:
+        description: A human-readable description of this collection
+        range: string
+      has_time_series_data:
+        description: 'Does this collection contain time-series data? (allowed values:
+          [true|false|null] -- true == yes, contains time-series data; false == no,
+          doesn''t contain time-series data; null == no info provided)'
+        range: boolean
+    unique_keys:
+      name_unique_key:
+        unique_key_name: name_unique_key
+        unique_key_slots:
+        - name
+  collection_in_collection:
+    description: Association between a containing collection (superset) and a contained
+      collection (subset)
+    title: collection_in_collection
+    from_schema: http://example.org/
+    attributes:
+      superset_collection_id_namespace:
+        description: ID of the identifier namespace corresponding to the C2M2 submission
+          containing the superset collection
+        range: string
+        required: true
+      superset_collection_local_id:
+        description: The ID of the superset collection
+        range: string
+        required: true
+      subset_collection_id_namespace:
+        description: ID of the identifier namespace corresponding to the C2M2 submission
+          containing the subset collection
+        range: string
+        required: true
+      subset_collection_local_id:
+        description: The ID of the subset collection
+        range: string
+        required: true
+  file_describes_collection:
+    description: Association between a summary file and an entire collection described
+      by that file
+    title: file_describes_collection
+    from_schema: http://example.org/
+    attributes:
+      file_id_namespace:
+        description: Identifier namespace for this file
+        range: string
+        required: true
+      file_local_id:
+        description: The ID of this file
+        range: string
+        required: true
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+  collection_defined_by_project:
+    description: (Shallow) association between a collection and a project that defined
+      it
+    title: collection_defined_by_project
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: ID of the identifier namespace corresponding to the C2M2 submission
+          containing this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      project_id_namespace:
+        description: ID of the identifier namespace corresponding to the C2M2 submission
+          containing this project
+        range: string
+        required: true
+      project_local_id:
+        description: The ID of this project
+        range: string
+        required: true
+  file_in_collection:
+    description: Association between a file and a (containing) collection
+    title: file_in_collection
+    from_schema: http://example.org/
+    attributes:
+      file_id_namespace:
+        description: Identifier namespace for this file
+        range: string
+        required: true
+      file_local_id:
+        description: The ID of this file
+        range: string
+        required: true
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+  biosample_in_collection:
+    description: Association between a biosample and a (containing) collection
+    title: biosample_in_collection
+    from_schema: http://example.org/
+    attributes:
+      biosample_id_namespace:
+        description: Identifier namespace for this biosample
+        range: string
+        required: true
+      biosample_local_id:
+        description: The ID of this biosample
+        range: string
+        required: true
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+  subject_in_collection:
+    description: Association between a subject and a (containing) collection
+    title: subject_in_collection
+    from_schema: http://example.org/
+    attributes:
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+  file_describes_biosample:
+    description: Association between a biosample and a file containing information
+      about that biosample
+    title: file_describes_biosample
+    from_schema: http://example.org/
+    attributes:
+      file_id_namespace:
+        description: Identifier namespace for this file
+        range: string
+        required: true
+      file_local_id:
+        description: The ID of this file
+        range: string
+        required: true
+      biosample_id_namespace:
+        description: Identifier namespace for this biosample
+        range: string
+        required: true
+      biosample_local_id:
+        description: The ID of this biosample
+        range: string
+        required: true
+  file_describes_subject:
+    description: Association between a subject and a file containing information about
+      that subject
+    title: file_describes_subject
+    from_schema: http://example.org/
+    attributes:
+      file_id_namespace:
+        description: Identifier namespace for this file
+        range: string
+        required: true
+      file_local_id:
+        description: The ID of this file
+        range: string
+        required: true
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+  biosample_from_subject:
+    description: Association between a biosample and its source subject
+    title: biosample_from_subject
+    from_schema: http://example.org/
+    attributes:
+      biosample_id_namespace:
+        description: Identifier namespace for this biosample
+        range: string
+        required: true
+      biosample_local_id:
+        description: The ID of this biosample
+        range: string
+        required: true
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      age_at_sampling:
+        description: The age in years (with a fixed precision of two digits past the
+          decimal point) of this subject when this biosample was taken
+        range: decimal
+  biosample_disease:
+    description: Association between a C2M2 biosample and a disease positively (e.g.
+      cancer tumor tissue sample) OR negatively (e.g. cancer-free tissue sample) identified
+      for that biosample
+    title: biosample_disease
+    from_schema: http://example.org/
+    attributes:
+      biosample_id_namespace:
+        description: Identifier namespace for this biosample
+        range: string
+        required: true
+      biosample_local_id:
+        description: The ID of this biosample
+        range: string
+        required: true
+      association_type:
+        description: The relationship between this biosample and this disease (e.g.
+          'observed' or '(tested for, but) not observed')
+        range: AssociationTypeEnum
+        required: true
+      disease:
+        description: A Disease Ontology CV term ID describing this disease
+        range: string
+        required: true
+  subject_disease:
+    description: Association between a C2M2 subject and a disease positively OR negatively
+      clinically identified in that subject
+    title: subject_disease
+    from_schema: http://example.org/
+    attributes:
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      association_type:
+        description: The relationship between this subject and this disease (e.g.
+          'observed' or '(tested for, but) not observed')
+        range: AssociationTypeEnum
+        required: true
+      disease:
+        description: A Disease Ontology CV term ID describing this disease
+        range: string
+        required: true
+  collection_disease:
+    description: Association between a disease and a C2M2 collection containing experimental
+      resources directly related to the study of that disease
+    title: collection_disease
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      disease:
+        description: A Disease Ontology CV term ID describing this disease
+        range: string
+        required: true
+  collection_phenotype:
+    description: Association between a phenotype and a C2M2 collection containing
+      experimental resources directly related to the study of that phenotype
+    title: collection_phenotype
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      phenotype:
+        description: A Human Phenotype Ontology CV term ID describing this phenotype
+        range: string
+        required: true
+  collection_gene:
+    description: Association between a gene and a C2M2 collection containing experimental
+      resources directly related to the study of that gene
+    title: collection_gene
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      gene:
+        description: An Ensembl term ID describing this gene
+        range: string
+        required: true
+  collection_compound:
+    description: Association between a compound and a C2M2 collection containing experimental
+      resources directly related to the study of that compound
+    title: collection_compound
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      compound:
+        description: A PubChem or GlyTouCan term ID describing this compound
+        range: string
+        required: true
+  collection_substance:
+    description: Association between a substance and a C2M2 collection containing
+      experimental resources directly related to the study of that substance
+    title: collection_substance
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      substance:
+        description: A PubChem term ID describing this substance
+        range: string
+        required: true
+  collection_taxonomy:
+    description: Association between a taxon and a C2M2 collection containing experimental
+      resources directly related to the study of that taxon
+    title: collection_taxonomy
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      taxon:
+        description: An NCBI Taxonomy Database ID identifying this taxon
+        range: string
+        required: true
+  collection_anatomy:
+    description: Association between an UBERON anatomical term and a C2M2 collection
+      containing experimental resources directly related to the study of the anatomical
+      concept described by that term
+    title: collection_anatomy
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      anatomy:
+        description: An UBERON term ID
+        range: string
+        required: true
+  collection_protein:
+    description: Association between a protein and a C2M2 collection containing experimental
+      resources directly related to the study of that protein
+    title: collection_protein
+    from_schema: http://example.org/
+    attributes:
+      collection_id_namespace:
+        description: Identifier namespace for this collection
+        range: string
+        required: true
+      collection_local_id:
+        description: The ID of this collection
+        range: string
+        required: true
+      protein:
+        description: A UniProtKB term ID describing this protein
+        range: string
+        required: true
+  subject_phenotype:
+    description: Association between a C2M2 subject and a phenotype positively OR
+      negatively clinically identified for that subject
+    title: subject_phenotype
+    from_schema: http://example.org/
+    attributes:
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      association_type:
+        description: The relationship between this subject and this phenotype (e.g.
+          'observed' or '(tested for, but) not observed')
+        range: AssociationTypeEnum
+        required: true
+      phenotype:
+        description: A Human Phenotype Ontology CV term ID describing this phenotype
+        range: string
+        required: true
+  biosample_substance:
+    description: Association between a C2M2 biosample and a PubChem substance experimentally
+      associated with that biosample
+    title: biosample_substance
+    from_schema: http://example.org/
+    attributes:
+      biosample_id_namespace:
+        description: Identifier namespace for this biosample
+        range: string
+        required: true
+      biosample_local_id:
+        description: The ID of this biosample
+        range: string
+        required: true
+      substance:
+        description: A PubChem substance ID (SID) describing this substance
+        range: string
+        required: true
+  subject_substance:
+    description: Association between a C2M2 subject and a PubChem substance experimentally
+      associated with that subject
+    title: subject_substance
+    from_schema: http://example.org/
+    attributes:
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      substance:
+        description: A PubChem substance ID (SID) describing this substance
+        range: string
+        required: true
+  biosample_gene:
+    description: Association between a C2M2 biosample and an Ensembl gene especially
+      relevant to it
+    title: biosample_gene
+    from_schema: http://example.org/
+    attributes:
+      biosample_id_namespace:
+        description: Identifier namespace for this biosample
+        range: string
+        required: true
+      biosample_local_id:
+        description: The ID of this biosample
+        range: string
+        required: true
+      gene:
+        description: An Ensembl gene ID
+        range: string
+        required: true
+  phenotype_gene:
+    description: Association between a Human Phenotype Ontology term and an Ensembl
+      gene especially relevant to it
+    title: phenotype_gene
+    from_schema: http://example.org/
+    attributes:
+      phenotype:
+        description: A Human Phenotype Ontology CV term ID
+        range: string
+        required: true
+      gene:
+        description: An Ensembl gene ID
+        range: string
+        required: true
+  phenotype_disease:
+    description: Association between a Human Phenotype Ontology term and a Disease
+      Ontology term identifying a disease especially relevant to it
+    title: phenotype_disease
+    from_schema: http://example.org/
+    attributes:
+      phenotype:
+        description: A Human Phenotype Ontology CV term ID
+        range: string
+        required: true
+      disease:
+        description: A Disease Ontology CV term ID
+        range: string
+        required: true
+  subject_race:
+    description: Identification of a C2M2 subject with one or more self-selected races
+    title: subject_race
+    from_schema: http://example.org/
+    attributes:
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      race:
+        description: A race self-identified by this subject
+        range: RaceEnum
+  subject_role_taxonomy:
+    description: Trinary association linking IDs representing (1) a subject, (2) a
+      subject_role (a named organism-level constituent component of a subject, like
+      'host', 'pathogen', 'endosymbiont', 'taxon detected inside a microbiome subject',
+      etc.) and (3) a taxonomic label (which is hereby assigned to this particular
+      subject_role within this particular subject)
+    title: subject_role_taxonomy
+    from_schema: http://example.org/
+    attributes:
+      subject_id_namespace:
+        description: Identifier namespace for this subject
+        range: string
+        required: true
+      subject_local_id:
+        description: The ID of this subject
+        range: string
+        required: true
+      role_id:
+        description: The ID of the role assigned to this organism-level constituent
+          component of this subject
+        range: RoleIdEnum
+        required: true
+      taxonomy_id:
+        description: An NCBI Taxonomy Database ID identifying this taxon
+        range: string
+        required: true
+  assay_type:
+    description: List of Ontology for Biomedical Investigations (OBI) CV terms used
+      to describe types of experiment that generate C2M2 biosamples or results stored
+      in C2M2 files
+    title: assay_type
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An OBI CV term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this OBI term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the OBI metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  analysis_type:
+    description: List of Ontology for Biomedical Investigations (OBI) CV terms used
+      to describe analytic methods that generate C2M2 files
+    title: analysis_type
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An OBI CV term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this OBI term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the OBI metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  ncbi_taxonomy:
+    description: List of NCBI Taxonomy Database IDs identifying taxa used to describe
+      C2M2 subjects
+    title: ncbi_taxonomy
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An NCBI Taxonomy Database ID identifying a particular taxon
+        range: string
+        required: true
+        pattern: ^NCBI:txid[0-9]+$
+      clade:
+        description: The phylogenetic level (e.g. species, genus) assigned to this
+          taxon
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this taxon
+        range: string
+      synonyms:
+        description: A list of synonyms for this taxon as identified by the NCBI Taxonomy
+          DB
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  anatomy:
+    description: List of Uber-anatomy ontology (UBERON) CV terms used to locate the
+      origin of a C2M2 biosample within the physiology of its source or host organism
+    title: anatomy
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An UBERON CV term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this UBERON term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the UBERON
+          metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  file_format:
+    description: List of EDAM CV 'format:' terms used to describe formats of C2M2
+      files
+    title: file_format
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An EDAM CV format term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this EDAM format term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the EDAM metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  data_type:
+    description: List of EDAM CV 'data:' terms used to describe data in C2M2 files
+    title: data_type
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An EDAM CV data term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this EDAM data term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the EDAM metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  disease:
+    description: List of Disease Ontology terms used to describe diseases recorded
+      in association with C2M2 subjects or biosamples
+    title: disease
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: A Disease Ontology term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this Disease Ontology term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the Disease
+          Ontology metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  phenotype:
+    description: List of Human Phenotype Ontology terms used to describe phenotypes
+      recorded in association with C2M2 subjects
+    title: phenotype
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: A Human Phenotype Ontology term
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this Human Phenotype Ontology
+          term
+        range: string
+      synonyms:
+        description: A list of synonyms for this term as identified by the Human Phenotype
+          Ontology metadata
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  compound:
+    description: List of (i) GlyTouCan terms or (ii) PubChem 'compound' terms (normalized
+      chemical structures) referenced in this submission; (ii) will include all PubChem
+      'compound' terms associated with any PubChem 'substance' terms (specific formulations
+      of chemical materials) directly referenced in this submission, in addition to
+      any 'compound' terms directly referenced
+    title: compound
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: A GlyTouCan ID or a PubChem compound ID (CID)
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this compound
+        range: string
+      synonyms:
+        description: A list of synonyms for this compound
+        multivalued: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  substance:
+    description: List of PubChem 'substance' terms (specific formulations of chemical
+      materials) directly referenced in this C2M2 submission
+    title: substance
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: A PubChem substance ID (SID)
+        range: string
+        required: true
+      description:
+        description: A human-readable description of this PubChem SID
+        range: string
+      synonyms:
+        description: A list of synonyms for this PubChem SID
+        multivalued: true
+      compound:
+        description: The (unique) PubChem compound ID (CID) associated with this PubChem
+          SID
+        range: string
+        required: true
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  gene:
+    description: List of Ensembl genes directly referenced in this C2M2 submission
+    title: gene
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: An Ensembl gene ID (e.g. 'ENSG00000012048')
+        range: string
+        required: true
+      description:
+        description: The Ensembl 'Description' of this gene (e.g. 'BRCA1 DNA repair
+          associated')
+        range: string
+      synonyms:
+        description: A list of Ensembl 'Gene synonyms' for this gene (e.g. ['BRCC1',
+          'FANCS', 'PPP1R53', 'RNF53'])
+        multivalued: true
+      organism:
+        description: An NCBI Taxonomy Database ID identifying this gene's source organism
+          (e.g. 'NCBI:txid9606')
+        range: string
+        required: true
+        pattern: ^NCBI:txid[0-9]+$
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  protein:
+    description: List of UniProtKB proteins directly referenced in this C2M2 submission
+    title: protein
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')
+        range: string
+        required: true
+      description:
+        description: A description of this protein
+        range: string
+      synonyms:
+        description: A list of alternate names for this protein
+        multivalued: true
+      organism:
+        description: 'OPTIONAL: An NCBI Taxonomy Database ID identifying this protein''s
+          source organism (e.g. ''NCBI:txid9606'')'
+        range: string
+        pattern: ^NCBI:txid[0-9]+$
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+  protein_gene:
+    description: Association between a UniProtKB protein term and an Ensembl term
+      identifying a gene encoding that protein
+    title: protein_gene
+    from_schema: http://example.org/
+    attributes:
+      protein:
+        description: A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')
+        range: string
+        required: true
+      gene:
+        description: An Ensembl gene ID (e.g. 'ENSG00000012048')
+        range: string
+        required: true
+  id_namespace:
+    description: A table listing identifier namespaces registered by the DCC submitting
+      this C2M2 instance
+    title: id_namespace
+    from_schema: http://example.org/
+    attributes:
+      id:
+        description: ID of this identifier namespace
+        range: string
+        required: true
+      abbreviation:
+        description: A very short display label for this identifier namespace
+        range: string
+        pattern: ^[a-zA-Z0-9_]+$
+      description:
+        description: A human-readable description of this identifier namespace
+        range: string
+    unique_keys:
+      id_unique_key:
+        unique_key_name: id_unique_key
+        unique_key_slots:
+        - id
+      name_unique_key:
+        unique_key_name: name_unique_key
+        unique_key_slots:
+        - name
