@@ -1,6 +1,6 @@
 # LinkML rendering of CFDE datamodel
 
-EXPERIMENTAL
+__EXPERIMENTAL__
 
 This is an experimental rendering of the Common Fund Data Ecosystem (CFDE) datamodel into [LinkML](https://linkml.io)
 
