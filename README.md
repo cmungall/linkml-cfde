@@ -18,4 +18,3 @@ Generated artefacts (JSON-Schema, OWL, SQL, SHACL, etc):
 
  - [project/](https://github.com/cmungall/linkml-cfde/tree/main/project)
 
-
