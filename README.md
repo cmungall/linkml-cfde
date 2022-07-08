@@ -10,4 +10,12 @@ This is currently ENTIRELY automated - no additional curation is done on the sch
 2. Run [schema-automator](https://github.com/linkml/schema-automator)
 3. Deploy using standard LinkML template
 
+To see the site:
+
+ - [cmungall.github.io/linkml-cfde/](https://cmungall.github.io/linkml-cfde/)
+
+Generated artefacts (JSON-Schema, OWL, SQL, SHACL, etc):
+
+ - [project/](https://github.com/cmungall/linkml-cfde/tree/main/project)
+
 
