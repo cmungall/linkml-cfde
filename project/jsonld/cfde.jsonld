@@ -1,5 +1,5 @@
 {
-  "name": "cfde_schema",
+  "name": "cfde",
   "description": "A complete list of schematic specifications for the resources (TSV table files) that will be used to represent C2M2 DCC metadata prior to ingest into the C2M2 database system",
   "id": "https://w3id.org/linkml/cfde",
   "imports": [
@@ -7,10 +7,6 @@
   ],
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
-    {
-      "prefix_prefix": "cfde_schema",
-      "prefix_reference": "https://w3id.org/linkml/cfde/"
-    },
     {
       "prefix_prefix": "cfde_subject_granularity",
       "prefix_reference": "https://w3id.org/linkml/cfde/cfde_subject_granularity/"
@@ -44,11 +40,11 @@
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
-      "prefix_prefix": "ex",
-      "prefix_reference": "https://example.org/test/"
+      "prefix_prefix": "cfde",
+      "prefix_reference": "https://w3id.org/linkml/cfde/"
     }
   ],
-  "default_prefix": "cfde_schema",
+  "default_prefix": "cfde",
   "default_range": "string",
   "types": [
     {
@@ -57,6 +53,9 @@
       "description": "A character string",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "@type": "TypeDefinition"
@@ -67,6 +66,9 @@
       "description": "An integer",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#integer",
       "@type": "TypeDefinition"
@@ -77,6 +79,9 @@
       "description": "A binary (true or false) value",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
       "base": "Bool",
       "uri": "http://www.w3.org/2001/XMLSchema#boolean",
       "repr": "bool",
@@ -88,6 +93,9 @@
       "description": "A real number that conforms to the xsd:float specification",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#float",
       "@type": "TypeDefinition"
@@ -98,6 +106,9 @@
       "description": "A real number that conforms to the xsd:double specification",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#double",
       "@type": "TypeDefinition"
@@ -108,6 +119,9 @@
       "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
       "base": "Decimal",
       "uri": "http://www.w3.org/2001/XMLSchema#decimal",
       "@type": "TypeDefinition"
@@ -117,12 +131,15 @@
       "definition_uri": "https://w3id.org/linkml/Time",
       "description": "A time object represents a (local) time of day, independent of any particular day",
       "notes": [
-        "URI is dateTime because OWL reasoners don't work with straight date or time"
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
       "base": "XSDTime",
-      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
       "repr": "str",
       "@type": "TypeDefinition"
     },
@@ -135,6 +152,9 @@
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
       "base": "XSDDate",
       "uri": "http://www.w3.org/2001/XMLSchema#date",
       "repr": "str",
@@ -146,6 +166,9 @@
       "description": "The combination of a date and time",
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
       "base": "XSDDateTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
@@ -174,11 +197,34 @@
       "@type": "TypeDefinition"
     },
     {
-      "name": "uri",
-      "definition_uri": "https://w3id.org/linkml/Uri",
-      "description": "a complete URI",
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
       "base": "URI",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
@@ -273,14 +319,6 @@
         {
           "text": "3",
           "meaning": "cfde_subject_sex:3"
-        },
-        {
-          "text": "4",
-          "meaning": "cfde_subject_sex:4"
-        },
-        {
-          "text": "5",
-          "meaning": "cfde_subject_sex:5"
         }
       ]
     },
@@ -338,6 +376,14 @@
         {
           "text": "4",
           "meaning": "cfde_subject_race:4"
+        },
+        {
+          "text": "5",
+          "meaning": "cfde_subject_race:5"
+        },
+        {
+          "text": "6",
+          "meaning": "cfde_subject_race:6"
         }
       ]
     },
@@ -527,6 +573,7 @@
         "File"
       ],
       "range": "string",
+      "required": true,
       "pattern": "^[^/\\:]+$",
       "@type": "SlotDefinition"
     },
@@ -730,16 +777,16 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "biosample__assay_type",
+      "name": "biosample__sample_prep_method",
       "description": "An OBI CV term ID (from the 'planned process' branch of the vocabulary, excluding the 'assay' subtree) describing the preparation method that produced this biosample",
       "from_schema": "https://w3id.org/linkml/cfde",
-      "slot_uri": "https://w3id.org/linkml/cfde/assay_type",
-      "alias": "assay_type",
+      "slot_uri": "https://w3id.org/linkml/cfde/sample_prep_method",
+      "alias": "sample_prep_method",
       "owner": "Biosample",
       "domain_of": [
         "Biosample"
       ],
-      "range": "AssayType",
+      "range": "SamplePrepMethod",
       "@type": "SlotDefinition"
     },
     {
@@ -3139,6 +3186,48 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "samplePrepMethod__id",
+      "description": "An OBI CV term",
+      "from_schema": "https://w3id.org/linkml/cfde",
+      "slot_uri": "https://w3id.org/linkml/cfde/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "SamplePrepMethod",
+      "domain_of": [
+        "SamplePrepMethod"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePrepMethod__description",
+      "description": "A human-readable description of this OBI term",
+      "from_schema": "https://w3id.org/linkml/cfde",
+      "slot_uri": "https://w3id.org/linkml/cfde/description",
+      "alias": "description",
+      "owner": "SamplePrepMethod",
+      "domain_of": [
+        "SamplePrepMethod"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePrepMethod__synonyms",
+      "description": "A list of synonyms for this term as identified by the OBI metadata",
+      "from_schema": "https://w3id.org/linkml/cfde",
+      "slot_uri": "https://w3id.org/linkml/cfde/synonyms",
+      "multivalued": true,
+      "alias": "synonyms",
+      "owner": "SamplePrepMethod",
+      "domain_of": [
+        "SamplePrepMethod"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "idNamespace__id",
       "description": "ID of this identifier namespace",
       "from_schema": "https://w3id.org/linkml/cfde",
@@ -3280,6 +3369,7 @@
           "name": "filename",
           "description": "A filename with no prepended PATH information",
           "range": "string",
+          "required": true,
           "pattern": "^[^/\\:]+$",
           "@type": "SlotDefinition"
         },
@@ -3363,7 +3453,7 @@
         "biosample__project_local_id",
         "biosample__persistent_id",
         "biosample__creation_time",
-        "biosample__assay_type",
+        "biosample__sample_prep_method",
         "biosample__anatomy"
       ],
       "slot_usage": {},
@@ -3409,9 +3499,9 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "assay_type",
+          "name": "sample_prep_method",
           "description": "An OBI CV term ID (from the 'planned process' branch of the vocabulary, excluding the 'assay' subtree) describing the preparation method that produced this biosample",
-          "range": "AssayType",
+          "range": "SamplePrepMethod",
           "@type": "SlotDefinition"
         },
         {
@@ -5212,7 +5302,7 @@
     {
       "name": "AssayType",
       "definition_uri": "https://w3id.org/linkml/cfde/AssayType",
-      "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate C2M2 biosamples or results stored in C2M2 files",
+      "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate results stored in C2M2 files",
       "title": "assay_type",
       "from_schema": "https://w3id.org/linkml/cfde",
       "slots": [
@@ -5835,6 +5925,52 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "SamplePrepMethod",
+      "definition_uri": "https://w3id.org/linkml/cfde/SamplePrepMethod",
+      "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of preparation methods that produce C2M2 biosamples",
+      "title": "sample_prep_method",
+      "from_schema": "https://w3id.org/linkml/cfde",
+      "slots": [
+        "samplePrepMethod__id",
+        "samplePrepMethod__description",
+        "samplePrepMethod__synonyms"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "id",
+          "description": "An OBI CV term",
+          "identifier": true,
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "description",
+          "description": "A human-readable description of this OBI term",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "synonyms",
+          "description": "A list of synonyms for this term as identified by the OBI metadata",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/linkml/cfde/SamplePrepMethod",
+      "unique_keys": [
+        {
+          "unique_key_name": "id_unique_key",
+          "unique_key_slots": [
+            "id"
+          ],
+          "@type": "UniqueKey"
+        }
+      ],
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "IdNamespace",
       "definition_uri": "https://w3id.org/linkml/cfde/IdNamespace",
       "description": "A table listing identifier namespaces registered by the DCC submitting this C2M2 instance",
@@ -5891,9 +6027,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "cfde.yaml",
-  "source_file_date": "2022-07-08T14:49:09",
-  "source_file_size": 54025,
-  "generation_date": "2022-07-08T14:56:48",
+  "source_file_date": "2023-05-26T11:54:38",
+  "source_file_size": 54724,
+  "generation_date": "2023-05-26T12:03:42",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cfde.context.jsonld",

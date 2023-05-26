@@ -12,7 +12,7 @@ message Anatomy
   string description = 0
  repeated  string synonyms = 0
  }
-// List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate C2M2 biosamples or results stored in C2M2 files
+// List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate results stored in C2M2 files
 message AssayType
  {
   string id = 0
@@ -28,7 +28,7 @@ message Biosample
   string projectLocalId = 0
   string persistentId = 0
   datetime creationTime = 0
-  assayType assayType = 0
+  samplePrepMethod samplePrepMethod = 0
   anatomy anatomy = 0
  }
 // Association between a C2M2 biosample and a disease positively (e.g. cancer tumor tissue sample) OR negatively (e.g. cancer-free tissue sample) identified for that biosample
@@ -323,6 +323,13 @@ message ProteinGene
  {
   protein protein = 0
   gene gene = 0
+ }
+// List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of preparation methods that produce C2M2 biosamples
+message SamplePrepMethod
+ {
+  string id = 0
+  string description = 0
+ repeated  string synonyms = 0
  }
 // A biological entity from which a C2M2 biosample can in principle be generated
 message Subject

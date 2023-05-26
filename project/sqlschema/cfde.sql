@@ -148,6 +148,12 @@ CREATE TABLE project_in_project (
 	PRIMARY KEY (parent_project_id_namespace, parent_project_local_id, child_project_id_namespace, child_project_local_id)
 );
 
+CREATE TABLE sample_prep_method (
+	id TEXT NOT NULL, 
+	description TEXT, 
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE subject_in_collection (
 	subject_id_namespace TEXT NOT NULL, 
 	subject_local_id TEXT NOT NULL, 
@@ -170,11 +176,11 @@ CREATE TABLE biosample (
 	project_local_id TEXT NOT NULL, 
 	persistent_id TEXT, 
 	creation_time DATETIME, 
-	assay_type TEXT, 
+	sample_prep_method TEXT, 
 	anatomy TEXT, 
-	PRIMARY KEY (id_namespace, local_id, project_id_namespace, project_local_id, persistent_id, creation_time, assay_type, anatomy), 
+	PRIMARY KEY (id_namespace, local_id, project_id_namespace, project_local_id, persistent_id, creation_time, sample_prep_method, anatomy), 
 	FOREIGN KEY(id_namespace) REFERENCES id_namespace (id), 
-	FOREIGN KEY(assay_type) REFERENCES assay_type (id), 
+	FOREIGN KEY(sample_prep_method) REFERENCES sample_prep_method (id), 
 	FOREIGN KEY(anatomy) REFERENCES anatomy (id)
 );
 
@@ -250,7 +256,7 @@ CREATE TABLE file (
 	uncompressed_size_in_bytes INTEGER, 
 	sha256 TEXT, 
 	md5 TEXT, 
-	filename TEXT, 
+	filename TEXT NOT NULL, 
 	file_format TEXT, 
 	compression_format TEXT, 
 	data_type TEXT, 
@@ -415,6 +421,13 @@ CREATE TABLE phenotype_synonyms (
 	synonyms TEXT, 
 	PRIMARY KEY (backref_id, synonyms), 
 	FOREIGN KEY(backref_id) REFERENCES phenotype (id)
+);
+
+CREATE TABLE sample_prep_method_synonyms (
+	backref_id TEXT, 
+	synonyms TEXT, 
+	PRIMARY KEY (backref_id, synonyms), 
+	FOREIGN KEY(backref_id) REFERENCES sample_prep_method (id)
 );
 
 CREATE TABLE biosample_gene (

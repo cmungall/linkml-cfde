@@ -1,5 +1,5 @@
+@prefix cfde: <https://w3id.org/linkml/cfde/> .
 @prefix cfde_phenotype_association_type: <https://w3id.org/linkml/cfde/cfde_phenotype_association_type/> .
-@prefix cfde_schema: <https://w3id.org/linkml/cfde/> .
 @prefix cfde_subject_ethnicity: <https://w3id.org/linkml/cfde/cfde_subject_ethnicity/> .
 @prefix cfde_subject_granularity: <https://w3id.org/linkml/cfde/cfde_subject_granularity/> .
 @prefix cfde_subject_race: <https://w3id.org/linkml/cfde/cfde_subject_race/> .
@@ -9,56 +9,56 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-cfde_schema:Biosample a sh:NodeShape ;
+cfde:Biosample a sh:NodeShape ;
     sh:closed true ;
     sh:description "A tissue sample or other physical specimen" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "biosample" ;
-    sh:property [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this biosample's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
+    sh:property [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this biosample" ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path cfde:persistent_id ],
+        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this biosample's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
             sh:maxCount 1 ;
             sh:order 5 ;
-            sh:path cfde_schema:creation_time ],
-        [ sh:class cfde_schema:AssayType ;
+            sh:path cfde:creation_time ],
+        [ sh:description "The id_namespace of the primary project within which this biosample was created [part 1 of 2-component composite foreign key]" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:project_id_namespace ],
+        [ sh:class cfde:SamplePrepMethod ;
             sh:description "An OBI CV term ID (from the 'planned process' branch of the vocabulary, excluding the 'assay' subtree) describing the preparation method that produced this biosample" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 6 ;
-            sh:path cfde_schema:assay_type ],
-        [ sh:class cfde_schema:IdNamespace ;
+            sh:path cfde:sample_prep_method ],
+        [ sh:class cfde:IdNamespace ;
             sh:description "A CFDE-cleared identifier representing the top-level data space containing this biosample [part 1 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:id_namespace ],
+            sh:path cfde:id_namespace ],
         [ sh:description "An identifier representing this biosample, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:local_id ],
-        [ sh:class cfde_schema:Anatomy ;
+            sh:path cfde:local_id ],
+        [ sh:class cfde:Anatomy ;
             sh:description "An UBERON CV term ID used to locate the origin of this biosample within the physiology of its source or host organism" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 7 ;
-            sh:path cfde_schema:anatomy ],
-        [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this biosample" ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path cfde_schema:persistent_id ],
-        [ sh:description "The id_namespace of the primary project within which this biosample was created [part 1 of 2-component composite foreign key]" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:project_id_namespace ],
+            sh:path cfde:anatomy ],
         [ sh:description "The local_id of the primary project within which this biosample was created [part 2 of 2-component composite foreign key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:project_local_id ] ;
-    sh:targetClass cfde_schema:Biosample .
+            sh:path cfde:project_local_id ] ;
+    sh:targetClass cfde:Biosample .
 
-cfde_schema:BiosampleDisease a sh:NodeShape ;
+cfde:BiosampleDisease a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a C2M2 biosample and a disease positively (e.g. cancer tumor tissue sample) OR negatively (e.g. cancer-free tissue sample) identified for that biosample" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -68,58 +68,58 @@ cfde_schema:BiosampleDisease a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:association_type ],
-        [ sh:description "Identifier namespace for this biosample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:biosample_id_namespace ],
-        [ sh:class cfde_schema:Disease ;
+            sh:path cfde:association_type ],
+        [ sh:class cfde:Disease ;
             sh:description "A Disease Ontology CV term ID describing this disease" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:disease ],
+            sh:path cfde:disease ],
         [ sh:description "The ID of this biosample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:biosample_local_id ] ;
-    sh:targetClass cfde_schema:BiosampleDisease .
-
-cfde_schema:BiosampleFromSubject a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Association between a biosample and its source subject" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "biosample_from_subject" ;
-    sh:property [ sh:description "Identifier namespace for this subject" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:subject_id_namespace ],
-        [ sh:description "The ID of this biosample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:biosample_local_id ],
+            sh:path cfde:biosample_local_id ],
         [ sh:description "Identifier namespace for this biosample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:biosample_id_namespace ],
-        [ sh:description "The ID of this subject" ;
+            sh:path cfde:biosample_id_namespace ] ;
+    sh:targetClass cfde:BiosampleDisease .
+
+cfde:BiosampleFromSubject a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Association between a biosample and its source subject" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "biosample_from_subject" ;
+    sh:property [ sh:description "The ID of this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:subject_local_id ],
+            sh:path cfde:subject_local_id ],
+        [ sh:description "Identifier namespace for this biosample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:biosample_id_namespace ],
         [ sh:description "The age in years (with a fixed precision of two digits past the decimal point) of this subject when this biosample was taken" ;
             sh:maxCount 1 ;
             sh:order 4 ;
-            sh:path cfde_schema:age_at_sampling ] ;
-    sh:targetClass cfde_schema:BiosampleFromSubject .
+            sh:path cfde:age_at_sampling ],
+        [ sh:description "The ID of this biosample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:biosample_local_id ],
+        [ sh:description "Identifier namespace for this subject" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:subject_id_namespace ] ;
+    sh:targetClass cfde:BiosampleFromSubject .
 
-cfde_schema:BiosampleGene a sh:NodeShape ;
+cfde:BiosampleGene a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a C2M2 biosample and an Ensembl gene especially relevant to it" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -128,161 +128,161 @@ cfde_schema:BiosampleGene a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:biosample_local_id ],
+            sh:path cfde:biosample_local_id ],
         [ sh:description "Identifier namespace for this biosample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:biosample_id_namespace ],
-        [ sh:class cfde_schema:Gene ;
+            sh:path cfde:biosample_id_namespace ],
+        [ sh:class cfde:Gene ;
             sh:description "An Ensembl gene ID" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:gene ] ;
-    sh:targetClass cfde_schema:BiosampleGene .
+            sh:path cfde:gene ] ;
+    sh:targetClass cfde:BiosampleGene .
 
-cfde_schema:BiosampleInCollection a sh:NodeShape ;
+cfde:BiosampleInCollection a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a biosample and a (containing) collection" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "biosample_in_collection" ;
-    sh:property [ sh:description "Identifier namespace for this biosample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:biosample_id_namespace ],
-        [ sh:description "The ID of this collection" ;
+    sh:property [ sh:description "The ID of this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:collection_local_id ],
+            sh:path cfde:collection_local_id ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:collection_id_namespace ],
+            sh:path cfde:collection_id_namespace ],
+        [ sh:description "Identifier namespace for this biosample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:biosample_id_namespace ],
         [ sh:description "The ID of this biosample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:biosample_local_id ] ;
-    sh:targetClass cfde_schema:BiosampleInCollection .
+            sh:path cfde:biosample_local_id ] ;
+    sh:targetClass cfde:BiosampleInCollection .
 
-cfde_schema:BiosampleSubstance a sh:NodeShape ;
+cfde:BiosampleSubstance a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a C2M2 biosample and a PubChem substance experimentally associated with that biosample" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "biosample_substance" ;
-    sh:property [ sh:description "Identifier namespace for this biosample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:biosample_id_namespace ],
-        [ sh:description "The ID of this biosample" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:biosample_local_id ],
-        [ sh:class cfde_schema:Substance ;
+    sh:property [ sh:class cfde:Substance ;
             sh:description "A PubChem substance ID (SID) describing this substance" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:substance ] ;
-    sh:targetClass cfde_schema:BiosampleSubstance .
+            sh:path cfde:substance ],
+        [ sh:description "Identifier namespace for this biosample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:biosample_id_namespace ],
+        [ sh:description "The ID of this biosample" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:biosample_local_id ] ;
+    sh:targetClass cfde:BiosampleSubstance .
 
-cfde_schema:Collection a sh:NodeShape ;
+cfde:Collection a sh:NodeShape ;
     sh:closed true ;
     sh:description "A grouping of C2M2 files, biosamples and/or subjects" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection" ;
-    sh:property [ sh:description "Does this collection contain time-series data? (allowed values: [true|false|null] -- true == yes, contains time-series data; false == no, doesn't contain time-series data; null == no info provided)" ;
+    sh:property [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this collection's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
             sh:maxCount 1 ;
-            sh:order 6 ;
-            sh:path cfde_schema:has_time_series_data ],
-        [ sh:description "A very short display label for this collection" ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path cfde_schema:abbreviation ;
-            sh:pattern "^[a-zA-Z0-9_]+$" ],
+            sh:order 3 ;
+            sh:path cfde:creation_time ],
         [ sh:description "A human-readable description of this collection" ;
             sh:maxCount 1 ;
             sh:order 5 ;
-            sh:path cfde_schema:description ],
-        [ sh:description "An identifier representing this collection, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:local_id ],
-        [ sh:class cfde_schema:IdNamespace ;
+            sh:path cfde:description ],
+        [ sh:class cfde:IdNamespace ;
             sh:description "A CFDE-cleared identifier representing the top-level data space containing this collection [part 1 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:id_namespace ],
+            sh:path cfde:id_namespace ],
+        [ sh:description "An identifier representing this collection, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:local_id ],
         [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this collection" ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:persistent_id ],
-        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this collection's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
+            sh:path cfde:persistent_id ],
+        [ sh:description "A very short display label for this collection" ;
             sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path cfde_schema:creation_time ] ;
-    sh:targetClass cfde_schema:Collection .
+            sh:order 4 ;
+            sh:path cfde:abbreviation ;
+            sh:pattern "^[a-zA-Z0-9_]+$" ],
+        [ sh:description "Does this collection contain time-series data? (allowed values: [true|false|null] -- true == yes, contains time-series data; false == no, doesn't contain time-series data; null == no info provided)" ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path cfde:has_time_series_data ] ;
+    sh:targetClass cfde:Collection .
 
-cfde_schema:CollectionAnatomy a sh:NodeShape ;
+cfde:CollectionAnatomy a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between an UBERON anatomical term and a C2M2 collection containing experimental resources directly related to the study of the anatomical concept described by that term" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_anatomy" ;
-    sh:property [ sh:description "The ID of this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ],
-        [ sh:class cfde_schema:Anatomy ;
+    sh:property [ sh:class cfde:Anatomy ;
             sh:description "An UBERON term ID" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:anatomy ],
+            sh:path cfde:anatomy ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ] ;
-    sh:targetClass cfde_schema:CollectionAnatomy .
+            sh:path cfde:collection_id_namespace ],
+        [ sh:description "The ID of this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:collection_local_id ] ;
+    sh:targetClass cfde:CollectionAnatomy .
 
-cfde_schema:CollectionCompound a sh:NodeShape ;
+cfde:CollectionCompound a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a compound and a C2M2 collection containing experimental resources directly related to the study of that compound" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_compound" ;
-    sh:property [ sh:class cfde_schema:Compound ;
+    sh:property [ sh:description "Identifier namespace for this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:collection_id_namespace ],
+        [ sh:class cfde:Compound ;
             sh:description "A PubChem or GlyTouCan term ID describing this compound" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:compound ],
-        [ sh:description "Identifier namespace for this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
+            sh:path cfde:compound ],
         [ sh:description "The ID of this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ] ;
-    sh:targetClass cfde_schema:CollectionCompound .
+            sh:path cfde:collection_local_id ] ;
+    sh:targetClass cfde:CollectionCompound .
 
-cfde_schema:CollectionDefinedByProject a sh:NodeShape ;
+cfde:CollectionDefinedByProject a sh:NodeShape ;
     sh:closed true ;
     sh:description "(Shallow) association between a collection and a project that defined it" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -291,25 +291,25 @@ cfde_schema:CollectionDefinedByProject a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ],
-        [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
-        [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing this project" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:project_id_namespace ],
+            sh:path cfde:collection_local_id ],
         [ sh:description "The ID of this project" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:project_local_id ] ;
-    sh:targetClass cfde_schema:CollectionDefinedByProject .
+            sh:path cfde:project_local_id ],
+        [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:collection_id_namespace ],
+        [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing this project" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:project_id_namespace ] ;
+    sh:targetClass cfde:CollectionDefinedByProject .
 
-cfde_schema:CollectionDisease a sh:NodeShape ;
+cfde:CollectionDisease a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a disease and a C2M2 collection containing experimental resources directly related to the study of that disease" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -318,145 +318,145 @@ cfde_schema:CollectionDisease a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ],
+            sh:path cfde:collection_local_id ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
-        [ sh:class cfde_schema:Disease ;
+            sh:path cfde:collection_id_namespace ],
+        [ sh:class cfde:Disease ;
             sh:description "A Disease Ontology CV term ID describing this disease" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:disease ] ;
-    sh:targetClass cfde_schema:CollectionDisease .
+            sh:path cfde:disease ] ;
+    sh:targetClass cfde:CollectionDisease .
 
-cfde_schema:CollectionGene a sh:NodeShape ;
+cfde:CollectionGene a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a gene and a C2M2 collection containing experimental resources directly related to the study of that gene" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_gene" ;
-    sh:property [ sh:class cfde_schema:Gene ;
+    sh:property [ sh:description "The ID of this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:collection_local_id ],
+        [ sh:description "Identifier namespace for this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:collection_id_namespace ],
+        [ sh:class cfde:Gene ;
             sh:description "An Ensembl term ID describing this gene" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:gene ],
-        [ sh:description "Identifier namespace for this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
-        [ sh:description "The ID of this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ] ;
-    sh:targetClass cfde_schema:CollectionGene .
+            sh:path cfde:gene ] ;
+    sh:targetClass cfde:CollectionGene .
 
-cfde_schema:CollectionInCollection a sh:NodeShape ;
+cfde:CollectionInCollection a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a containing collection (superset) and a contained collection (subset)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_in_collection" ;
-    sh:property [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing the subset collection" ;
+    sh:property [ sh:description "The ID of the superset collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:superset_collection_local_id ],
+        [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing the subset collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:subset_collection_id_namespace ],
+            sh:path cfde:subset_collection_id_namespace ],
         [ sh:description "ID of the identifier namespace corresponding to the C2M2 submission containing the superset collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:superset_collection_id_namespace ],
-        [ sh:description "The ID of the superset collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:superset_collection_local_id ],
+            sh:path cfde:superset_collection_id_namespace ],
         [ sh:description "The ID of the subset collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:subset_collection_local_id ] ;
-    sh:targetClass cfde_schema:CollectionInCollection .
+            sh:path cfde:subset_collection_local_id ] ;
+    sh:targetClass cfde:CollectionInCollection .
 
-cfde_schema:CollectionPhenotype a sh:NodeShape ;
+cfde:CollectionPhenotype a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a phenotype and a C2M2 collection containing experimental resources directly related to the study of that phenotype" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_phenotype" ;
-    sh:property [ sh:description "The ID of this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ],
-        [ sh:class cfde_schema:Phenotype ;
+    sh:property [ sh:class cfde:Phenotype ;
             sh:description "A Human Phenotype Ontology CV term ID describing this phenotype" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:phenotype ],
+            sh:path cfde:phenotype ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ] ;
-    sh:targetClass cfde_schema:CollectionPhenotype .
+            sh:path cfde:collection_id_namespace ],
+        [ sh:description "The ID of this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:collection_local_id ] ;
+    sh:targetClass cfde:CollectionPhenotype .
 
-cfde_schema:CollectionProtein a sh:NodeShape ;
+cfde:CollectionProtein a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a protein and a C2M2 collection containing experimental resources directly related to the study of that protein" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_protein" ;
-    sh:property [ sh:class cfde_schema:Protein ;
+    sh:property [ sh:class cfde:Protein ;
             sh:description "A UniProtKB term ID describing this protein" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:protein ],
-        [ sh:description "Identifier namespace for this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
+            sh:path cfde:protein ],
         [ sh:description "The ID of this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ] ;
-    sh:targetClass cfde_schema:CollectionProtein .
+            sh:path cfde:collection_local_id ],
+        [ sh:description "Identifier namespace for this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:collection_id_namespace ] ;
+    sh:targetClass cfde:CollectionProtein .
 
-cfde_schema:CollectionSubstance a sh:NodeShape ;
+cfde:CollectionSubstance a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a substance and a C2M2 collection containing experimental resources directly related to the study of that substance" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "collection_substance" ;
-    sh:property [ sh:description "Identifier namespace for this collection" ;
+    sh:property [ sh:description "The ID of this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:collection_local_id ],
+        [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
-        [ sh:class cfde_schema:Substance ;
+            sh:path cfde:collection_id_namespace ],
+        [ sh:class cfde:Substance ;
             sh:description "A PubChem term ID describing this substance" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:substance ],
-        [ sh:description "The ID of this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ] ;
-    sh:targetClass cfde_schema:CollectionSubstance .
+            sh:path cfde:substance ] ;
+    sh:targetClass cfde:CollectionSubstance .
 
-cfde_schema:CollectionTaxonomy a sh:NodeShape ;
+cfde:CollectionTaxonomy a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a taxon and a C2M2 collection containing experimental resources directly related to the study of that taxon" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -465,178 +465,179 @@ cfde_schema:CollectionTaxonomy a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:collection_local_id ],
+            sh:path cfde:collection_local_id ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:collection_id_namespace ],
-        [ sh:class cfde_schema:NcbiTaxonomy ;
+            sh:path cfde:collection_id_namespace ],
+        [ sh:class cfde:NcbiTaxonomy ;
             sh:description "An NCBI Taxonomy Database ID identifying this taxon" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:taxon ] ;
-    sh:targetClass cfde_schema:CollectionTaxonomy .
+            sh:path cfde:taxon ] ;
+    sh:targetClass cfde:CollectionTaxonomy .
 
-cfde_schema:Dcc a sh:NodeShape ;
+cfde:Dcc a sh:NodeShape ;
     sh:closed true ;
     sh:description "The Common Fund program or data coordinating center (DCC, identified by the given project foreign key) that produced this C2M2 instance" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "DCC" ;
-    sh:property [ sh:description "Name of this DCC's primary technical contact" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 5 ;
-            sh:path cfde_schema:contact_name ],
-        [ sh:description "A human-readable description of this DCC" ;
-            sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path cfde_schema:dcc_description ],
-        [ sh:description "ID of the identifier namespace for the project record representing the C2M2 submission produced by this DCC" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 7 ;
-            sh:path cfde_schema:project_id_namespace ],
-        [ sh:description "URL of the front page of the website for this DCC" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 6 ;
-            sh:path cfde_schema:dcc_url ],
-        [ sh:description "Email address of this DCC's primary technical contact" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path cfde_schema:contact_email ],
-        [ sh:description "A short, human-readable, machine-read-friendly label for this DCC" ;
+    sh:property [ sh:description "A short, human-readable, machine-read-friendly label for this DCC" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:dcc_name ],
-        [ sh:description "Foreign key identifying the project record representing the C2M2 submission produced by this DCC" ;
+            sh:path cfde:dcc_name ],
+        [ sh:description "A human-readable description of this DCC" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 8 ;
-            sh:path cfde_schema:project_local_id ],
+            sh:order 3 ;
+            sh:path cfde:dcc_description ],
         [ sh:description "A very short display label for this contact's DCC" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:dcc_abbreviation ;
+            sh:path cfde:dcc_abbreviation ;
             sh:pattern "^[a-zA-Z0-9_]+$" ],
+        [ sh:description "Foreign key identifying the project record representing the C2M2 submission produced by this DCC" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 8 ;
+            sh:path cfde:project_local_id ],
+        [ sh:description "Email address of this DCC's primary technical contact" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path cfde:contact_email ],
+        [ sh:description "URL of the front page of the website for this DCC" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 6 ;
+            sh:path cfde:dcc_url ],
+        [ sh:description "Name of this DCC's primary technical contact" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path cfde:contact_name ],
+        [ sh:description "ID of the identifier namespace for the project record representing the C2M2 submission produced by this DCC" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 7 ;
+            sh:path cfde:project_id_namespace ],
         [ sh:description "The identifier for this DCC, issued by the CFDE-CC" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ] ;
-    sh:targetClass cfde_schema:Dcc .
+            sh:path cfde:id ] ;
+    sh:targetClass cfde:Dcc .
 
-cfde_schema:File a sh:NodeShape ;
+cfde:File a sh:NodeShape ;
     sh:closed true ;
     sh:description "A stable digital asset" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "file" ;
-    sh:property [ sh:description "If this file is a bundle encoding more than one sub-file, this field gives the local_id of a collection listing the bundle's sub-file contents; null otherwise" ;
-            sh:maxCount 1 ;
-            sh:order 18 ;
-            sh:path cfde_schema:bundle_collection_local_id ],
-        [ sh:class cfde_schema:AssayType ;
-            sh:description "An OBI CV term ID describing the type of experiment that generated the results summarized by this file" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 14 ;
-            sh:path cfde_schema:assay_type ],
-        [ sh:class cfde_schema:IdNamespace ;
+    sh:property [ sh:class cfde:IdNamespace ;
             sh:description "A CFDE-cleared identifier representing the top-level data space containing this file [part 1 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:id_namespace ],
-        [ sh:class cfde_schema:DataType ;
-            sh:description "An EDAM CV term ID identifying the type of information stored in this file (e.g. RNA sequence reads): null if is_bundle is set to true" ;
+            sh:path cfde:id_namespace ],
+        [ sh:description "(preferred) SHA-256 checksum for this file [sha256, md5 cannot both be null]" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 13 ;
-            sh:path cfde_schema:data_type ],
-        [ sh:description "(allowed) MD5 checksum for this file [sha256, md5 cannot both be null]" ;
-            sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path cfde_schema:md5 ],
-        [ sh:class cfde_schema:FileFormat ;
-            sh:description "An EDAM CV term ID identifying the digital format of this file (e.g. TSV or FASTQ): if this file is compressed, this should be its _uncompressed_ format" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path cfde_schema:file_format ],
-        [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this file" ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path cfde_schema:persistent_id ],
-        [ sh:description "A filename with no prepended PATH information" ;
-            sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path cfde_schema:filename ;
-            sh:pattern "^[^/\\:]+$" ],
+            sh:order 8 ;
+            sh:path cfde:sha256 ],
         [ sh:description "An identifier representing this file, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:local_id ],
-        [ sh:description "The total decompressed size in bytes of the contents of this file: null if this file is not compressed" ;
+            sh:path cfde:local_id ],
+        [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this file" ;
             sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path cfde_schema:uncompressed_size_in_bytes ],
-        [ sh:description "The size of this file in bytes" ;
+            sh:order 4 ;
+            sh:path cfde:persistent_id ],
+        [ sh:description "If this file is a bundle encoding more than one sub-file, this field gives the id_namespace of a collection listing the bundle's sub-file contents; null otherwise" ;
             sh:maxCount 1 ;
-            sh:order 6 ;
-            sh:path cfde_schema:size_in_bytes ],
-        [ sh:class cfde_schema:FileFormat ;
-            sh:description "An EDAM CV term ID identifying the compression format of this file (e.g. gzip or bzip2): null if this file is not compressed" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path cfde_schema:compression_format ],
-        [ sh:description "The local_id of the primary project within which this file was created [part 2 of 2-component composite foreign key]" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path cfde_schema:project_local_id ],
-        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this file's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path cfde_schema:creation_time ],
-        [ sh:description "A MIME type describing this file" ;
-            sh:maxCount 1 ;
-            sh:order 16 ;
-            sh:path cfde_schema:mime_type ],
-        [ sh:class cfde_schema:AnalysisType ;
-            sh:description "An OBI CV term ID describing the type of analytic operation that generated this file" ;
+            sh:order 17 ;
+            sh:path cfde:bundle_collection_id_namespace ],
+        [ sh:class cfde:AssayType ;
+            sh:description "An OBI CV term ID describing the type of experiment that generated the results summarized by this file" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 15 ;
-            sh:path cfde_schema:analysis_type ],
-        [ sh:description "(preferred) SHA-256 checksum for this file [sha256, md5 cannot both be null]" ;
+            sh:order 14 ;
+            sh:path cfde:assay_type ],
+        [ sh:class cfde:FileFormat ;
+            sh:description "An EDAM CV term ID identifying the digital format of this file (e.g. TSV or FASTQ): if this file is compressed, this should be its _uncompressed_ format" ;
             sh:maxCount 1 ;
-            sh:order 8 ;
-            sh:path cfde_schema:sha256 ],
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path cfde:file_format ],
         [ sh:description "The id_namespace of the primary project within which this file was created [part 1 of 2-component composite foreign key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:project_id_namespace ],
-        [ sh:description "If this file is a bundle encoding more than one sub-file, this field gives the id_namespace of a collection listing the bundle's sub-file contents; null otherwise" ;
+            sh:path cfde:project_id_namespace ],
+        [ sh:description "The local_id of the primary project within which this file was created [part 2 of 2-component composite foreign key]" ;
             sh:maxCount 1 ;
-            sh:order 17 ;
-            sh:path cfde_schema:bundle_collection_id_namespace ],
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path cfde:project_local_id ],
+        [ sh:description "(allowed) MD5 checksum for this file [sha256, md5 cannot both be null]" ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path cfde:md5 ],
+        [ sh:class cfde:FileFormat ;
+            sh:description "An EDAM CV term ID identifying the compression format of this file (e.g. gzip or bzip2): null if this file is not compressed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path cfde:compression_format ],
         [ sh:description "The name of a dbGaP study ID governing access control for this file, compatible for comparison to RAS user-level access control metadata" ;
             sh:maxCount 1 ;
             sh:order 19 ;
-            sh:path cfde_schema:dbgap_study_id ] ;
-    sh:targetClass cfde_schema:File .
+            sh:path cfde:dbgap_study_id ],
+        [ sh:description "A filename with no prepended PATH information" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 10 ;
+            sh:path cfde:filename ;
+            sh:pattern "^[^/\\:]+$" ],
+        [ sh:description "The total decompressed size in bytes of the contents of this file: null if this file is not compressed" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path cfde:uncompressed_size_in_bytes ],
+        [ sh:class cfde:DataType ;
+            sh:description "An EDAM CV term ID identifying the type of information stored in this file (e.g. RNA sequence reads): null if is_bundle is set to true" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 13 ;
+            sh:path cfde:data_type ],
+        [ sh:description "A MIME type describing this file" ;
+            sh:maxCount 1 ;
+            sh:order 16 ;
+            sh:path cfde:mime_type ],
+        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this file's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path cfde:creation_time ],
+        [ sh:class cfde:AnalysisType ;
+            sh:description "An OBI CV term ID describing the type of analytic operation that generated this file" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 15 ;
+            sh:path cfde:analysis_type ],
+        [ sh:description "If this file is a bundle encoding more than one sub-file, this field gives the local_id of a collection listing the bundle's sub-file contents; null otherwise" ;
+            sh:maxCount 1 ;
+            sh:order 18 ;
+            sh:path cfde:bundle_collection_local_id ],
+        [ sh:description "The size of this file in bytes" ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path cfde:size_in_bytes ] ;
+    sh:targetClass cfde:File .
 
-cfde_schema:FileDescribesBiosample a sh:NodeShape ;
+cfde:FileDescribesBiosample a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a biosample and a file containing information about that biosample" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -645,79 +646,79 @@ cfde_schema:FileDescribesBiosample a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:biosample_local_id ],
-        [ sh:description "Identifier namespace for this file" ;
+            sh:path cfde:biosample_local_id ],
+        [ sh:description "The ID of this file" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:file_id_namespace ],
+            sh:order 1 ;
+            sh:path cfde:file_local_id ],
         [ sh:description "Identifier namespace for this biosample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:biosample_id_namespace ],
-        [ sh:description "The ID of this file" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:file_local_id ] ;
-    sh:targetClass cfde_schema:FileDescribesBiosample .
-
-cfde_schema:FileDescribesCollection a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Association between a summary file and an entire collection described by that file" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "file_describes_collection" ;
-    sh:property [ sh:description "Identifier namespace for this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:collection_id_namespace ],
+            sh:path cfde:biosample_id_namespace ],
         [ sh:description "Identifier namespace for this file" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:file_id_namespace ],
-        [ sh:description "The ID of this file" ;
+            sh:path cfde:file_id_namespace ] ;
+    sh:targetClass cfde:FileDescribesBiosample .
+
+cfde:FileDescribesCollection a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Association between a summary file and an entire collection described by that file" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "file_describes_collection" ;
+    sh:property [ sh:description "The ID of this file" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:file_local_id ],
+            sh:path cfde:file_local_id ],
+        [ sh:description "Identifier namespace for this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:collection_id_namespace ],
         [ sh:description "The ID of this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:collection_local_id ] ;
-    sh:targetClass cfde_schema:FileDescribesCollection .
+            sh:path cfde:collection_local_id ],
+        [ sh:description "Identifier namespace for this file" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:file_id_namespace ] ;
+    sh:targetClass cfde:FileDescribesCollection .
 
-cfde_schema:FileDescribesSubject a sh:NodeShape ;
+cfde:FileDescribesSubject a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a subject and a file containing information about that subject" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "file_describes_subject" ;
-    sh:property [ sh:description "Identifier namespace for this file" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:file_id_namespace ],
-        [ sh:description "Identifier namespace for this subject" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:subject_id_namespace ],
-        [ sh:description "The ID of this subject" ;
+    sh:property [ sh:description "The ID of this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:subject_local_id ],
+            sh:path cfde:subject_local_id ],
+        [ sh:description "Identifier namespace for this file" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:file_id_namespace ],
         [ sh:description "The ID of this file" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:file_local_id ] ;
-    sh:targetClass cfde_schema:FileDescribesSubject .
+            sh:path cfde:file_local_id ],
+        [ sh:description "Identifier namespace for this subject" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:subject_id_namespace ] ;
+    sh:targetClass cfde:FileDescribesSubject .
 
-cfde_schema:FileInCollection a sh:NodeShape ;
+cfde:FileInCollection a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a file and a (containing) collection" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -726,238 +727,238 @@ cfde_schema:FileInCollection a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:file_local_id ],
+            sh:path cfde:file_local_id ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:collection_id_namespace ],
+            sh:path cfde:collection_id_namespace ],
         [ sh:description "The ID of this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:collection_local_id ],
+            sh:path cfde:collection_local_id ],
         [ sh:description "Identifier namespace for this file" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:file_id_namespace ] ;
-    sh:targetClass cfde_schema:FileInCollection .
+            sh:path cfde:file_id_namespace ] ;
+    sh:targetClass cfde:FileInCollection .
 
-cfde_schema:PhenotypeDisease a sh:NodeShape ;
+cfde:PhenotypeDisease a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a Human Phenotype Ontology term and a Disease Ontology term identifying a disease especially relevant to it" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "phenotype_disease" ;
-    sh:property [ sh:class cfde_schema:Phenotype ;
+    sh:property [ sh:class cfde:Phenotype ;
             sh:description "A Human Phenotype Ontology CV term ID" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:phenotype ],
-        [ sh:class cfde_schema:Disease ;
+            sh:path cfde:phenotype ],
+        [ sh:class cfde:Disease ;
             sh:description "A Disease Ontology CV term ID" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path cfde_schema:disease ] ;
-    sh:targetClass cfde_schema:PhenotypeDisease .
+            sh:path cfde:disease ] ;
+    sh:targetClass cfde:PhenotypeDisease .
 
-cfde_schema:PhenotypeGene a sh:NodeShape ;
+cfde:PhenotypeGene a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a Human Phenotype Ontology term and an Ensembl gene especially relevant to it" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "phenotype_gene" ;
-    sh:property [ sh:class cfde_schema:Gene ;
-            sh:description "An Ensembl gene ID" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path cfde_schema:gene ],
-        [ sh:class cfde_schema:Phenotype ;
+    sh:property [ sh:class cfde:Phenotype ;
             sh:description "A Human Phenotype Ontology CV term ID" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:phenotype ] ;
-    sh:targetClass cfde_schema:PhenotypeGene .
+            sh:path cfde:phenotype ],
+        [ sh:class cfde:Gene ;
+            sh:description "An Ensembl gene ID" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path cfde:gene ] ;
+    sh:targetClass cfde:PhenotypeGene .
 
-cfde_schema:Project a sh:NodeShape ;
+cfde:Project a sh:NodeShape ;
     sh:closed true ;
     sh:description "A node in the C2M2 project hierarchy subdividing all resources described by this DCC's C2M2 metadata" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "project" ;
-    sh:property [ sh:description "A very short display label for this project" ;
+    sh:property [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this project's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path cfde:creation_time ],
+        [ sh:description "A very short display label for this project" ;
             sh:maxCount 1 ;
             sh:order 4 ;
-            sh:path cfde_schema:abbreviation ;
+            sh:path cfde:abbreviation ;
             sh:pattern "^[a-zA-Z0-9_]+$" ],
-        [ sh:class cfde_schema:IdNamespace ;
+        [ sh:class cfde:IdNamespace ;
             sh:description "A CFDE-cleared identifier representing the top-level data space containing this project [part 1 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:id_namespace ],
+            sh:path cfde:id_namespace ],
+        [ sh:description "A human-readable description of this project" ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path cfde:description ],
         [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this project" ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:persistent_id ],
-        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this project's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
-            sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path cfde_schema:creation_time ],
+            sh:path cfde:persistent_id ],
         [ sh:description "An identifier representing this project, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:local_id ],
-        [ sh:description "A human-readable description of this project" ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:Project .
+            sh:path cfde:local_id ] ;
+    sh:targetClass cfde:Project .
 
-cfde_schema:ProjectInProject a sh:NodeShape ;
+cfde:ProjectInProject a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a child project and its parent" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "project_in_project" ;
-    sh:property [ sh:description "ID of the identifier namespace for the child in this parent-child project pair" ;
+    sh:property [ sh:description "ID of the identifier namespace for the parent in this parent-child project pair" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:child_project_id_namespace ],
+            sh:order 0 ;
+            sh:path cfde:parent_project_id_namespace ],
         [ sh:description "The ID of the contained (child) project" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path cfde_schema:child_project_local_id ],
+            sh:path cfde:child_project_local_id ],
+        [ sh:description "ID of the identifier namespace for the child in this parent-child project pair" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:child_project_id_namespace ],
         [ sh:description "The ID of the containing (parent) project" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:parent_project_local_id ],
-        [ sh:description "ID of the identifier namespace for the parent in this parent-child project pair" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:parent_project_id_namespace ] ;
-    sh:targetClass cfde_schema:ProjectInProject .
+            sh:path cfde:parent_project_local_id ] ;
+    sh:targetClass cfde:ProjectInProject .
 
-cfde_schema:ProteinGene a sh:NodeShape ;
+cfde:ProteinGene a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a UniProtKB protein term and an Ensembl term identifying a gene encoding that protein" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "protein_gene" ;
-    sh:property [ sh:class cfde_schema:Gene ;
+    sh:property [ sh:class cfde:Gene ;
             sh:description "An Ensembl gene ID (e.g. 'ENSG00000012048')" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path cfde_schema:gene ],
-        [ sh:class cfde_schema:Protein ;
+            sh:path cfde:gene ],
+        [ sh:class cfde:Protein ;
             sh:description "A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:protein ] ;
-    sh:targetClass cfde_schema:ProteinGene .
+            sh:path cfde:protein ] ;
+    sh:targetClass cfde:ProteinGene .
 
-cfde_schema:Subject a sh:NodeShape ;
+cfde:Subject a sh:NodeShape ;
     sh:closed true ;
     sh:description "A biological entity from which a C2M2 biosample can in principle be generated" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "subject" ;
-    sh:property [ sh:description "The age in years (with a fixed precision of two digits past the decimal point) of this subject when they were first enrolled in the primary project within which they were studied" ;
-            sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path cfde_schema:age_at_enrollment ],
-        [ sh:description "An identifier representing this subject, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
+    sh:property [ sh:description "An identifier representing this subject, unique within this id_namespace [part 2 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:local_id ],
-        [ sh:description "A CFDE CV category characterizing the physiological sex of this subject" ;
-            sh:in ( cfde_subject_sex:0 cfde_subject_sex:1 cfde_subject_sex:2 cfde_subject_sex:3 cfde_subject_sex:4 cfde_subject_sex:5 ) ;
-            sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path cfde_schema:sex ],
-        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this subject record's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path cfde_schema:creation_time ],
-        [ sh:description "A CFDE CV category characterizing this subject by multiplicity" ;
-            sh:in ( cfde_subject_granularity:0 cfde_subject_granularity:1 cfde_subject_granularity:2 cfde_subject_granularity:3 cfde_subject_granularity:4 cfde_subject_granularity:5 ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 6 ;
-            sh:path cfde_schema:granularity ],
-        [ sh:description "The local_id of the primary project within which this subject was studied [part 2 of 2-component composite foreign key]" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path cfde_schema:project_local_id ],
-        [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this subject" ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path cfde_schema:persistent_id ],
-        [ sh:description "The id_namespace of the primary project within which this subject was studied [part 1 of 2-component composite foreign key]" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:project_id_namespace ],
-        [ sh:class cfde_schema:IdNamespace ;
+            sh:path cfde:local_id ],
+        [ sh:class cfde:IdNamespace ;
             sh:description "A CFDE-cleared identifier representing the top-level data space containing this subject [part 1 of 2-component composite primary key]" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path cfde_schema:id_namespace ],
+            sh:path cfde:id_namespace ],
         [ sh:description "A CFDE CV category characterizing the self-reported ethnicity of this subject" ;
             sh:in ( cfde_subject_ethnicity:0 cfde_subject_ethnicity:1 ) ;
             sh:maxCount 1 ;
             sh:order 8 ;
-            sh:path cfde_schema:ethnicity ] ;
-    sh:targetClass cfde_schema:Subject .
+            sh:path cfde:ethnicity ],
+        [ sh:description "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this subject" ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path cfde:persistent_id ],
+        [ sh:description "A CFDE CV category characterizing this subject by multiplicity" ;
+            sh:in ( cfde_subject_granularity:0 cfde_subject_granularity:1 cfde_subject_granularity:2 cfde_subject_granularity:3 cfde_subject_granularity:4 cfde_subject_granularity:5 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 6 ;
+            sh:path cfde:granularity ],
+        [ sh:description "A CFDE CV category characterizing the physiological sex of this subject" ;
+            sh:in ( cfde_subject_sex:0 cfde_subject_sex:1 cfde_subject_sex:2 cfde_subject_sex:3 ) ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path cfde:sex ],
+        [ sh:description "The id_namespace of the primary project within which this subject was studied [part 1 of 2-component composite foreign key]" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:project_id_namespace ],
+        [ sh:description "An ISO 8601 -- RFC 3339 (subset)-compliant timestamp documenting this subject record's creation time: YYYY-MM-DDTHH:MM:SS±NN:NN" ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path cfde:creation_time ],
+        [ sh:description "The age in years (with a fixed precision of two digits past the decimal point) of this subject when they were first enrolled in the primary project within which they were studied" ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path cfde:age_at_enrollment ],
+        [ sh:description "The local_id of the primary project within which this subject was studied [part 2 of 2-component composite foreign key]" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path cfde:project_local_id ] ;
+    sh:targetClass cfde:Subject .
 
-cfde_schema:SubjectDisease a sh:NodeShape ;
+cfde:SubjectDisease a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a C2M2 subject and a disease positively OR negatively clinically identified in that subject" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "subject_disease" ;
-    sh:property [ sh:description "The relationship between this subject and this disease (e.g. 'observed' or '(tested for, but) not observed')" ;
-            sh:in ( cfde_phenotype_association_type:0 cfde_phenotype_association_type:1 ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path cfde_schema:association_type ],
-        [ sh:description "Identifier namespace for this subject" ;
+    sh:property [ sh:description "Identifier namespace for this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:subject_id_namespace ],
-        [ sh:description "The ID of this subject" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:subject_local_id ],
-        [ sh:class cfde_schema:Disease ;
+            sh:path cfde:subject_id_namespace ],
+        [ sh:class cfde:Disease ;
             sh:description "A Disease Ontology CV term ID describing this disease" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:disease ] ;
-    sh:targetClass cfde_schema:SubjectDisease .
+            sh:path cfde:disease ],
+        [ sh:description "The relationship between this subject and this disease (e.g. 'observed' or '(tested for, but) not observed')" ;
+            sh:in ( cfde_phenotype_association_type:0 cfde_phenotype_association_type:1 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path cfde:association_type ],
+        [ sh:description "The ID of this subject" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:subject_local_id ] ;
+    sh:targetClass cfde:SubjectDisease .
 
-cfde_schema:SubjectInCollection a sh:NodeShape ;
+cfde:SubjectInCollection a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a subject and a (containing) collection" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -966,55 +967,55 @@ cfde_schema:SubjectInCollection a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:subject_local_id ],
-        [ sh:description "The ID of this collection" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path cfde_schema:collection_local_id ],
+            sh:path cfde:subject_local_id ],
         [ sh:description "Identifier namespace for this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:subject_id_namespace ],
+            sh:path cfde:subject_id_namespace ],
+        [ sh:description "The ID of this collection" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path cfde:collection_local_id ],
         [ sh:description "Identifier namespace for this collection" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:collection_id_namespace ] ;
-    sh:targetClass cfde_schema:SubjectInCollection .
+            sh:path cfde:collection_id_namespace ] ;
+    sh:targetClass cfde:SubjectInCollection .
 
-cfde_schema:SubjectPhenotype a sh:NodeShape ;
+cfde:SubjectPhenotype a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a C2M2 subject and a phenotype positively OR negatively clinically identified for that subject" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "subject_phenotype" ;
-    sh:property [ sh:class cfde_schema:Phenotype ;
+    sh:property [ sh:description "The ID of this subject" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:subject_local_id ],
+        [ sh:class cfde:Phenotype ;
             sh:description "A Human Phenotype Ontology CV term ID describing this phenotype" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:phenotype ],
+            sh:path cfde:phenotype ],
         [ sh:description "Identifier namespace for this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:subject_id_namespace ],
+            sh:path cfde:subject_id_namespace ],
         [ sh:description "The relationship between this subject and this phenotype (e.g. 'observed' or '(tested for, but) not observed')" ;
             sh:in ( cfde_phenotype_association_type:0 cfde_phenotype_association_type:1 ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:association_type ],
-        [ sh:description "The ID of this subject" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:subject_local_id ] ;
-    sh:targetClass cfde_schema:SubjectPhenotype .
+            sh:path cfde:association_type ] ;
+    sh:targetClass cfde:SubjectPhenotype .
 
-cfde_schema:SubjectRace a sh:NodeShape ;
+cfde:SubjectRace a sh:NodeShape ;
     sh:closed true ;
     sh:description "Identification of a C2M2 subject with one or more self-selected races" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -1023,74 +1024,74 @@ cfde_schema:SubjectRace a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:subject_id_namespace ],
+            sh:path cfde:subject_id_namespace ],
         [ sh:description "A race self-identified by this subject" ;
-            sh:in ( cfde_subject_race:0 cfde_subject_race:1 cfde_subject_race:2 cfde_subject_race:3 cfde_subject_race:4 ) ;
+            sh:in ( cfde_subject_race:0 cfde_subject_race:1 cfde_subject_race:2 cfde_subject_race:3 cfde_subject_race:4 cfde_subject_race:5 cfde_subject_race:6 ) ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:race ],
+            sh:path cfde:race ],
         [ sh:description "The ID of this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:subject_local_id ] ;
-    sh:targetClass cfde_schema:SubjectRace .
+            sh:path cfde:subject_local_id ] ;
+    sh:targetClass cfde:SubjectRace .
 
-cfde_schema:SubjectRoleTaxonomy a sh:NodeShape ;
+cfde:SubjectRoleTaxonomy a sh:NodeShape ;
     sh:closed true ;
     sh:description "Trinary association linking IDs representing (1) a subject, (2) a subject_role (a named organism-level constituent component of a subject, like 'host', 'pathogen', 'endosymbiont', 'taxon detected inside a microbiome subject', etc.) and (3) a taxonomic label (which is hereby assigned to this particular subject_role within this particular subject)" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "subject_role_taxonomy" ;
-    sh:property [ sh:description "Identifier namespace for this subject" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:subject_id_namespace ],
-        [ sh:description "The ID of the role assigned to this organism-level constituent component of this subject" ;
+    sh:property [ sh:description "The ID of the role assigned to this organism-level constituent component of this subject" ;
             sh:in ( cfde_subject_role:0 cfde_subject_role:1 cfde_subject_role:2 cfde_subject_role:3 cfde_subject_role:4 cfde_subject_role:5 cfde_subject_role:6 cfde_subject_role:7 ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:role_id ],
-        [ sh:class cfde_schema:NcbiTaxonomy ;
+            sh:path cfde:role_id ],
+        [ sh:description "Identifier namespace for this subject" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:subject_id_namespace ],
+        [ sh:class cfde:NcbiTaxonomy ;
             sh:description "An NCBI Taxonomy Database ID identifying this taxon" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:taxonomy_id ],
+            sh:path cfde:taxonomy_id ],
         [ sh:description "The ID of this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:subject_local_id ] ;
-    sh:targetClass cfde_schema:SubjectRoleTaxonomy .
+            sh:path cfde:subject_local_id ] ;
+    sh:targetClass cfde:SubjectRoleTaxonomy .
 
-cfde_schema:SubjectSubstance a sh:NodeShape ;
+cfde:SubjectSubstance a sh:NodeShape ;
     sh:closed true ;
     sh:description "Association between a C2M2 subject and a PubChem substance experimentally associated with that subject" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "subject_substance" ;
-    sh:property [ sh:description "The ID of this subject" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:subject_local_id ],
-        [ sh:description "Identifier namespace for this subject" ;
+    sh:property [ sh:description "Identifier namespace for this subject" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:subject_id_namespace ],
-        [ sh:class cfde_schema:Substance ;
+            sh:path cfde:subject_id_namespace ],
+        [ sh:class cfde:Substance ;
             sh:description "A PubChem substance ID (SID) describing this substance" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path cfde_schema:substance ] ;
-    sh:targetClass cfde_schema:SubjectSubstance .
+            sh:path cfde:substance ],
+        [ sh:description "The ID of this subject" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:subject_local_id ] ;
+    sh:targetClass cfde:SubjectSubstance .
 
-cfde_schema:AnalysisType a sh:NodeShape ;
+cfde:AnalysisType a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe analytic methods that generate C2M2 files" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -1099,17 +1100,36 @@ cfde_schema:AnalysisType a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
-        [ sh:description "A list of synonyms for this term as identified by the OBI metadata" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ],
+            sh:path cfde:id ],
         [ sh:description "A human-readable description of this OBI term" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:AnalysisType .
+            sh:path cfde:description ],
+        [ sh:description "A list of synonyms for this term as identified by the OBI metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ] ;
+    sh:targetClass cfde:AnalysisType .
 
-cfde_schema:DataType a sh:NodeShape ;
+cfde:AssayType a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate results stored in C2M2 files" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "assay_type" ;
+    sh:property [ sh:description "An OBI CV term" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:id ],
+        [ sh:description "A list of synonyms for this term as identified by the OBI metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ],
+        [ sh:description "A human-readable description of this OBI term" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:description ] ;
+    sh:targetClass cfde:AssayType .
+
+cfde:DataType a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of EDAM CV 'data:' terms used to describe data in C2M2 files" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -1117,237 +1137,236 @@ cfde_schema:DataType a sh:NodeShape ;
     sh:property [ sh:description "A human-readable description of this EDAM data term" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ],
+            sh:path cfde:description ],
+        [ sh:description "A list of synonyms for this term as identified by the EDAM metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ],
         [ sh:description "An EDAM CV data term" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
-        [ sh:description "A list of synonyms for this term as identified by the EDAM metadata" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ] ;
-    sh:targetClass cfde_schema:DataType .
+            sh:path cfde:id ] ;
+    sh:targetClass cfde:DataType .
 
-cfde_schema:Anatomy a sh:NodeShape ;
+cfde:SamplePrepMethod a sh:NodeShape ;
     sh:closed true ;
-    sh:description "List of Uber-anatomy ontology (UBERON) CV terms used to locate the origin of a C2M2 biosample within the physiology of its source or host organism" ;
+    sh:description "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of preparation methods that produce C2M2 biosamples" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:name "anatomy" ;
-    sh:property [ sh:description "A human-readable description of this UBERON term" ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:description ],
-        [ sh:description "An UBERON CV term" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:id ],
-        [ sh:description "A list of synonyms for this term as identified by the UBERON metadata" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ] ;
-    sh:targetClass cfde_schema:Anatomy .
-
-cfde_schema:AssayType a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate C2M2 biosamples or results stored in C2M2 files" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:name "assay_type" ;
+    sh:name "sample_prep_method" ;
     sh:property [ sh:description "A list of synonyms for this term as identified by the OBI metadata" ;
             sh:order 2 ;
-            sh:path cfde_schema:synonyms ],
+            sh:path cfde:synonyms ],
         [ sh:description "An OBI CV term" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:id ],
         [ sh:description "A human-readable description of this OBI term" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:AssayType .
+            sh:path cfde:description ] ;
+    sh:targetClass cfde:SamplePrepMethod .
 
-cfde_schema:Compound a sh:NodeShape ;
+cfde:Anatomy a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "List of Uber-anatomy ontology (UBERON) CV terms used to locate the origin of a C2M2 biosample within the physiology of its source or host organism" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "anatomy" ;
+    sh:property [ sh:description "An UBERON CV term" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:id ],
+        [ sh:description "A human-readable description of this UBERON term" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:description ],
+        [ sh:description "A list of synonyms for this term as identified by the UBERON metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ] ;
+    sh:targetClass cfde:Anatomy .
+
+cfde:Compound a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of (i) GlyTouCan terms or (ii) PubChem 'compound' terms (normalized chemical structures) referenced in this submission; (ii) will include all PubChem 'compound' terms associated with any PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this submission, in addition to any 'compound' terms directly referenced" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "compound" ;
-    sh:property [ sh:description "A human-readable description of this compound" ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:description ],
-        [ sh:description "A GlyTouCan ID or a PubChem compound ID (CID)" ;
+    sh:property [ sh:description "A GlyTouCan ID or a PubChem compound ID (CID)" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:id ],
         [ sh:description "A list of synonyms for this compound" ;
             sh:order 2 ;
-            sh:path cfde_schema:synonyms ] ;
-    sh:targetClass cfde_schema:Compound .
+            sh:path cfde:synonyms ],
+        [ sh:description "A human-readable description of this compound" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:description ] ;
+    sh:targetClass cfde:Compound .
 
-cfde_schema:FileFormat a sh:NodeShape ;
+cfde:FileFormat a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of EDAM CV 'format:' terms used to describe formats of C2M2 files" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "file_format" ;
-    sh:property [ sh:description "An EDAM CV format term" ;
+    sh:property [ sh:description "A list of synonyms for this term as identified by the EDAM metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ],
+        [ sh:description "An EDAM CV format term" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:id ],
         [ sh:description "A human-readable description of this EDAM format term" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ],
-        [ sh:description "A list of synonyms for this term as identified by the EDAM metadata" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ] ;
-    sh:targetClass cfde_schema:FileFormat .
+            sh:path cfde:description ] ;
+    sh:targetClass cfde:FileFormat .
 
-cfde_schema:Protein a sh:NodeShape ;
+cfde:Protein a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of UniProtKB proteins directly referenced in this C2M2 submission" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "protein" ;
-    sh:property [ sh:description "A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:id ],
+    sh:property [ sh:description "A list of alternate names for this protein" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ],
         [ sh:description "A description of this protein" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ],
-        [ sh:class cfde_schema:NcbiTaxonomy ;
+            sh:path cfde:description ],
+        [ sh:class cfde:NcbiTaxonomy ;
             sh:description "OPTIONAL: An NCBI Taxonomy Database ID identifying this protein's source organism (e.g. 'NCBI:txid9606')" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:organism ;
+            sh:path cfde:organism ;
             sh:pattern "^NCBI:txid[0-9]+$" ],
-        [ sh:description "A list of alternate names for this protein" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ] ;
-    sh:targetClass cfde_schema:Protein .
+        [ sh:description "A UniProt Knowledgebase (UniProtKB) protein ID (e.g. 'P94485')" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:id ] ;
+    sh:targetClass cfde:Protein .
 
-cfde_schema:Substance a sh:NodeShape ;
+cfde:Substance a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this C2M2 submission" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "substance" ;
-    sh:property [ sh:class cfde_schema:Compound ;
+    sh:property [ sh:description "A PubChem substance ID (SID)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path cfde:id ],
+        [ sh:class cfde:Compound ;
             sh:description "The (unique) PubChem compound ID (CID) associated with this PubChem SID" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:compound ],
-        [ sh:description "A list of synonyms for this PubChem SID" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ],
-        [ sh:description "A PubChem substance ID (SID)" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:compound ],
         [ sh:description "A human-readable description of this PubChem SID" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:Substance .
+            sh:path cfde:description ],
+        [ sh:description "A list of synonyms for this PubChem SID" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ] ;
+    sh:targetClass cfde:Substance .
 
-cfde_schema:Disease a sh:NodeShape ;
+cfde:Disease a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of Disease Ontology terms used to describe diseases recorded in association with C2M2 subjects or biosamples" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "disease" ;
-    sh:property [ sh:description "A Disease Ontology term" ;
+    sh:property [ sh:description "A list of synonyms for this term as identified by the Disease Ontology metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ],
+        [ sh:description "A Disease Ontology term" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:id ],
         [ sh:description "A human-readable description of this Disease Ontology term" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:description ],
-        [ sh:description "A list of synonyms for this term as identified by the Disease Ontology metadata" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ] ;
-    sh:targetClass cfde_schema:Disease .
+            sh:path cfde:description ] ;
+    sh:targetClass cfde:Disease .
 
-cfde_schema:Gene a sh:NodeShape ;
+cfde:Gene a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of Ensembl genes directly referenced in this C2M2 submission" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "gene" ;
-    sh:property [ sh:description "An Ensembl gene ID (e.g. 'ENSG00000012048')" ;
+    sh:property [ sh:description "The Ensembl 'Description' of this gene (e.g. 'BRCA1 DNA repair associated')" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:description ],
+        [ sh:description "An Ensembl gene ID (e.g. 'ENSG00000012048')" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:id ],
         [ sh:description "A list of Ensembl 'Gene synonyms' for this gene (e.g. ['BRCC1', 'FANCS', 'PPP1R53', 'RNF53'])" ;
             sh:order 2 ;
-            sh:path cfde_schema:synonyms ],
-        [ sh:class cfde_schema:NcbiTaxonomy ;
+            sh:path cfde:synonyms ],
+        [ sh:class cfde:NcbiTaxonomy ;
             sh:description "An NCBI Taxonomy Database ID identifying this gene's source organism (e.g. 'NCBI:txid9606')" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path cfde_schema:organism ;
-            sh:pattern "^NCBI:txid[0-9]+$" ],
-        [ sh:description "The Ensembl 'Description' of this gene (e.g. 'BRCA1 DNA repair associated')" ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:Gene .
+            sh:path cfde:organism ;
+            sh:pattern "^NCBI:txid[0-9]+$" ] ;
+    sh:targetClass cfde:Gene .
 
-cfde_schema:NcbiTaxonomy a sh:NodeShape ;
+cfde:NcbiTaxonomy a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of NCBI Taxonomy Database IDs identifying taxa used to describe C2M2 subjects" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "ncbi_taxonomy" ;
-    sh:property [ sh:description "A list of synonyms for this taxon as identified by the NCBI Taxonomy DB" ;
-            sh:order 3 ;
-            sh:path cfde_schema:synonyms ],
-        [ sh:description "A human-readable description of this taxon" ;
+    sh:property [ sh:description "A human-readable description of this taxon" ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:description ],
+            sh:path cfde:description ],
+        [ sh:description "A list of synonyms for this taxon as identified by the NCBI Taxonomy DB" ;
+            sh:order 3 ;
+            sh:path cfde:synonyms ],
         [ sh:description "The phylogenetic level (e.g. species, genus) assigned to this taxon" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:clade ],
+            sh:path cfde:clade ],
         [ sh:description "An NCBI Taxonomy Database ID identifying a particular taxon" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ;
+            sh:path cfde:id ;
             sh:pattern "^NCBI:txid[0-9]+$" ] ;
-    sh:targetClass cfde_schema:NcbiTaxonomy .
+    sh:targetClass cfde:NcbiTaxonomy .
 
-cfde_schema:Phenotype a sh:NodeShape ;
+cfde:Phenotype a sh:NodeShape ;
     sh:closed true ;
     sh:description "List of Human Phenotype Ontology terms used to describe phenotypes recorded in association with C2M2 subjects" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:name "phenotype" ;
-    sh:property [ sh:description "A list of synonyms for this term as identified by the Human Phenotype Ontology metadata" ;
-            sh:order 2 ;
-            sh:path cfde_schema:synonyms ],
+    sh:property [ sh:description "A human-readable description of this Human Phenotype Ontology term" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path cfde:description ],
         [ sh:description "A Human Phenotype Ontology term" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
-        [ sh:description "A human-readable description of this Human Phenotype Ontology term" ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:Phenotype .
+            sh:path cfde:id ],
+        [ sh:description "A list of synonyms for this term as identified by the Human Phenotype Ontology metadata" ;
+            sh:order 2 ;
+            sh:path cfde:synonyms ] ;
+    sh:targetClass cfde:Phenotype .
 
-cfde_schema:IdNamespace a sh:NodeShape ;
+cfde:IdNamespace a sh:NodeShape ;
     sh:closed true ;
     sh:description "A table listing identifier namespaces registered by the DCC submitting this C2M2 instance" ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -1356,15 +1375,15 @@ cfde_schema:IdNamespace a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path cfde_schema:id ],
+            sh:path cfde:id ],
         [ sh:description "A very short display label for this identifier namespace" ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path cfde_schema:abbreviation ;
+            sh:path cfde:abbreviation ;
             sh:pattern "^[a-zA-Z0-9_]+$" ],
         [ sh:description "A human-readable description of this identifier namespace" ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path cfde_schema:description ] ;
-    sh:targetClass cfde_schema:IdNamespace .
+            sh:path cfde:description ] ;
+    sh:targetClass cfde:IdNamespace .
 

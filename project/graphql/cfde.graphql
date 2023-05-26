@@ -27,7 +27,7 @@ type Biosample
     projectLocalId: String!
     persistentId: String
     creationTime: Datetime
-    assayType: AssayType
+    samplePrepMethod: SamplePrepMethod
     anatomy: Anatomy
   }
 
@@ -199,7 +199,7 @@ type File
     uncompressedSizeInBytes: Integer
     sha256: String
     md5: String
-    filename: String
+    filename: String!
     fileFormat: FileFormat
     compressionFormat: FileFormat
     dataType: DataType
@@ -322,6 +322,13 @@ type ProteinGene
   {
     protein: Protein!
     gene: Gene!
+  }
+
+type SamplePrepMethod
+  {
+    id: String!
+    description: String
+    synonyms: [String]
   }
 
 type Subject

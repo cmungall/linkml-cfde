@@ -3,3 +3,6 @@
 
 #download/cfde.src.schema.json:
 #	curl -L -s $(SRC_SCHEMA_URL) > $@
+
+# Manually download this from OSF
+SRC_SCHEMA=download/c2md_datapackage.json
