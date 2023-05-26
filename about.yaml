@@ -1,3 +1,3 @@
-name: linkml-cfde
+name: cfde
 description: DRAFT conversion of C2M2 model in CFDE
-source_schema_path: src/linkml/cfde.yaml
+source_schema_path: src/cfde/model.yaml
