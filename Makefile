@@ -80,7 +80,7 @@ $(DOCDIR):
 
 gendoc: $(DOCDIR)
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
-	$(RUN) gen-doc -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-doc --hierarchical-class-view -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
 
 testdoc: gendoc serve
 

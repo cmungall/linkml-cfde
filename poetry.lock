@@ -1407,14 +1407,14 @@ regex = ["regex"]
 
 [[package]]
 name = "linkml"
-version = "1.5.3"
+version = "1.5.4"
 description = "Linked Open Data Modeling Language"
 category = "dev"
 optional = false
 python-versions = ">=3.7.6,<4.0.0"
 files = [
-    {file = "linkml-1.5.3-py3-none-any.whl", hash = "sha256:02f23460164b4a7ff0678e5cd88aac1636ce4443a9b72e68d25e2f044f339e28"},
-    {file = "linkml-1.5.3.tar.gz", hash = "sha256:b902df243985fe5f6b4333524406ccc4b12c527e47891260d89713b52425fc6b"},
+    {file = "linkml-1.5.4-py3-none-any.whl", hash = "sha256:d08223c122ba45b28833076881cd2d0a78a27d4f68120215c0a645d0ed395784"},
+    {file = "linkml-1.5.4.tar.gz", hash = "sha256:380dc5ac6e4c9e6eb8e7862365eb7e70be156804d52cec0843b013eb904216b1"},
 ]
 
 [package.dependencies]
@@ -4104,4 +4104,4 @@ docs = ["mkdocs-material"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "67fd2c27a85478f5237aa61fc9a7d135a0037998dcbf7b9d899d103b280f7c18"
+content-hash = "ee9eaac489ec442ade7e376534650880d7e22293651f469a9883f6989498d622"
